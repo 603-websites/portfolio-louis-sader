@@ -23,7 +23,7 @@ const Contact = () => {
     // For now, open email client as fallback
     const subject = encodeURIComponent(`Portfolio Contact from ${data.name}`)
     const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`)
-    window.location.href = `mailto:contact@louissader.dev?subject=${subject}&body=${body}`
+    window.location.href = `mailto:louissader42@gmail.com?subject=${subject}&body=${body}`
 
     setTimeout(() => {
       setFormStatus('sent')
@@ -36,8 +36,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "contact@louissader.dev",
-      href: "mailto:contact@louissader.dev"
+      value: "louissader42@gmail.com",
+      href: "mailto:louissader42@gmail.com"
     },
     {
       icon: Phone,
