@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, Terminal, Code2, Database, Cloud } from 'lucide-react'
+import { ChevronDown, Terminal, Code2, Database, Cloud, Github, Linkedin } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -61,11 +61,16 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <a href="#projects" className="btn-primary">
-                View My Work
+              <a href="/documents/Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                View My Resume
               </a>
-              <a href="#contact" className="btn-secondary">
-                Get In Touch
+              <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
+                <Github size={20} />
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/louis-sader-a6a391287/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
+                <Linkedin size={20} />
+                LinkedIn
               </a>
             </motion.div>
 
@@ -101,42 +106,88 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Profile Image */}
+          {/* Right Content - Profile Image & Code Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative hidden lg:block"
           >
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
-
+            <div className="relative flex flex-col gap-6">
               {/* Profile Image */}
-              <div className="relative glass rounded-2xl overflow-hidden p-2">
-                <img
-                  src="/images/profile/louis-sader.jpeg"
-                  alt="Louis Sader - Full-Stack Developer"
-                  className="w-full h-auto rounded-xl object-cover"
-                />
+              <div className="relative w-[70%] mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
+                <div className="relative glass rounded-2xl overflow-hidden p-2">
+                  <img
+                    src="/images/profile/louis-sader.jpeg"
+                    alt="Louis Sader - Full-Stack Developer"
+                    className="w-full h-auto rounded-xl object-cover"
+                  />
+                </div>
+                {/* Floating Element - AWS */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute -top-3 -right-3 px-3 py-1.5 glass rounded-lg"
+                >
+                  <span className="text-primary-400 font-mono text-xs">AWS Certified</span>
+                </motion.div>
               </div>
 
-              {/* Floating Elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-4 -right-4 px-4 py-2 glass rounded-lg"
-              >
-                <span className="text-primary-400 font-mono text-sm">AWS Certified</span>
-              </motion.div>
+              {/* Code Window */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-cyan-500/10 rounded-2xl blur-xl" />
+                <div className="relative glass rounded-2xl overflow-hidden">
+                  {/* Window Header */}
+                  <div className="flex items-center gap-2 px-4 py-3 bg-dark-900/80 border-b border-dark-700/50">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                    </div>
+                    <span className="text-dark-500 text-sm font-mono ml-2">developer.js</span>
+                  </div>
 
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -bottom-4 -left-4 px-4 py-2 glass rounded-lg"
-              >
-                <span className="text-cyan-400 font-mono text-sm">RWU '25</span>
-              </motion.div>
+                  {/* Code Content */}
+                  <div className="p-6 font-mono text-sm">
+                    <pre className="text-dark-300 leading-relaxed">
+                      <code>
+                        <span className="text-purple-400">const</span>{' '}
+                        <span className="text-yellow-400">louis</span>{' '}
+                        <span className="text-primary-400">=</span>{' '}
+                        <span className="text-dark-300">{'{'}</span>
+                        {'\n'}
+                        {'  '}<span className="text-cyan-400">role</span>:{' '}
+                        <span className="text-green-400">"Full-Stack Developer"</span>,
+                        {'\n'}
+                        {'  '}<span className="text-cyan-400">skills</span>:{' '}
+                        <span className="text-dark-300">[</span>
+                        <span className="text-green-400">"Python"</span>,{' '}
+                        <span className="text-green-400">"React"</span>,{' '}
+                        <span className="text-green-400">"FastAPI"</span>
+                        <span className="text-dark-300">]</span>,
+                        {'\n'}
+                        {'  '}<span className="text-cyan-400">passion</span>:{' '}
+                        <span className="text-green-400">"Building scalable apps"</span>,
+                        {'\n'}
+                        {'  '}<span className="text-cyan-400">status</span>:{' '}
+                        <span className="text-green-400">"Open to opportunities"</span>
+                        {'\n'}
+                        <span className="text-dark-300">{'};'}</span>
+                      </code>
+                    </pre>
+                  </div>
+                </div>
+
+                {/* Floating Element - RWU */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -top-4 -right-4 px-4 py-2 glass rounded-lg"
+                >
+                  <span className="text-cyan-400 font-mono text-sm">RWU '25</span>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
