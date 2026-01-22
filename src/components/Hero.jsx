@@ -2,13 +2,6 @@ import { motion } from 'framer-motion'
 import { ChevronDown, Terminal, Code2, Database, Cloud } from 'lucide-react'
 
 const Hero = () => {
-  const codeSnippet = `const louis = {
-  role: "Full-Stack Developer",
-  skills: ["Python", "React", "FastAPI"],
-  passion: "Building scalable apps",
-  status: "Open to opportunities"
-};`
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Gradient Orbs */}
@@ -108,7 +101,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Code Card */}
+          {/* Right Content - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -119,47 +112,13 @@ const Hero = () => {
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
 
-              {/* Code Window */}
-              <div className="relative glass rounded-2xl overflow-hidden">
-                {/* Window Header */}
-                <div className="flex items-center gap-2 px-4 py-3 bg-dark-900/80 border-b border-dark-700/50">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                  </div>
-                  <span className="text-dark-500 text-sm font-mono ml-2">developer.js</span>
-                </div>
-
-                {/* Code Content */}
-                <div className="p-6 font-mono text-sm">
-                  <pre className="text-dark-300 leading-relaxed">
-                    <code>
-                      <span className="text-purple-400">const</span>{' '}
-                      <span className="text-yellow-400">louis</span>{' '}
-                      <span className="text-primary-400">=</span>{' '}
-                      <span className="text-dark-300">{'{'}</span>
-                      {'\n'}
-                      {'  '}<span className="text-cyan-400">role</span>:{' '}
-                      <span className="text-green-400">"Full-Stack Developer"</span>,
-                      {'\n'}
-                      {'  '}<span className="text-cyan-400">skills</span>:{' '}
-                      <span className="text-dark-300">[</span>
-                      <span className="text-green-400">"Python"</span>,{' '}
-                      <span className="text-green-400">"React"</span>,{' '}
-                      <span className="text-green-400">"FastAPI"</span>
-                      <span className="text-dark-300">]</span>,
-                      {'\n'}
-                      {'  '}<span className="text-cyan-400">passion</span>:{' '}
-                      <span className="text-green-400">"Building scalable apps"</span>,
-                      {'\n'}
-                      {'  '}<span className="text-cyan-400">status</span>:{' '}
-                      <span className="text-green-400">"Open to opportunities"</span>
-                      {'\n'}
-                      <span className="text-dark-300">{'};'}</span>
-                    </code>
-                  </pre>
-                </div>
+              {/* Profile Image */}
+              <div className="relative glass rounded-2xl overflow-hidden p-2">
+                <img
+                  src="/images/profile/louis-sader.jpeg"
+                  alt="Louis Sader - Full-Stack Developer"
+                  className="w-full h-auto rounded-xl object-cover"
+                />
               </div>
 
               {/* Floating Elements */}
