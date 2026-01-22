@@ -141,7 +141,7 @@ const Projects = () => {
                   </p>
 
                   {/* Highlights */}
-                  <div className="grid grid-cols-2 gap-2 mb-6 flex-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 flex-1">
                     {project.highlights.map((highlight) => (
                       <div
                         key={highlight}

@@ -52,7 +52,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left - Bio */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -80,15 +80,15 @@ const About = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8">
               {[
                 { value: "2+", label: "Years Experience" },
                 { value: "5+", label: "Projects Shipped" },
                 { value: "99.9%", label: "Uptime Delivered" }
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-4 glass rounded-lg">
-                  <div className="text-2xl font-bold gradient-text">{stat.value}</div>
-                  <div className="text-dark-500 text-sm mt-1">{stat.label}</div>
+                <div key={stat.label} className="text-center p-3 sm:p-4 glass rounded-lg">
+                  <div className="text-xl sm:text-2xl font-bold gradient-text">{stat.value}</div>
+                  <div className="text-dark-500 text-xs sm:text-sm mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -99,7 +99,7 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {highlights.map((item, index) => (
               <motion.div
@@ -107,7 +107,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="group p-6 glass rounded-xl card-hover"
+                className="group p-4 sm:p-6 glass rounded-xl card-hover"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center mb-4 group-hover:bg-primary-500/20 transition-colors">
                   <item.icon className="text-primary-400" size={24} />

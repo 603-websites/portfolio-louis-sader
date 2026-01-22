@@ -86,7 +86,7 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -120,14 +120,14 @@ const Contact = () => {
 
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-white">Connect With Me</h3>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 {socialLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 p-4 glass rounded-xl hover:border-primary-500/50 transition-all"
+                    className="group flex items-center gap-3 p-3 sm:p-4 glass rounded-xl hover:border-primary-500/50 transition-all"
                   >
                     <link.icon className="text-dark-400 group-hover:text-primary-400 transition-colors" size={24} />
                     <div>
@@ -161,10 +161,10 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="glass rounded-2xl p-8">
+            <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 sm:p-8">
               <h3 className="text-xl font-semibold text-white mb-6">Send Me a Message</h3>
 
-              <div className="grid sm:grid-cols-2 gap-6 mb-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 <div>
                   <label htmlFor="name" className="block text-dark-300 text-sm font-medium mb-2">
                     Your Name

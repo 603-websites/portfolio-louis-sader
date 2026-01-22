@@ -123,22 +123,34 @@ const Navbar = () => {
                   {link.name}
                 </motion.a>
               ))}
-              <div className="flex items-center space-x-4 pt-4 border-t border-dark-700">
+              <div className="flex items-center justify-between pt-4 border-t border-dark-700">
+                <div className="flex items-center space-x-4">
+                  <a
+                    href="https://github.com/louissader"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-dark-400 hover:text-primary-400 transition-colors"
+                  >
+                    <Github size={20} />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/louis-sader-a6a391287/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-dark-400 hover:text-primary-400 transition-colors"
+                  >
+                    <Linkedin size={20} />
+                  </a>
+                </div>
                 <a
-                  href="https://github.com/louissader"
+                  href="/documents/Software Developer - Louis Sader - Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark-400 hover:text-primary-400 transition-colors"
+                  className="btn-primary text-sm py-2 px-4 flex items-center gap-2"
+                  onClick={() => setIsOpen(false)}
                 >
-                  <Github size={20} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/louis-sader-a6a391287/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-dark-400 hover:text-primary-400 transition-colors"
-                >
-                  <Linkedin size={20} />
+                  <FileText size={16} />
+                  Resume
                 </a>
               </div>
             </div>

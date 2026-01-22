@@ -4,9 +4,9 @@ import { ChevronDown, Terminal, Code2, Database, Cloud, Github, Linkedin } from 
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow delay-1000" />
+      {/* Gradient Orbs - smaller on mobile */}
+      <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow delay-1000" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -68,7 +68,7 @@ const Hero = () => {
                 <Github size={20} />
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/louis-sader-a6a391287/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
+              <a href="https://www.linkedin.com/in/louis-sader-a6a391287/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 relative z-10">
                 <Linkedin size={20} />
                 LinkedIn
               </a>
@@ -79,10 +79,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex items-center gap-6 mt-12"
+              className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mt-8 sm:mt-12"
             >
               <span className="text-dark-500 text-sm">Tech Stack:</span>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 {[
                   { icon: Terminal, label: 'Python' },
                   { icon: Code2, label: 'React' },
@@ -106,7 +106,33 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Profile Image & Code Card */}
+          {/* Mobile Profile Image - shows only on small screens */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative lg:hidden flex justify-center"
+          >
+            <div className="relative w-48 sm:w-56">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
+              <div className="relative glass rounded-2xl overflow-hidden p-2">
+                <img
+                  src="/images/profile/louis-sader.jpeg"
+                  alt="Louis Sader - Full-Stack Developer"
+                  className="w-full h-auto rounded-xl object-cover"
+                />
+              </div>
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -top-2 -right-2 px-2 py-1 glass rounded-lg"
+              >
+                <span className="text-primary-400 font-mono text-xs">AWS Certified</span>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Right Content - Profile Image & Code Card (Desktop) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
