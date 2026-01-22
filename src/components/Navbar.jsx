@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Github, Linkedin } from 'lucide-react'
+import { Menu, X, Github, Linkedin, FileText } from 'lucide-react'
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -58,15 +58,36 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Get In Touch Button */}
-          <div className="hidden md:flex items-center">
+          {/* Social Links & Resume */}
+          <div className="hidden md:flex items-center space-x-4">
             <motion.a
-              href="#contact"
-              className="btn-primary text-sm py-2 px-4"
+              href="https://github.com/louissader"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dark-400 hover:text-primary-400 transition-colors"
+              whileHover={{ y: -2, scale: 1.1 }}
+            >
+              <Github size={20} />
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/louis-sader-a6a391287/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dark-400 hover:text-primary-400 transition-colors"
+              whileHover={{ y: -2, scale: 1.1 }}
+            >
+              <Linkedin size={20} />
+            </motion.a>
+            <motion.a
+              href="/documents/Software Developer - Louis Sader - Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-sm py-2 px-4 flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get In Touch
+              <FileText size={16} />
+              Resume
             </motion.a>
           </div>
 
