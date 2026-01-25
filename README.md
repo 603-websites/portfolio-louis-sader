@@ -1,5 +1,9 @@
 # louissader.dev
 
+<h2 align="center">
+  <a href="https://louissader.vercel.app/">🌐 View Live Site → louissader.vercel.app</a>
+</h2>
+
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
@@ -7,8 +11,6 @@
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
 **My professional portfolio website showcasing my projects, skills, and experience as a Full-Stack Software Developer.**
-
-**Live Site:** [louissader.dev](https://louissader.dev)
 
 ---
 
@@ -101,5 +103,5 @@ MIT License
 ---
 
 **Author:** Louis Sader
-**Website:** [louissader.dev](https://louissader.dev)
+**Website:** [louissader.vercel.app](https://louissader.vercel.app/)
 **LinkedIn:** [linkedin.com/in/louis-sader-a6a391287](https://www.linkedin.com/in/louis-sader-a6a391287/)
