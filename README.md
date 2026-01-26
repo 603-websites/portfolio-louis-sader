@@ -1,59 +1,64 @@
-# louissader.dev
+# louissader.dev - Portfolio Website
 
-<h2 align="center">
-  <a href="https://louissader.vercel.app/">🌐 View Live Site → louissader.vercel.app</a>
-</h2>
+<div align="center">
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0080?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**My professional portfolio website showcasing my projects, skills, and experience as a Full-Stack Software Developer.**
+**Professional portfolio website showcasing full-stack development projects and skills**
+
+[Live Site](https://louissader.dev) • [Projects](#featured-projects) • [Tech Stack](#tech-stack)
+
+</div>
+
+---
+
+## Overview
+
+Personal portfolio website built with React and Tailwind CSS. Features responsive design, project showcases, and professional contact integration.
 
 ---
 
 ## Features
 
-- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
-- **Smooth Animations** - Page transitions and scroll animations with Framer Motion
-- **Interactive Particle Background** - Dynamic visual effects
-- **Single Page Application** - Fast navigation between sections
-- **Modern UI/UX** - Clean, professional design with Tailwind CSS
+- **Responsive Design** - Mobile-first approach, works on all devices
+- **Project Showcase** - Interactive cards linking to GitHub repos
+- **Smooth Animations** - Subtle transitions and hover effects
+- **Fast Performance** - Vite build optimization, lazy loading
+- **SEO Optimized** - Meta tags, semantic HTML, sitemap
+- **Contact Integration** - Professional email and social links
 
-## Sections
-
-| Section | Description |
-|---------|-------------|
-| **Hero** | Introduction with animated entrance |
-| **About** | Background and professional summary |
-| **Skills** | Technical skills and proficiencies |
-| **Experience** | Work history and accomplishments |
-| **Projects** | Featured portfolio projects |
-| **Contact** | Contact form and social links |
+---
 
 ## Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
-| **React 19** | UI framework with latest features |
-| **Vite 7** | Fast build tool and dev server |
-| **Tailwind CSS 3.4** | Utility-first styling |
-| **Framer Motion** | Smooth animations |
-| **Lucide React** | Modern icon library |
-| **Vercel** | Hosting and deployment |
+| **React 18** | UI framework with hooks |
+| **Tailwind CSS** | Utility-first styling |
+| **Vite** | Fast build tool & dev server |
+| **React Router** | Client-side routing |
+| **Vercel** | Hosting & CI/CD |
 
-## Getting Started
+---
 
-### Prerequisites
-- Node.js 18+
-- npm or yarn
+## Featured Projects
 
-### Installation
+| Project | Description | Tech |
+|---------|-------------|------|
+| **HomeLab Monitor** | Real-time infrastructure monitoring | Python, FastAPI, React, Docker |
+| **Strava Predictor** | ML-powered race time predictions | Python, scikit-learn, React |
+| **Elite Detailing** | SaaS booking platform | React, Supabase, Vercel |
+| **Product Management** | Dual Flask/FastAPI system | Python, PostgreSQL, Docker |
+
+---
+
+## Quick Start
 
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/louissader/louissader.dev.git
 cd louissader.dev
 
@@ -62,46 +67,57 @@ npm install
 
 # Start development server
 npm run dev
-```
 
-Open [http://localhost:5173](http://localhost:5173) to view the site.
-
-### Build for Production
-
-```bash
+# Build for production
 npm run build
-npm run preview
 ```
+
+---
 
 ## Project Structure
 
 ```
-src/
-├── components/
-│   ├── Navbar.jsx           # Navigation bar
-│   ├── Hero.jsx             # Hero section
-│   ├── About.jsx            # About me section
-│   ├── Skills.jsx           # Technical skills
-│   ├── Experience.jsx       # Work experience
-│   ├── Projects.jsx         # Portfolio projects
-│   ├── Contact.jsx          # Contact form
-│   ├── Footer.jsx           # Site footer
-│   └── ParticleBackground.jsx  # Animated background
-├── App.jsx                  # Main app component
-├── main.jsx                 # Entry point
-└── index.css                # Global styles
+louissader.dev/
+├── src/
+│   ├── components/       # Reusable UI components
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Skills.jsx
+│   │   └── Contact.jsx
+│   ├── pages/            # Route pages
+│   ├── assets/           # Images and static files
+│   ├── App.jsx           # Main app component
+│   └── index.css         # Global styles
+├── public/               # Static assets
+├── index.html            # Entry HTML
+└── vite.config.js        # Vite configuration
 ```
+
+---
 
 ## Deployment
 
-The site is deployed on Vercel with automatic deployments from the `main` branch.
+Automatically deployed to Vercel on push to `main` branch.
+
+```bash
+# Manual deployment
+vercel --prod
+```
+
+---
+
+## Author
+
+**Louis Sader** - Full-Stack Developer
+
+- Website: [louissader.dev](https://louissader.dev)
+- LinkedIn: [linkedin.com/in/louissader](https://linkedin.com/in/louissader)
+- GitHub: [github.com/louissader](https://github.com/louissader)
+- Email: louissader42@gmail.com
+
+---
 
 ## License
 
 MIT License
-
----
-
-**Author:** Louis Sader
-**Website:** [louissader.vercel.app](https://louissader.vercel.app/)
-**LinkedIn:** [linkedin.com/in/louis-sader-a6a391287](https://www.linkedin.com/in/louis-sader-a6a391287/)
