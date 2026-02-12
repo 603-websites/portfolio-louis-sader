@@ -1,5 +1,23 @@
 import { motion } from 'framer-motion'
 import { ChevronDown, Terminal, Code2, Database, Cloud, Github, Linkedin } from 'lucide-react'
+import { useState } from 'react'
+
+const ImageWithLoader = ({ src, alt, className }) => {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <div className="relative">
+      {!loaded && (
+        <div className={`${className} bg-dark-800 animate-pulse`} />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  )
+}
 
 const Hero = () => {
   return (
@@ -23,7 +41,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/30 mb-6"
             >
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-sm text-primary-400 font-medium">Available for opportunities</span>
+              <span className="text-sm text-primary-400 font-medium">DevOps Software Developer at SSSC</span>
             </motion.div>
 
             <motion.h1
@@ -42,7 +60,7 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-xl sm:text-2xl text-dark-300 mb-6 font-medium"
             >
-              Full-Stack Software Developer
+              DevOps Software Developer
             </motion.h2>
 
             <motion.p
@@ -51,8 +69,8 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               className="text-dark-400 text-lg mb-8 max-w-xl leading-relaxed"
             >
-              I build scalable, production-ready applications with Python, React, and cloud infrastructure.
-              AWS Certified with a passion for clean code and efficient systems.
+              DevOps Software Developer at Solid State Scientific Corporation, building cloud infrastructure
+              and AI-driven solutions. AWS Certified with a passion for clean code and efficient systems.
             </motion.p>
 
             <motion.div
@@ -61,7 +79,7 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="flex flex-wrap gap-4"
             >
-              <a href="/documents/Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <a href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 View My Resume
               </a>
               <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
@@ -116,9 +134,9 @@ const Hero = () => {
             <div className="relative w-48 sm:w-56">
               <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
               <div className="relative glass rounded-2xl overflow-hidden p-2">
-                <img
+                <ImageWithLoader
                   src="/images/profile/louis-sader.jpeg"
-                  alt="Louis Sader - Full-Stack Developer"
+                  alt="Louis Sader - DevOps Software Developer"
                   className="w-full h-auto rounded-xl object-cover"
                 />
               </div>
@@ -144,9 +162,9 @@ const Hero = () => {
               <div className="relative w-[70%] mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
                 <div className="relative glass rounded-2xl overflow-hidden p-2">
-                  <img
+                  <ImageWithLoader
                     src="/images/profile/louis-sader.jpeg"
-                    alt="Louis Sader - Full-Stack Developer"
+                    alt="Louis Sader - DevOps Software Developer"
                     className="w-full h-auto rounded-xl object-cover"
                   />
                 </div>
@@ -184,7 +202,7 @@ const Hero = () => {
                         <span className="text-dark-300">{'{'}</span>
                         {'\n'}
                         {'  '}<span className="text-cyan-400">role</span>:{' '}
-                        <span className="text-green-400">"Full-Stack Developer"</span>,
+                        <span className="text-green-400">"DevOps Developer"</span>,
                         {'\n'}
                         {'  '}<span className="text-cyan-400">skills</span>:{' '}
                         <span className="text-dark-300">[</span>
@@ -197,7 +215,7 @@ const Hero = () => {
                         <span className="text-green-400">"Building scalable apps"</span>,
                         {'\n'}
                         {'  '}<span className="text-cyan-400">status</span>:{' '}
-                        <span className="text-green-400">"Open to opportunities"</span>
+                        <span className="text-green-400">"Building at SSSC"</span>
                         {'\n'}
                         <span className="text-dark-300">{'};'}</span>
                       </code>
@@ -223,16 +241,16 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-[calc(50%+60px)] lg:bottom-[55px]"
         >
           <motion.a
             href="#about"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-dark-500 hover:text-primary-400 transition-colors"
+            className="flex flex-col items-center text-dark-500 hover:text-primary-400 transition-colors scale-100 lg:scale-150"
           >
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <ChevronDown size={20} />
+            <span className="text-sm font-bold mb-2">Scroll to explore</span>
+            <ChevronDown size={30} />
           </motion.a>
         </motion.div>
       </div>

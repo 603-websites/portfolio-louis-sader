@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Github, ExternalLink, Server, Brain, Package, Zap } from 'lucide-react'
+import { Github, ExternalLink, Server, Brain, Package, Zap, Cloud, Gamepad2 } from 'lucide-react'
 
 const Projects = () => {
   const ref = useRef(null)
@@ -19,22 +19,37 @@ const Projects = () => {
         "Optimized database queries"
       ],
       technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "DevOps"],
-      github: "https://github.com/louissader/HomeLab-Infrastructure-Monitor",
+      github: "https://github.com/louissader/homelab-infrastructure-monitor",
       featured: true,
       color: "from-primary-500 to-blue-500"
     },
     {
+      title: "AWS Serverless URL Shortener",
+      description: "Production-grade serverless application on AWS achieving sub-10ms query latency and ~1,000 requests per second with secure, least-privilege IAM controls.",
+      icon: Cloud,
+      highlights: [
+        "Sub-10ms query latency",
+        "~1,000 requests per second",
+        "CDK infrastructure-as-code (TypeScript)",
+        "End-to-end CI/CD with GitHub Actions"
+      ],
+      technologies: ["Python", "AWS Lambda", "DynamoDB", "CDK", "API Gateway"],
+      github: "https://github.com/louissader/aws-url-shortener",
+      featured: true,
+      color: "from-orange-500 to-red-500"
+    },
+    {
       title: "Strava Race Time Predictor",
-      description: "ML-powered prediction system achieving <5% error across 1,000+ runs. Transforms race planning from 2+ hours of manual analysis to 30 seconds of automated predictions.",
+      description: "Full-stack ML app with LLM integration and real-time WebSocket streaming. Achieves <5% prediction error across 1,000+ runs, transforming race planning from 2+ hours to 30 seconds.",
       icon: Brain,
       highlights: [
-        "23% model accuracy improvement",
+        "LLM-powered AI training plans (AWS Bedrock)",
+        "Real-time streaming via Socket.IO",
         "15+ engineered features from Strava API",
-        "GPS heatmaps & timeline visualizations",
-        "Full-stack React + Flask implementation"
+        "GPS heatmaps & timeline visualizations"
       ],
-      technologies: ["Python", "React", "Machine Learning", "Flask", "scikit-learn"],
-      github: "https://github.com/louissader/Strava-Race-Predictor",
+      technologies: ["Python", "React", "Flask", "AWS Bedrock", "Socket.IO", "scikit-learn"],
+      github: "https://github.com/louissader/strava-race-predictor",
       featured: true,
       color: "from-cyan-500 to-teal-500"
     },
@@ -49,7 +64,7 @@ const Projects = () => {
         "CSV/JSON export capabilities"
       ],
       technologies: ["Python", "Flask", "FastAPI", "PostgreSQL", "Docker"],
-      github: "https://github.com/louissader/Product-Management-System",
+      github: "https://github.com/louissader/product-management-api",
       featured: true,
       color: "from-purple-500 to-pink-500"
     },
@@ -58,14 +73,30 @@ const Projects = () => {
       description: "End-to-end SaaS platform for booking management with automated email confirmations and 99.9% uptime on Vercel deployment.",
       icon: Zap,
       highlights: [
-        "50+ test bookings processed",
+        "500+ test bookings processed",
         "~2s email delivery time",
         "98% deliverability rate",
         "CI/CD pipeline with Vercel"
       ],
       technologies: ["React", "Supabase", "Vercel", "REST API", "Tailwind CSS"],
+      github: "https://github.com/louissader/elite-car-detailing-website",
       featured: false,
       color: "from-amber-500 to-orange-500"
+    },
+    {
+      title: "ESCAPE - Co-op Puzzle Platformer",
+      description: "2D co-op puzzle platformer built in Unity featuring dual-character mechanics, enemy AI, and level progression. Inspired by Fireboy & Watergirl with original puzzles and gameplay systems.",
+      icon: Gamepad2,
+      highlights: [
+        "Dual-character co-op mechanics",
+        "Custom enemy AI system",
+        "Multi-level progression",
+        "Object-oriented architecture"
+      ],
+      technologies: ["C#", "Unity", "OOP", "Game Design"],
+      github: "https://github.com/louissader/ESCAPE",
+      featured: false,
+      color: "from-emerald-500 to-green-500"
     }
   ]
 
@@ -112,9 +143,10 @@ const Projects = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors"
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors text-sm"
                         >
-                          <Github size={20} />
+                          <Github size={18} />
+                          <span>View on GitHub</span>
                         </a>
                       )}
                       {project.demo && (

@@ -1,36 +1,11 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle } from 'lucide-react'
+import { useRef } from 'react'
+import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react'
 
 const Contact = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [formStatus, setFormStatus] = useState('idle')
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setFormStatus('sending')
-
-    // Simulate form submission - replace with actual form handling
-    const formData = new FormData(e.target)
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    }
-
-    // For now, open email client as fallback
-    const subject = encodeURIComponent(`Portfolio Contact from ${data.name}`)
-    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`)
-    window.location.href = `mailto:louissader42@gmail.com?subject=${subject}&body=${body}`
-
-    setTimeout(() => {
-      setFormStatus('sent')
-      e.target.reset()
-      setTimeout(() => setFormStatus('idle'), 3000)
-    }, 1000)
-  }
 
   const contactInfo = [
     {
@@ -70,7 +45,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -82,181 +57,74 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="section-subheading mx-auto">
-            I'm currently open to new opportunities. Let's build something great together.
+            Have a question or want to connect? I'd love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="glass rounded-2xl p-8 sm:p-10"
+        >
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-2 space-y-8"
-          >
-            <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-white">Contact Information</h3>
-              {contactInfo.map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center">
-                    <item.icon className="text-primary-400" size={20} />
-                  </div>
-                  <div>
-                    <p className="text-dark-500 text-sm">{item.label}</p>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-dark-200 hover:text-primary-400 transition-colors"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-dark-200">{item.value}</p>
-                    )}
-                  </div>
+          <div className="grid sm:grid-cols-3 gap-6 mb-10">
+            {contactInfo.map((item) => (
+              <div key={item.label} className="text-center">
+                <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center mx-auto mb-3">
+                  <item.icon className="text-primary-400" size={20} />
                 </div>
-              ))}
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-white">Connect With Me</h3>
-              <div className="flex flex-col sm:flex-row gap-4">
-                {socialLinks.map((link) => (
+                <p className="text-dark-500 text-sm mb-1">{item.label}</p>
+                {item.href ? (
                   <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-3 p-3 sm:p-4 glass rounded-xl hover:border-primary-500/50 transition-all"
+                    href={item.href}
+                    className="text-dark-200 hover:text-primary-400 transition-colors text-sm"
                   >
-                    <link.icon className="text-dark-400 group-hover:text-primary-400 transition-colors" size={24} />
-                    <div>
-                      <p className="text-dark-300 font-medium group-hover:text-white transition-colors">
-                        {link.label}
-                      </p>
-                      <p className="text-dark-500 text-sm">{link.username}</p>
-                    </div>
+                    {item.value}
                   </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Availability Status */}
-            <div className="glass rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-green-400 font-medium">Available for Work</span>
-              </div>
-              <p className="text-dark-400 text-sm">
-                Open to full-time positions, contract work, and interesting projects.
-                I typically respond within 24 hours.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="lg:col-span-3"
-          >
-            <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 sm:p-8">
-              <h3 className="text-xl font-semibold text-white mb-6">Send Me a Message</h3>
-
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="block text-dark-300 text-sm font-medium mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 bg-dark-900/50 border border-dark-700/50 rounded-lg
-                             text-dark-200 placeholder-dark-500
-                             focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50
-                             transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-dark-300 text-sm font-medium mb-2">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-dark-900/50 border border-dark-700/50 rounded-lg
-                             text-dark-200 placeholder-dark-500
-                             focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50
-                             transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="subject" className="block text-dark-300 text-sm font-medium mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  className="w-full px-4 py-3 bg-dark-900/50 border border-dark-700/50 rounded-lg
-                           text-dark-200 placeholder-dark-500
-                           focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50
-                           transition-colors"
-                  placeholder="Job Opportunity / Project Inquiry"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-dark-300 text-sm font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="w-full px-4 py-3 bg-dark-900/50 border border-dark-700/50 rounded-lg
-                           text-dark-200 placeholder-dark-500
-                           focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50
-                           transition-colors resize-none"
-                  placeholder="Tell me about your project or opportunity..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={formStatus === 'sending'}
-                className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {formStatus === 'sending' ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Sending...
-                  </>
-                ) : formStatus === 'sent' ? (
-                  <>
-                    <CheckCircle size={20} />
-                    Message Sent!
-                  </>
                 ) : (
-                  <>
-                    <Send size={20} />
-                    Send Message
-                  </>
+                  <p className="text-dark-200 text-sm">{item.value}</p>
                 )}
-              </button>
-            </form>
-          </motion.div>
-        </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-dark-700/50 mb-10" />
+
+          {/* Social Links */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 px-6 py-4 glass rounded-xl hover:border-primary-500/50 transition-all"
+              >
+                <link.icon className="text-dark-400 group-hover:text-primary-400 transition-colors" size={24} />
+                <div>
+                  <p className="text-dark-300 font-medium group-hover:text-white transition-colors">
+                    {link.label}
+                  </p>
+                  <p className="text-dark-500 text-sm">{link.username}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Availability Status */}
+          <div className="text-center p-6 rounded-xl bg-dark-800/30 border border-dark-700/30">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <span className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+              <span className="text-blue-400 font-medium">Currently Employed</span>
+            </div>
+            <p className="text-dark-400 text-sm">
+              DevOps Software Developer at Solid State Scientific Corporation.
+              Always open to connecting, and I typically respond within 24 hours.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

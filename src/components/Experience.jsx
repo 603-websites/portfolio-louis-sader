@@ -9,13 +9,28 @@ const Experience = () => {
 
   const experiences = [
     {
+      title: "DevOps Software Developer",
+      company: "Solid State Scientific Corporation",
+      location: "Nashua, NH",
+      period: "February 2026 - Present",
+      type: "current",
+      logo: "/images/logos/sssc.jpg",
+      description: [
+        "Performing DevOps Software Developer functions supporting programs and internal R&D in cloud computing, artificial intelligence, and emerging technologies.",
+        "Preparing technical documentation and supporting the design, test, and integration of developed technologies for SSSC and its customers.",
+        "Pursuing AWS Solutions Architect Associate and CompTIA Security+ certifications alongside security clearance."
+      ],
+      technologies: ["AWS", "DevOps", "Cloud Computing", "AI", "CI/CD", "Python"]
+    },
+    {
       title: "Full-Stack Software Developer",
       company: "Rogo - SvelteKit Coaching Platform",
       location: "Remote Startup",
       period: "October 2025 - Present",
       type: "current",
+      logo: null,
       description: [
-        "Optimized authentication flow enabling 10+ coaches to successfully onboard. Streamlined signup model, password reset functionality, and email verification system.",
+        "Optimized authentication flow, enabling 30% user base increase. Streamlined signup model, password reset functionality, and email verification system.",
         "Built secure OAuth integration and real-time form validation system using SvelteKit, TypeScript, and Firebase, reducing authentication errors through proper state management."
       ],
       technologies: ["SvelteKit", "TypeScript", "Firebase", "OAuth"]
@@ -26,8 +41,9 @@ const Experience = () => {
       location: "Remote Startup",
       period: "December 2025 - Present",
       type: "current",
+      logo: null,
       description: [
-        "Launched end-to-end SaaS platform (React + Supabase) processing 50+ test bookings with 100% data integrity, validating market demand.",
+        "Launched end-to-end SaaS platform (React + Supabase) processing 500+ test bookings with 100% data integrity, validating market demand.",
         "Built REST API (5 endpoints) with automated email confirmations (~2s delivery, 98% deliverability).",
         "Deployed to Vercel with CI/CD pipeline achieving 99.9% uptime and <200ms response times."
       ],
@@ -54,7 +70,13 @@ const Experience = () => {
     {
       name: "AWS Solutions Architect - Associate",
       code: "SAA-C03",
-      status: "In Progress - Expected Q3 2026",
+      status: "In Progress - Expected March 2026",
+      active: false
+    },
+    {
+      name: "CompTIA Security+",
+      code: "SY0-701",
+      status: "In Progress - Expected April 2026",
       active: false
     }
   ]
@@ -95,12 +117,16 @@ const Experience = () => {
 
                 <div className="flex gap-6">
                   {/* Timeline Dot */}
-                  <div className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${
+                  <div className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 overflow-hidden ${
                     exp.type === 'current'
                       ? 'bg-gradient-to-r from-primary-500 to-cyan-500'
                       : 'bg-dark-800 border border-dark-700'
                   }`}>
-                    <Briefcase size={20} className="text-white" />
+                    {exp.logo ? (
+                      <img src={exp.logo} alt={exp.company} className="w-10 h-10 object-contain rounded-full bg-white p-1" />
+                    ) : (
+                      <Briefcase size={20} className="text-white" />
+                    )}
                   </div>
 
                   {/* Content */}
@@ -163,11 +189,16 @@ const Experience = () => {
                 <span className="w-2 h-2 bg-primary-500 rounded-full" />
                 Education
               </h3>
+              <div className="flex items-center gap-3 mb-4">
+                <img src="/images/logos/rwu.svg" alt="Roger Williams University" className="w-10 h-10 object-contain" />
+                <div>
+                  <p className="text-dark-300 font-medium">{education.school}</p>
+                  <p className="text-dark-500 text-xs">{education.location}</p>
+                </div>
+              </div>
               <div className="space-y-3">
                 <p className="text-primary-400 font-medium">{education.degree}</p>
-                <p className="text-dark-300">{education.school}</p>
                 <div className="text-sm text-dark-400 space-y-1">
-                  <p>{education.location}</p>
                   <p>{education.period}</p>
                   <p className="text-primary-400/80">{education.honors}</p>
                   <p>Minors: {education.minors}</p>
@@ -183,7 +214,7 @@ const Experience = () => {
               className="glass rounded-xl p-6"
             >
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-cyan-500 rounded-full" />
+                <img src="/images/logos/aws.svg" alt="AWS" className="w-6 h-6 object-contain" />
                 Certifications
               </h3>
               <div className="space-y-4">

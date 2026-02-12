@@ -10,8 +10,8 @@ const Footer = () => {
 
   const footerLinks = [
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ]
@@ -19,7 +19,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/louissader', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/louis-sader-a6a391287/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:contact@louissader.dev', label: 'Email' },
+    { icon: Mail, href: 'mailto:louissader42@gmail.com', label: 'Email' },
   ]
 
   return (
@@ -32,7 +32,7 @@ const Footer = () => {
               LS
             </a>
             <p className="text-dark-500 text-sm">
-              Full-Stack Software Developer
+              DevOps Software Developer
             </p>
           </div>
 

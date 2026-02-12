@@ -61,16 +61,16 @@ const About = () => {
           >
             <div className="space-y-6 text-dark-300 leading-relaxed">
               <p>
-                I'm a <span className="text-primary-400 font-medium">Full-Stack Software Developer</span> based
-                in New Hampshire with a passion for building efficient, scalable applications. My journey in
+                I'm a <span className="text-primary-400 font-medium">DevOps Software Developer</span> at
+                Solid State Scientific Corporation, based in New Hampshire. My journey in
                 tech started during my computer science studies at Roger Williams University, where I graduated
                 with a focus on both theoretical foundations and practical application development.
               </p>
               <p>
-                Currently, I'm working as a developer at <span className="text-primary-400 font-medium">Rogo</span>,
-                a SvelteKit coaching platform, where I've optimized authentication flows and built secure OAuth
-                integrations. I also founded my own <span className="text-primary-400 font-medium">SaaS platform</span> for
-                a luxury auto detailing business, handling everything from database design to CI/CD deployment.
+                At <span className="text-primary-400 font-medium">SSSC</span>, I support programs and internal R&D
+                in cloud computing, artificial intelligence, and emerging technologies. I also build and maintain
+                CI/CD pipelines, prepare technical documentation, and support design, test, and integration of
+                developed technologies.
               </p>
               <p>
                 As a former <span className="text-primary-400 font-medium">NCAA Division III athlete</span>,
@@ -82,9 +82,9 @@ const About = () => {
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8">
               {[
-                { value: "2+", label: "Years Experience" },
-                { value: "5+", label: "Projects Shipped" },
-                { value: "99.9%", label: "Uptime Delivered" }
+                { value: "1", label: "AWS Certification" },
+                { value: "6+", label: "Production Apps" },
+                { value: "3", label: "Tech Stacks" }
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-3 sm:p-4 glass rounded-lg">
                   <div className="text-xl sm:text-2xl font-bold gradient-text">{stat.value}</div>

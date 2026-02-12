@@ -4,8 +4,8 @@ import { Menu, X, Github, Linkedin, FileText } from 'lucide-react'
 
 const navLinks = [
   { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -79,7 +79,7 @@ const Navbar = () => {
               <Linkedin size={20} />
             </motion.a>
             <motion.a
-              href="/documents/Software Developer - Louis Sader - Resume.pdf"
+              href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm py-2 px-4 flex items-center gap-2"
@@ -143,7 +143,7 @@ const Navbar = () => {
                   </a>
                 </div>
                 <a
-                  href="/documents/Software Developer - Louis Sader - Resume.pdf"
+                  href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary text-sm py-2 px-4 flex items-center gap-2"

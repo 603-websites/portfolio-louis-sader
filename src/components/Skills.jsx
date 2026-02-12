@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Code2, Server, Layout, Database, Cloud, Brain } from 'lucide-react'
 
 const Skills = () => {
   const ref = useRef(null)
@@ -8,64 +9,34 @@ const Skills = () => {
 
   const skillCategories = [
     {
+      icon: Code2,
       title: "Languages",
-      skills: [
-        { name: "Python", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "JavaScript", level: 90 },
-        { name: "SQL", level: 85 },
-        { name: "Java", level: 75 },
-        { name: "C#", level: 70 },
-      ]
+      skills: ["Python", "TypeScript", "JavaScript", "SQL", "Java", "C#"]
     },
     {
+      icon: Server,
       title: "Backend & APIs",
-      skills: [
-        { name: "FastAPI", level: 95 },
-        { name: "Flask", level: 90 },
-        { name: "REST API Design", level: 90 },
-        { name: "SQLAlchemy", level: 85 },
-        { name: "Async/Await", level: 85 },
-        { name: "API Auth", level: 90 },
-      ]
+      skills: ["FastAPI", "Flask", "REST APIs", "SQLAlchemy", "OAuth", "Async/Await"]
     },
     {
+      icon: Layout,
       title: "Frontend",
-      skills: [
-        { name: "React 18", level: 90 },
-        { name: "SvelteKit", level: 85 },
-        { name: "Tailwind CSS", level: 95 },
-        { name: "Vite", level: 85 },
-        { name: "Framer Motion", level: 80 },
-      ]
+      skills: ["React", "SvelteKit", "Tailwind CSS", "Vite", "Framer Motion"]
     },
     {
+      icon: Database,
       title: "Databases",
-      skills: [
-        { name: "PostgreSQL", level: 90 },
-        { name: "Supabase", level: 90 },
-        { name: "Firebase Firestore", level: 85 },
-        { name: "JSONB", level: 80 },
-      ]
+      skills: ["PostgreSQL", "Supabase", "Firebase", "JSONB"]
     },
     {
+      icon: Cloud,
       title: "DevOps & Cloud",
-      skills: [
-        { name: "Docker", level: 90 },
-        { name: "GitHub Actions", level: 85 },
-        { name: "Vercel", level: 95 },
-        { name: "AWS", level: 80 },
-        { name: "Nginx", level: 75 },
-      ]
+      skills: ["AWS", "Docker", "GitHub Actions", "CI/CD", "Vercel", "Nginx"]
     },
     {
+      icon: Brain,
       title: "Data & ML",
-      skills: [
-        { name: "pandas", level: 90 },
-        { name: "NumPy", level: 85 },
-        { name: "scikit-learn", level: 80 },
-        { name: "Feature Engineering", level: 85 },
-      ]
+      skills: ["pandas", "NumPy", "scikit-learn", "Feature Engineering"]
     },
   ]
 
@@ -94,32 +65,28 @@ const Skills = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="p-6 glass rounded-xl"
+              className="p-6 glass rounded-xl card-hover"
             >
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-primary-500 rounded-full" />
-                {category.title}
-              </h3>
-              <div className="space-y-4">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                  <category.icon className="text-primary-400" size={20} />
+                </div>
+                <h3 className="text-lg font-semibold text-white">{category.title}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-dark-300">{skill.name}</span>
-                      <span className="text-dark-500">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-dark-800 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : {}}
-                        transition={{
-                          duration: 1,
-                          delay: categoryIndex * 0.1 + skillIndex * 0.05,
-                          ease: "easeOut"
-                        }}
-                        className="h-full bg-gradient-to-r from-primary-500 to-cyan-500 rounded-full"
-                      />
-                    </div>
-                  </div>
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{
+                      duration: 0.3,
+                      delay: categoryIndex * 0.1 + skillIndex * 0.05
+                    }}
+                    className="tech-badge"
+                  >
+                    {skill}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
@@ -131,7 +98,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-12"
+          className="mt-12 glass rounded-xl p-8"
         >
           <h3 className="text-lg font-semibold text-white mb-6 text-center">
             Engineering Practices
@@ -154,7 +121,7 @@ const Skills = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: 0.7 + index * 0.05 }}
-                className="tech-badge"
+                className="px-4 py-2 text-sm rounded-lg bg-dark-800/50 border border-dark-700/50 text-dark-300 hover:border-primary-500/30 hover:text-primary-400 transition-colors"
               >
                 {practice}
               </motion.span>
