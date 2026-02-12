@@ -44,11 +44,32 @@ const Hero = () => {
               <span className="text-sm text-primary-400 font-medium">DevOps Software Developer at SSSC</span>
             </motion.div>
 
+            {/* Mobile inline profile pic + name */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex items-center gap-4 mb-6 lg:hidden"
+            >
+              <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-2 ring-primary-500/50">
+                <img
+                  src="/images/profile/louis-sader.jpeg"
+                  alt="Louis Sader"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
+                Hi, I'm{' '}
+                <span className="gradient-text">Louis Sader</span>
+              </h1>
+            </motion.div>
+
+            {/* Desktop name only */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              className="hidden lg:block text-6xl font-bold mb-6 leading-tight"
             >
               Hi, I'm{' '}
               <span className="gradient-text">Louis Sader</span>
@@ -97,7 +118,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mt-8 sm:mt-12"
+              className="hidden lg:flex items-center gap-6 mt-12"
             >
               <span className="text-dark-500 text-sm">Tech Stack:</span>
               <div className="flex items-center gap-3 sm:gap-4">
@@ -122,32 +143,6 @@ const Hero = () => {
                 ))}
               </div>
             </motion.div>
-          </motion.div>
-
-          {/* Mobile Profile Image - shows only on small screens */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative lg:hidden flex justify-center"
-          >
-            <div className="relative w-48 sm:w-56">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
-              <div className="relative glass rounded-2xl overflow-hidden p-2">
-                <ImageWithLoader
-                  src="/images/profile/louis-sader.jpeg"
-                  alt="Louis Sader - DevOps Software Developer"
-                  className="w-full h-auto rounded-xl object-cover"
-                />
-              </div>
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-2 -right-2 px-2 py-1 glass rounded-lg"
-              >
-                <span className="text-primary-400 font-mono text-xs">AWS Certified</span>
-              </motion.div>
-            </div>
           </motion.div>
 
           {/* Right Content - Profile Image & Code Card (Desktop) */}
@@ -241,7 +236,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-[calc(50%+60px)] lg:bottom-[55px]"
+          className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-[calc(50%+60px)] lg:bottom-[55px]"
         >
           <motion.a
             href="#about"
