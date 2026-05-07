@@ -171,7 +171,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.75 }}
-              className="lg:hidden grid grid-cols-2 gap-3 mt-6"
+              className="lg:hidden grid grid-cols-2 gap-3 mt-[34px]"
             >
               <a
                 href="https://github.com/louissader/ESCAPE"
@@ -183,7 +183,7 @@ const Hero = () => {
                 <motion.div
                   animate={{ y: [0, -3, 0], rotate: [-3, 3, -3] }}
                   transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-3 -left-2 z-20 px-2 py-1 bg-gradient-to-r from-primary-500 to-cyan-500 text-white text-[10px] font-bold rounded-md shadow-lg shadow-primary-500/40 flex items-center gap-1 whitespace-nowrap"
+                  className="absolute -top-3 -left-2 z-20 px-2 py-1 bg-[#0a1f44] border border-[#1e3a8a] text-white text-[10px] font-bold rounded-md shadow-lg shadow-black/50 flex items-center gap-1 whitespace-nowrap"
                 >
                   <Sparkles size={10} />
                   I built this
