@@ -1,7 +1,44 @@
-import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin } from 'lucide-react'
-import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown, Github, Linkedin, Gamepad2, Trophy } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import YouTubeBackground from './YouTubeBackground'
+import MiniGameClip from './MiniGameClip'
+
+const HERO_NCAA_PHOTOS = [
+  { src: '/images/ncaa/steeple.webp',  caption: 'Steeplechase',     objectPosition: 'center 15%' },
+  { src: '/images/ncaa/conn.webp',     caption: 'Conn College Inv', objectPosition: 'center'      },
+  { src: '/images/ncaa/wickham.webp',  caption: 'Wickham Park',     objectPosition: 'center'      },
+  { src: '/images/ncaa/brown.webp',    caption: 'Brown University', objectPosition: 'center'      },
+  { src: '/images/ncaa/IMG_8700.webp', caption: 'Cross Country',    objectPosition: 'center'      },
+  { src: '/images/ncaa/IMG_5013.webp', caption: 'Track & Field',    objectPosition: 'center'      },
+]
+
+const MiniNCAACarousel = () => {
+  const [idx, setIdx] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => setIdx((i) => (i + 1) % HERO_NCAA_PHOTOS.length), 2000)
+    return () => clearInterval(id)
+  }, [])
+  const photo = HERO_NCAA_PHOTOS[idx]
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-dark-950">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={idx}
+          src={photo.src}
+          alt={photo.caption}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: photo.objectPosition }}
+          loading="lazy"
+        />
+      </AnimatePresence>
+    </div>
+  )
+}
 
 const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
   const [loaded, setLoaded] = useState(false)
@@ -124,6 +161,42 @@ const Hero = () => {
               <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 relative z-10 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
                 <Linkedin size={18} />
                 LinkedIn
+              </a>
+            </motion.div>
+
+            {/* Mobile-only "fun" row: ESCAPE game clip + NCAA mini carousel.
+                Two square tiles below the buttons. Hidden on lg where the
+                desktop hero already has the video background + code window. */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 }}
+              className="lg:hidden grid grid-cols-2 gap-3 mt-6"
+            >
+              <a
+                href="https://github.com/louissader/ESCAPE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-square rounded-xl overflow-hidden border border-primary-500/30 hover:border-primary-400/70 transition-colors"
+              >
+                <MiniGameClip />
+                <div className="absolute inset-x-0 bottom-0 px-2 py-1.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center gap-1.5 text-white text-[11px] font-medium">
+                  <Gamepad2 size={12} />
+                  ESCAPE (Unity)
+                </div>
+                <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 text-[9px] font-mono bg-black/60 backdrop-blur rounded text-primary-300 uppercase tracking-wider">Game</span>
+              </a>
+
+              <a
+                href="#ncaa"
+                className="group relative aspect-square rounded-xl overflow-hidden border border-primary-500/30 hover:border-primary-400/70 transition-colors"
+              >
+                <MiniNCAACarousel />
+                <div className="absolute inset-x-0 bottom-0 px-2 py-1.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center gap-1.5 text-white text-[11px] font-medium">
+                  <Trophy size={12} />
+                  NCAA Athlete
+                </div>
+                <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 text-[9px] font-mono bg-black/60 backdrop-blur rounded text-primary-300 uppercase tracking-wider">6×</span>
               </a>
             </motion.div>
 
