@@ -51,7 +51,7 @@ const NCAA = () => {
   const active = photos[activeIdx]
 
   return (
-    <section id="ncaa" className="py-12 sm:py-24 relative">
+    <section id="ncaa" className="py-12 sm:py-24 relative overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -78,7 +78,7 @@ const NCAA = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-2 glass rounded-xl p-6 sm:p-8"
+            className="lg:col-span-2 glass rounded-xl p-3 sm:p-8 min-w-0"
           >
             <div className="flex items-center gap-3 mb-5">
               <img
@@ -99,8 +99,9 @@ const NCAA = () => {
               long horizons.
             </p>
 
-            {/* Carousel: smaller aspect on mobile so the section is more compact */}
-            <div className="relative rounded-lg overflow-hidden bg-dark-900 aspect-[4/3] sm:aspect-[16/10] mb-4 max-w-full">
+            {/* Carousel: shorter aspect on mobile so the photo never pushes
+                the page sideways. width-constrained to parent. */}
+            <div className="relative w-full max-w-full rounded-lg overflow-hidden bg-dark-900 aspect-[16/10] mb-4">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeIdx}
@@ -179,7 +180,7 @@ const NCAA = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass rounded-xl p-6"
+            className="glass rounded-xl p-4 sm:p-6 min-w-0"
           >
             <div className="flex items-center gap-3 mb-5">
               <img src="/images/logos/ncaa.svg" alt="NCAA" className="w-8 h-8 object-contain shrink-0" />

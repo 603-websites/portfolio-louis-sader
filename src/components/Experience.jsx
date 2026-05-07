@@ -201,7 +201,7 @@ const Experience = () => {
                   <div className="absolute left-[28px] top-[56px] sm:left-[38px] sm:top-[76px] w-0.5 h-full bg-gradient-to-b from-primary-500 to-transparent" />
                 )}
 
-                <div className="flex gap-6">
+                <div className="flex gap-3 sm:gap-6">
                   {/* Timeline Dot */}
                   <div className={`relative z-10 w-14 h-14 sm:w-[76px] sm:h-[76px] rounded-full flex items-center justify-center shrink-0 overflow-hidden ${
                     exp.type === 'current'
@@ -222,32 +222,34 @@ const Experience = () => {
                     {!exp.logo && <Briefcase size={32} className="hidden sm:block text-white" />}
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 glass rounded-xl p-6 card-hover">
-                    <div className="flex flex-wrap items-start justify-between gap-2 mb-4">
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">{exp.title}</h3>
-                        <p className="text-primary-400 font-medium">{exp.company}</p>
+                  {/* Content. Mobile: title + company + Current tag + period
+                      + location only. Description bullets and tech badges
+                      hide on mobile so the section scrolls fast. */}
+                  <div className="flex-1 glass rounded-xl p-3 sm:p-6 card-hover min-w-0">
+                    <div className="flex flex-wrap items-start justify-between gap-2 mb-2 sm:mb-4">
+                      <div className="min-w-0">
+                        <h3 className="text-sm sm:text-lg font-semibold text-white leading-tight">{exp.title}</h3>
+                        <p className="text-primary-400 font-medium text-xs sm:text-base leading-snug">{exp.company}</p>
                       </div>
                       {exp.type === 'current' && (
-                        <span className="px-3 py-1 text-xs font-medium bg-green-500/20 text-green-400 rounded-full border border-green-500/30">
+                        <span className="px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-medium bg-green-500/20 text-green-400 rounded-full border border-green-500/30 shrink-0">
                           Current
                         </span>
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-4 text-sm text-dark-400 mb-4">
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 sm:gap-4 text-[11px] sm:text-sm text-dark-400 mb-0 sm:mb-4">
                       <span className="flex items-center gap-1">
-                        <Calendar size={14} />
+                        <Calendar size={12} className="sm:w-[14px] sm:h-[14px]" />
                         {exp.period}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MapPin size={14} />
+                        <MapPin size={12} className="sm:w-[14px] sm:h-[14px]" />
                         {exp.location}
                       </span>
                     </div>
 
-                    <ul className="space-y-2 mb-4">
+                    <ul className="hidden sm:block space-y-2 mb-4">
                       {exp.description.map((item, i) => (
                         <li key={i} className="text-dark-300 text-sm flex items-start gap-2">
                           <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mt-2 shrink-0" />
@@ -256,7 +258,7 @@ const Experience = () => {
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="hidden sm:flex flex-wrap gap-2">
                       {exp.technologies.map((tech) => (
                         <span key={tech} className="tech-badge text-xs">
                           {tech}
@@ -270,29 +272,30 @@ const Experience = () => {
           </div>
 
           {/* Sidebar - Education & Certifications. Side-by-side on mobile,
-              stacked vertically on desktop (where it sits in the right column). */}
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-1 lg:gap-6 lg:space-y-0">
+              stacked on desktop. Compact paddings + small headers on mobile
+              so the column titles don't get clipped at narrow widths. */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:gap-6 lg:space-y-0">
             {/* Education */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="glass rounded-xl p-4 sm:p-6"
+              className="glass rounded-xl p-3 sm:p-6 min-w-0"
             >
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 bg-primary-500 rounded-full" />
+              <h3 className="text-sm sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 bg-primary-500 rounded-full shrink-0" />
                 Education
               </h3>
-              <div className="flex items-center gap-3 mb-4">
-                <img src="/images/logos/rwu.svg" alt="Roger Williams University" className="w-10 h-10 object-contain" />
-                <div>
-                  <p className="text-dark-300 font-medium">{education.school}</p>
-                  <p className="text-dark-500 text-xs">{education.location}</p>
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <img src="/images/logos/rwu.svg" alt="Roger Williams University" className="w-8 h-8 sm:w-10 sm:h-10 object-contain shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-dark-300 font-medium text-xs sm:text-base leading-tight">{education.school}</p>
+                  <p className="text-dark-500 text-[10px] sm:text-xs">{education.location}</p>
                 </div>
               </div>
-              <div className="space-y-3">
-                <p className="text-primary-400 font-medium">{education.degree}</p>
-                <div className="text-sm text-dark-400 space-y-1">
+              <div className="space-y-2 sm:space-y-3">
+                <p className="text-primary-400 font-medium text-xs sm:text-base leading-snug">{education.degree}</p>
+                <div className="text-[11px] sm:text-sm text-dark-400 space-y-1 leading-snug">
                   <p>{education.period}</p>
                   <p className="text-primary-400/80">{education.honors}</p>
                   <p>Minors: {education.minors}</p>
@@ -305,35 +308,35 @@ const Experience = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="glass rounded-xl p-4 sm:p-6"
+              className="glass rounded-xl p-3 sm:p-6 min-w-0"
             >
-              <h3 className="text-lg font-semibold text-white mb-5 flex items-center gap-3">
-                <img src="/images/logos/comptia.svg" alt="CompTIA" className="w-12 h-12 object-contain" />
-                <img src="/images/logos/aws.svg" alt="AWS" className="w-12 h-12 object-contain" />
+              <h3 className="text-sm sm:text-lg font-semibold text-white mb-3 sm:mb-5 flex items-center gap-2 sm:gap-3 flex-wrap">
+                <img src="/images/logos/comptia.svg" alt="CompTIA" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />
+                <img src="/images/logos/aws.svg" alt="AWS" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />
                 Certifications
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-4">
                 {certifications.map((cert) => (
                   <div
                     key={cert.name}
-                    className={`p-4 rounded-lg ${
+                    className={`p-2.5 sm:p-4 rounded-lg ${
                       cert.active
                         ? 'bg-primary-500/10 border border-primary-500/30'
                         : 'bg-dark-800/50 border border-dark-700/50'
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <p className={`font-medium ${cert.active ? 'text-primary-400' : 'text-dark-300'}`}>
+                      <div className="min-w-0">
+                        <p className={`font-medium text-xs sm:text-base leading-snug ${cert.active ? 'text-primary-400' : 'text-dark-300'}`}>
                           {cert.name}
                         </p>
-                        <p className="text-xs text-dark-500 mt-1">{cert.code}</p>
+                        <p className="text-[10px] sm:text-xs text-dark-500 mt-1">{cert.code}</p>
                       </div>
                       {cert.active && (
-                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0 mt-1" />
                       )}
                     </div>
-                    <p className="text-xs text-dark-400 mt-2">{cert.status}</p>
+                    <p className="text-[10px] sm:text-xs text-dark-400 mt-1.5 sm:mt-2">{cert.status}</p>
                   </div>
                 ))}
               </div>
