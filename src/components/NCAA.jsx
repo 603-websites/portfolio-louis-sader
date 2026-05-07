@@ -51,7 +51,7 @@ const NCAA = () => {
   const active = photos[activeIdx]
 
   return (
-    <section id="ncaa" className="py-12 sm:py-24 relative overflow-hidden">
+    <section id="ncaa" className="py-12 sm:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

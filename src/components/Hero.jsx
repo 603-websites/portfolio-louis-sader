@@ -27,7 +27,7 @@ const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-[88vh] sm:min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
+    <section id="home" className="lg:min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24 lg:pt-20 pb-8 lg:pb-0">
       {/* Game-dev clip background. Desktop only. Mobile shows the global
           dark theme + orbs/particles instead. */}
       <div className="hidden lg:block absolute inset-0">
@@ -47,7 +47,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <motion.div
