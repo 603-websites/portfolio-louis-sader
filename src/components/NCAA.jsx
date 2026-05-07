@@ -253,7 +253,7 @@ const NCAA = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white text-sm font-semibold leading-tight">Follow on Strava</p>
-                <p className="text-dark-400 text-xs">Public training log, four years of mileage</p>
+                <p className="text-dark-400 text-xs">Public training log, 4+ years of mileage</p>
               </div>
               <ArrowUpRight size={16} className="text-dark-500 group-hover:text-[#FC4C02] transition-colors shrink-0" />
             </a>
