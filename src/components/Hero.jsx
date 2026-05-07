@@ -27,14 +27,26 @@ const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="home" className="min-h-[88vh] sm:min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
       {/* Game-dev clip background (random gameplay segment, ~30s loop) */}
       <YouTubeBackground />
 
-      {/* Radial gradient: dark glow behind the hero text only.
-          Inspired by the elite-detailing About-page pattern (Louis's own work). */}
+      {/* Radial gradient: dark glow behind the hero text only. Mobile uses a
+          tighter ellipse so the glow doesn't wash over the whole screen. */}
       <div
-        className="absolute inset-0 z-[1] pointer-events-none"
+        className="absolute inset-0 z-[1] pointer-events-none lg:hidden"
+        style={{
+          background: `radial-gradient(
+            ellipse 100% 65% at center 45%,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0.55) 50%,
+            rgba(0, 0, 0, 0.3) 80%,
+            transparent 100%
+          )`,
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none hidden lg:block"
         style={{
           background: `radial-gradient(
             ellipse 720px 520px at 28% 50%,
@@ -45,8 +57,8 @@ const Hero = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -58,20 +70,20 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex items-center gap-4 mb-6 lg:hidden"
+              className="flex items-center gap-3 mb-4 lg:hidden"
             >
-              <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-2 ring-primary-500/50">
+              <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden ring-2 ring-primary-500/50">
                 <picture>
                   <source srcSet="/images/profile/louis-sader.webp" type="image/webp" />
                   <img
                     src="/images/profile/louis-sader.jpeg"
                     alt="Louis Sader"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </picture>
               </div>
-              <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold leading-tight">
                 Hi, I'm{' '}
                 <span className="gradient-text">Louis Sader</span>
               </h1>
@@ -92,7 +104,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl sm:text-2xl text-dark-100 mb-3 font-medium"
+              className="text-base sm:text-lg lg:text-2xl text-dark-100 mb-2 sm:mb-3 font-medium"
             >
               DevOps Software Developer
             </motion.h2>
@@ -101,7 +113,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
-              className="text-dark-200 text-base mb-6 max-w-xl"
+              className="text-dark-200 text-sm lg:text-base mb-4 sm:mb-6 max-w-xl leading-relaxed"
             >
               Building cloud and AI infrastructure with AWS, Terraform, Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified, pursuing CompTIA Security+ next.
             </motion.p>
@@ -110,17 +122,17 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-2 sm:gap-3 lg:gap-4"
             >
-              <a href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
-                View My Resume
+              <a href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
+                Resume
               </a>
-              <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2">
-                <Github size={20} />
+              <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
+                <Github size={18} />
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 relative z-10">
-                <Linkedin size={20} />
+              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 relative z-10 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
+                <Linkedin size={18} />
                 LinkedIn
               </a>
             </motion.div>

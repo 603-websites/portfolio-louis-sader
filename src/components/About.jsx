@@ -41,7 +41,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-24 relative overflow-hidden">
       {/* RWU campus background */}
       <div className="absolute inset-0">
         <img
@@ -49,6 +49,7 @@ const About = () => {
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover"
+          style={{ objectPosition: 'center 30%' }}
           loading="lazy"
         />
       </div>
@@ -88,7 +89,7 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
           <h2 className="section-heading">
             About <span className="gradient-text">Me</span>

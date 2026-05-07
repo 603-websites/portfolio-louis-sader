@@ -111,9 +111,15 @@
     border: 0;
     pointer-events: none;
     /* Scale up so YouTube's edge UI (title top-left, button corners,
-       watermark bottom-right) gets cropped beyond the visible viewport. */
-    transform: scale(1.35);
+       watermark bottom-right) gets cropped beyond the visible viewport.
+       Lower scale on mobile so the gameplay isn't over-zoomed on small screens. */
+    transform: scale(1.2);
     transform-origin: center center;
+  }
+  @media (min-width: 768px) {
+    .youtube-bg-iframe iframe {
+      transform: scale(1.35);
+    }
   }
 
   .animate-in {

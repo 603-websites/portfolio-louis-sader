@@ -21,7 +21,7 @@ const Experience = () => {
     {
       title: "Co-Founder, Full-Stack Developer",
       company: "Oryx Technologies LLC (Website Upgraders)",
-      location: "Nashua, NH",
+      location: "New England based",
       period: "2025 - Present",
       type: "current",
       logo: "/images/logos/oryx.png",
@@ -168,14 +168,14 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-12 sm:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
           <h2 className="section-heading">
             Professional <span className="gradient-text">Experience</span>
@@ -185,9 +185,9 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-5 sm:gap-8">
           {/* Experience Timeline */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-5 sm:space-y-8">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.title}

@@ -51,14 +51,14 @@ const NCAA = () => {
   const active = photos[activeIdx]
 
   return (
-    <section id="ncaa" className="py-24 relative">
+    <section id="ncaa" className="py-12 sm:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-12"
         >
           {/* NCAA logo as the section emblem, bigger and more prominent */}
           <img
@@ -72,7 +72,7 @@ const NCAA = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-5 sm:gap-8">
           {/* Left: narrative + carousel */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

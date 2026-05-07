@@ -36,14 +36,14 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-12 sm:py-24 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-12"
         >
           <h2 className="section-heading">
             Get In <span className="gradient-text">Touch</span>

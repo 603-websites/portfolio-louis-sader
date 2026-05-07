@@ -132,14 +132,14 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="py-24 relative bg-dark-900/30">
+    <section id="projects" className="py-12 sm:py-24 relative bg-dark-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
           <h2 className="section-heading">
             Featured <span className="gradient-text">Projects</span>
@@ -149,7 +149,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
