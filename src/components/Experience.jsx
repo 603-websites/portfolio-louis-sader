@@ -89,7 +89,7 @@ const Experience = () => {
     {
       title: "Delivery Driver",
       company: "DoorDash",
-      location: "Bristol, RI",
+      location: "New England based",
       period: "2024 - 2025",
       type: "past",
       logo: "/images/logos/doordash.png",
@@ -101,7 +101,7 @@ const Experience = () => {
     {
       title: "Crew Member",
       company: "Chipotle Mexican Grill",
-      location: "Nashua, NH",
+      location: "Salem, NH",
       period: "2022 - 2024",
       type: "past",
       logo: "/images/logos/chipotle.png",
@@ -114,7 +114,7 @@ const Experience = () => {
     {
       title: "Crew Member",
       company: "Panera Bread",
-      location: "Nashua, NH",
+      location: "Salem, NH",
       period: "2020 - 2021",
       type: "past",
       logo: "/images/logos/panera.jpg",
@@ -126,7 +126,7 @@ const Experience = () => {
     {
       title: "Bagger, Dairy Associate",
       company: "Market Basket",
-      location: "Nashua, NH",
+      location: "Londonderry, NH",
       period: "2020 - 2021",
       type: "past",
       logo: "/images/logos/marketbasket.png",
