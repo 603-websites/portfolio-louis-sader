@@ -88,12 +88,18 @@ const NCAA = () => {
               />
               <h3 className="text-lg font-semibold text-white">Roger Williams University Hawks</h3>
             </div>
-            <p className="text-dark-300 leading-relaxed mb-4">
+            {/* Mobile: tight one-paragraph version, no meet locations. */}
+            <p className="sm:hidden text-dark-300 text-sm leading-snug mb-4">
+              Four-year contributor to Cross Country and Track & Field. Steeplechase and long-distance.
+              Two daily practices alongside a full course load — consistency over intensity, daily reps.
+            </p>
+            {/* Desktop: full narrative with meet locations. */}
+            <p className="hidden sm:block text-dark-300 leading-relaxed mb-4">
               Four-year contributor to the Cross Country and Track & Field teams. Competed in the steeplechase
               and long-distance events at meets including Wickham Park, Brown University, and the Connecticut
               College Invitational.
             </p>
-            <p className="text-dark-300 leading-relaxed mb-6">
+            <p className="hidden sm:block text-dark-300 leading-relaxed mb-6">
               Managed a full season schedule, regular travel for meets, and two daily practices alongside a full
               academic course load. The discipline shaped how I work: consistency over intensity, daily reps,
               long horizons.
