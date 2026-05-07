@@ -32,7 +32,7 @@ const About = () => {
     },
     {
       logo: "/images/logos/ncaa.svg",
-      title: "All-Conference Service Team",
+      title: "All Conference Community Service Team",
       description: "CNE Postseason Award, 2025",
       detail: "Read the announcement",
       logoBg: "bg-white",

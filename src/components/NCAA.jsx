@@ -219,7 +219,7 @@ const NCAA = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-[10px] uppercase tracking-widest font-mono text-primary-400 mb-1">CNE Postseason Award</p>
-                  <h4 className="text-white font-semibold leading-snug">All-Conference Service Team</h4>
+                  <h4 className="text-white font-semibold leading-snug">All Conference Community Service Team</h4>
                 </div>
                 <ArrowUpRight size={16} className="text-dark-500 group-hover:text-primary-400 transition-colors shrink-0 mt-1" />
               </div>
