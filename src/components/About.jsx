@@ -38,6 +38,14 @@ const About = () => {
       logoBg: "bg-white",
       href: "https://cnesports.org/news/2025/4/30/mens-track-and-field-cne-reveals-2025-mens-and-womens-track-field-postseason-awards.aspx",
     },
+    {
+      logo: "/images/logos/strava.svg",
+      title: "Strava Athlete",
+      description: "Public training log",
+      detail: "4+ years of mileage",
+      logoBg: "bg-white",
+      href: "https://www.strava.com/athletes/41499279",
+    },
   ]
 
   return (
