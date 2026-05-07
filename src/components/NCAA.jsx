@@ -13,7 +13,7 @@ const NCAA = () => {
     { year: 2024, sport: 'Cross Country', conf: 'CNE', url: 'https://rwuhawks.com/news/2024/11/2/mens-cross-country-mens-cross-country-rwu-completes-four-peat-tassey-repeats-for-third-straight-season.aspx' },
     { year: 2024, sport: 'Track & Field', conf: 'CCC', url: 'https://rwuhawks.com/news/2024/4/27/mens-track-field-hawks-come-out-on-top-at-ccc-championships-yet-again.aspx' },
     { year: 2023, sport: 'Cross Country', conf: 'CCC', url: 'https://cnesports.org/news/2023/10/28/mens-cross-country-roger-williams-suffolk-repeat-as-cross-country-champions.aspx' },
-    { year: 2023, sport: 'Track & Field', conf: 'CCC', url: 'https://rwuhawks.com/sports/track-and-field' },
+    { year: 2023, sport: 'Track & Field', conf: 'CCC', url: 'https://rwuhawks.com/story.aspx?filename=mens-track-field-mens-track-field-hawks-top-the-competition-at-ccc-championship-set-three-school-records&file_date=4/29/2023' },
     { year: 2022, sport: 'Cross Country', conf: 'CCC', url: 'https://cnesports.org/sports/2023/5/1/MXC_2022champs.aspx' },
     { year: 2021, sport: 'Cross Country', conf: 'CCC', url: 'https://rwuhawks.com/sports/mens-cross-country' },
   ]
@@ -23,16 +23,16 @@ const NCAA = () => {
   // object-cover would otherwise clip something we want to hide (e.g. the
   // headband text on steeple.jpg).
   const photos = [
-    { src: '/images/ncaa/steeple.jpg',  caption: 'Steeplechase, RWU',                  objectPosition: 'center 15%' },
-    { src: '/images/ncaa/conn.jpg',     caption: 'Connecticut College Invitational',   objectPosition: 'center'      },
-    { src: '/images/ncaa/conn-2.jpg',   caption: 'Connecticut College Invitational',   objectPosition: 'center'      },
-    { src: '/images/ncaa/wickham.jpg',  caption: 'Wickham Park Invitational',          objectPosition: 'center'      },
-    { src: '/images/ncaa/brown.jpg',    caption: 'Brown University Invitational',      objectPosition: 'center'      },
-    { src: '/images/ncaa/terpus.jpg',   caption: 'Terpus Track Meet',                  objectPosition: 'center'      },
-    { src: '/images/ncaa/IMG_8700.jpg', caption: 'Cross Country',                      objectPosition: 'center'      },
-    { src: '/images/ncaa/IMG_1119.jpg', caption: 'Cross Country',                      objectPosition: 'center'      },
-    { src: '/images/ncaa/IMG_1120.jpg', caption: 'Cross Country',                      objectPosition: 'center'      },
-    { src: '/images/ncaa/IMG_5013.jpg', caption: 'Track & Field',                      objectPosition: 'center'      },
+    { src: '/images/ncaa/steeple.webp',  caption: 'Steeplechase, RWU',                  objectPosition: 'center 15%' },
+    { src: '/images/ncaa/conn.webp',     caption: 'Connecticut College Invitational',   objectPosition: 'center'      },
+    { src: '/images/ncaa/conn-2.webp',   caption: 'Connecticut College Invitational',   objectPosition: 'center'      },
+    { src: '/images/ncaa/wickham.webp',  caption: 'Wickham Park Invitational',          objectPosition: 'center'      },
+    { src: '/images/ncaa/brown.webp',    caption: 'Brown University Invitational',      objectPosition: 'center'      },
+    { src: '/images/ncaa/terpus.webp',   caption: 'Terpus Track Meet',                  objectPosition: 'center'      },
+    { src: '/images/ncaa/IMG_8700.webp', caption: 'Cross Country',                      objectPosition: 'center'      },
+    { src: '/images/ncaa/IMG_1119.webp', caption: 'Cross Country',                      objectPosition: 'center'      },
+    { src: '/images/ncaa/IMG_1120.webp', caption: 'Cross Country',                      objectPosition: 'center'      },
+    { src: '/images/ncaa/IMG_5013.webp', caption: 'Track & Field',                      objectPosition: 'center'      },
   ]
 
   const [activeIdx, setActiveIdx] = useState(0)

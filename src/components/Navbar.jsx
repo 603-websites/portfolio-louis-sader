@@ -58,7 +58,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="px-3 py-1.5 rounded-full text-sm font-medium text-dark-300 hover:text-primary-400 hover:bg-dark-800/70 transition-colors"
+                  className="px-3 py-1.5 rounded-full text-sm font-medium text-dark-300 hover:text-primary-400 hover:bg-dark-800/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900"
                   whileHover={{ y: -1 }}
                 >
                   {link.name}
@@ -75,7 +75,8 @@ const Navbar = () => {
                 href="https://github.com/louissader"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-dark-400 hover:text-primary-400 transition-colors"
+                aria-label="GitHub"
+                className="text-dark-400 hover:text-primary-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded"
                 whileHover={{ y: -2, scale: 1.1 }}
               >
                 <Github size={20} />
@@ -84,7 +85,8 @@ const Navbar = () => {
                 href="https://www.linkedin.com/in/louis-sader/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-dark-400 hover:text-primary-400 transition-colors"
+                aria-label="LinkedIn"
+                className="text-dark-400 hover:text-primary-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded"
                 whileHover={{ y: -2, scale: 1.1 }}
               >
                 <Linkedin size={20} />
@@ -105,9 +107,11 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-dark-300"
+            className="md:hidden text-dark-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded"
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.95 }}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -128,7 +132,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="block text-dark-300 hover:text-primary-400 transition-colors font-medium"
+                  className="block text-dark-300 hover:text-primary-400 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded"
                   onClick={() => setIsOpen(false)}
                   whileHover={{ x: 10 }}
                 >
@@ -141,7 +145,9 @@ const Navbar = () => {
                     href="https://github.com/louissader"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-dark-400 hover:text-primary-400 transition-colors"
+                    aria-label="GitHub"
+                    onClick={() => setIsOpen(false)}
+                    className="text-dark-400 hover:text-primary-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded"
                   >
                     <Github size={20} />
                   </a>
@@ -149,7 +155,9 @@ const Navbar = () => {
                     href="https://www.linkedin.com/in/louis-sader/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-dark-400 hover:text-primary-400 transition-colors"
+                    aria-label="LinkedIn"
+                    onClick={() => setIsOpen(false)}
+                    className="text-dark-400 hover:text-primary-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded"
                   >
                     <Linkedin size={20} />
                   </a>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -70,10 +70,8 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="mt-8 pt-8 border-t border-dark-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-dark-500 text-sm flex items-center gap-1">
-            {currentYear} Louis Sader. Built with
-            <Heart size={14} className="text-red-500" />
-            using React & Tailwind CSS
+          <p className="text-dark-500 text-sm">
+            © {currentYear} Louis Sader. All rights reserved.
           </p>
 
           <motion.button

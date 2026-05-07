@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Briefcase, Calendar, MapPin, ExternalLink } from 'lucide-react'
+import { Briefcase, Calendar, MapPin } from 'lucide-react'
 
 const Experience = () => {
   const ref = useRef(null)
@@ -209,7 +209,13 @@ const Experience = () => {
                       : 'bg-dark-800 border border-dark-700'
                   }`}>
                     {exp.logo ? (
-                      <img src={exp.logo} alt={exp.company} className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full bg-white p-1.5 sm:p-2" />
+                      <img
+                        src={exp.logo}
+                        alt={exp.company}
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full bg-white p-1.5 sm:p-2"
+                        loading="lazy"
+                        onError={(e) => { e.currentTarget.style.display = 'none' }}
+                      />
                     ) : (
                       <Briefcase size={24} className="sm:hidden text-white" />
                     )}

@@ -49,7 +49,7 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="section-subheading mx-auto">
-            Open to engineering roles, freelance work, and conversations with other builders.
+            Open to engineering roles, freelance work, and chats with fellow builders.
           </p>
         </motion.div>
 
@@ -58,7 +58,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="grid lg:grid-cols-5 gap-5"
+          className="grid lg:grid-cols-5 gap-6 lg:gap-5"
         >
           {/* Big email card (spans 3 columns on desktop) */}
           <a
@@ -73,7 +73,7 @@ const Contact = () => {
                 <p className="text-dark-300 text-sm sm:text-base mb-5 max-w-md">
                   Best way to reach me. I read every message and reply within a day or two.
                 </p>
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-dark-950 font-semibold text-sm group-hover:bg-primary-100 transition-colors">
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/95 text-dark-950 font-semibold text-sm group-hover:bg-white transition-colors">
                   louissader42@gmail.com
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </span>

@@ -3,19 +3,24 @@ import { ChevronDown, Github, Linkedin } from 'lucide-react'
 import { useState } from 'react'
 import YouTubeBackground from './YouTubeBackground'
 
-const ImageWithLoader = ({ src, alt, className }) => {
+const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
   const [loaded, setLoaded] = useState(false)
   return (
     <div className="relative">
       {!loaded && (
         <div className={`${className} bg-dark-800 animate-pulse`} />
       )}
-      <img
-        src={src}
-        alt={alt}
-        className={`${className} transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-        onLoad={() => setLoaded(true)}
-      />
+      <picture>
+        {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setLoaded(true)}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : 'auto'}
+        />
+      </picture>
     </div>
   )
 }
@@ -56,11 +61,15 @@ const Hero = () => {
               className="flex items-center gap-4 mb-6 lg:hidden"
             >
               <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-2 ring-primary-500/50">
-                <img
-                  src="/images/profile/louis-sader.jpeg"
-                  alt="Louis Sader"
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source srcSet="/images/profile/louis-sader.webp" type="image/webp" />
+                  <img
+                    src="/images/profile/louis-sader.jpeg"
+                    alt="Louis Sader"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
               <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
                 Hi, I'm{' '}
@@ -163,8 +172,10 @@ const Hero = () => {
                 <div className="relative glass rounded-2xl overflow-hidden p-2">
                   <ImageWithLoader
                     src="/images/profile/louis-sader.jpeg"
+                    webpSrc="/images/profile/louis-sader.webp"
                     alt="Louis Sader - DevOps Software Developer"
                     className="w-full h-auto rounded-xl object-cover"
+                    eager
                   />
                 </div>
                 {/* Floating Element - AWS */}

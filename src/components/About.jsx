@@ -112,6 +112,10 @@ const About = () => {
                 teams.
               </p>
               <p>
+                I work as a DevOps Software Developer building cloud and AI infrastructure with AWS,
+                Terraform, Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified.
+              </p>
+              <p>
                 Outside full-time work, I run a freelance practice with my cousin Michael Sader and Logan
                 Carter under Oryx Technologies LLC. We build and maintain websites for local New England
                 businesses, design through hosting, SEO, and ongoing client support. Active clients
@@ -145,7 +149,7 @@ const About = () => {
               const inner = (
                 <div className="group p-5 sm:p-6 glass rounded-xl card-hover h-full flex gap-4">
                   <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl ${item.logoBg} flex items-center justify-center shrink-0 overflow-hidden p-2 ring-1 ring-dark-700/40`}>
-                    <img src={item.logo} alt={item.title} className="w-full h-full object-contain" />
+                    <img src={item.logo} alt={item.title} className="w-full h-full object-contain" loading="lazy" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-white font-semibold mb-1">{item.title}</h3>

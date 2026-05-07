@@ -25,7 +25,7 @@ const Projects = () => {
     },
     {
       title: "AWS Serverless URL Shortener",
-      description: "Production-grade serverless application on AWS achieving sub-10ms query latency and ~1,000 requests per second with secure, least-privilege IAM controls.",
+      description: "Deployed serverless application on AWS achieving sub-10ms query latency and ~1,000 requests per second with secure, least-privilege IAM controls.",
       icon: Cloud,
       highlights: [
         "Sub-10ms query latency",
@@ -70,7 +70,7 @@ const Projects = () => {
     },
     {
       title: "Oryx Technologies (Website Upgraders)",
-      description: "Rebuilding a client's static site (0% SEO score, no backend) into a full-stack platform with SMS notifications, first-page local search SEO, and a self-service admin and client dashboard for real-time analytics, menu, and promotion management — eliminating developer dependency. Same playbook applied across the active client roster.",
+      description: "Rebuilding a client's static site (0% SEO score, no backend) into a full-stack platform with SMS notifications, first-page local search SEO, and a self-service admin and client dashboard for real-time analytics, menu, and promotion management. Eliminates developer dependency, with the same playbook applied across the active client roster.",
       icon: Briefcase,
       highlights: [
         "Active clients: The Spot Nashua, VixFix Pro, Elite Car Detailing",
