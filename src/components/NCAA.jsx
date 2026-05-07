@@ -119,7 +119,9 @@ const NCAA = () => {
                   transition={{ duration: 0.4 }}
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ objectPosition: active.objectPosition || 'center' }}
-                  loading="lazy"
+                  loading={activeIdx === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={activeIdx === 0 ? 'high' : 'auto'}
+                  decoding="async"
                 />
               </AnimatePresence>
 
