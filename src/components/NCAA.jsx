@@ -51,7 +51,7 @@ const NCAA = () => {
   const active = photos[activeIdx]
 
   return (
-    <section id="ncaa" className="py-12 sm:py-24 relative">
+    <section id="ncaa" className="py-12 sm:py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -99,8 +99,8 @@ const NCAA = () => {
               long horizons.
             </p>
 
-            {/* Carousel */}
-            <div className="relative rounded-lg overflow-hidden bg-dark-900 aspect-[16/10] mb-4">
+            {/* Carousel: smaller aspect on mobile so the section is more compact */}
+            <div className="relative rounded-lg overflow-hidden bg-dark-900 aspect-[4/3] sm:aspect-[16/10] mb-4 max-w-full">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeIdx}
@@ -139,22 +139,25 @@ const NCAA = () => {
               </button>
             </div>
 
-            {/* Thumbnail strip */}
-            <div className="flex gap-2 overflow-x-auto pb-1">
-              {photos.map((p, i) => (
-                <button
-                  key={p.src}
-                  onClick={() => setActiveIdx(i)}
-                  aria-label={`Show photo ${i + 1}`}
-                  className={`shrink-0 w-16 h-12 rounded-md overflow-hidden border transition ${
-                    i === activeIdx
-                      ? 'border-primary-500 ring-2 ring-primary-500/40'
-                      : 'border-dark-700/40 opacity-60 hover:opacity-100'
-                  }`}
-                >
-                  <img src={p.src} alt="" className="w-full h-full object-cover" loading="lazy" />
-                </button>
-              ))}
+            {/* Thumbnail strip: scrolls inside its own container, never bleeds
+                into page overflow. Constrained to parent width. */}
+            <div className="overflow-x-auto overflow-y-hidden pb-1 -mx-1 px-1">
+              <div className="flex gap-2 w-max">
+                {photos.map((p, i) => (
+                  <button
+                    key={p.src}
+                    onClick={() => setActiveIdx(i)}
+                    aria-label={`Show photo ${i + 1}`}
+                    className={`shrink-0 w-12 h-10 sm:w-16 sm:h-12 rounded-md overflow-hidden border transition ${
+                      i === activeIdx
+                        ? 'border-primary-500 ring-2 ring-primary-500/40'
+                        : 'border-dark-700/40 opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <img src={p.src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="grid grid-cols-3 gap-3 mt-8">

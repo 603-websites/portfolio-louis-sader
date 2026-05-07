@@ -149,35 +149,39 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        {/* Mobile: 2-col compact tile grid (4 visible at a time, fast scroll).
+            Desktop: 2-col full cards with descriptions and highlights. */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="glass rounded-2xl overflow-hidden card-hover h-full flex flex-col">
+              <div className="glass rounded-xl lg:rounded-2xl overflow-hidden card-hover h-full flex flex-col">
                 {/* Header with gradient */}
-                <div className={`relative p-6 bg-gradient-to-r ${project.color} bg-opacity-10`}>
+                <div className={`relative p-3 lg:p-6 bg-gradient-to-r ${project.color} bg-opacity-10`}>
                   <div className="absolute inset-0 bg-gradient-to-r opacity-10" style={{
                     backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`
                   }} />
-                  <div className="relative flex items-start justify-between">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${project.color} flex items-center justify-center shadow-lg`}>
-                      <project.icon className="text-white" size={28} />
+                  <div className="relative flex items-start justify-between gap-2">
+                    <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-lg lg:rounded-xl bg-gradient-to-r ${project.color} flex items-center justify-center shadow-lg shrink-0`}>
+                      <project.icon className="text-white w-5 h-5 lg:w-7 lg:h-7" />
                     </div>
-                    <div className="flex gap-2">
+                    {/* Action buttons: compact on mobile, full text on desktop */}
+                    <div className="flex gap-1.5 lg:gap-2">
                       {project.github && (
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors text-sm"
+                          aria-label="View on GitHub"
+                          className="flex items-center gap-1.5 lg:gap-2 p-2 lg:px-3 lg:py-1.5 rounded-md lg:rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors text-xs lg:text-sm"
                         >
-                          <Github size={18} />
-                          <span>View on GitHub</span>
+                          <Github size={16} className="lg:w-[18px] lg:h-[18px]" />
+                          <span className="hidden lg:inline">View on GitHub</span>
                         </a>
                       )}
                       {project.demo && (
@@ -185,9 +189,10 @@ const Projects = () => {
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors"
+                          aria-label="Open demo"
+                          className="p-2 rounded-md lg:rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors"
                         >
-                          <ExternalLink size={20} />
+                          <ExternalLink size={16} className="lg:w-5 lg:h-5" />
                         </a>
                       )}
                     </div>
@@ -195,16 +200,17 @@ const Projects = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                <div className="p-3 lg:p-6 flex-1 flex flex-col">
+                  <h3 className="text-sm lg:text-xl font-semibold text-white mb-1 lg:mb-3 group-hover:text-primary-400 transition-colors leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-dark-400 text-sm mb-4 leading-relaxed">
+                  {/* Description: hidden on mobile, shown on desktop */}
+                  <p className="hidden lg:block text-dark-400 text-sm mb-4 leading-relaxed">
                     {project.description}
                   </p>
 
-                  {/* Highlights */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 flex-1">
+                  {/* Highlights: hidden on mobile */}
+                  <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 flex-1">
                     {project.highlights.map((highlight) => (
                       <div
                         key={highlight}
@@ -216,21 +222,30 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-dark-700/50">
-                    {project.technologies.map((tech) => (
-                      <span key={tech} className="tech-badge text-xs">
-                        {tech}
-                      </span>
-                    ))}
+                  {/* Technologies: 2 first techs on mobile, all on desktop */}
+                  <div className="flex flex-wrap gap-1 lg:gap-2 mt-auto lg:pt-4 lg:border-t lg:border-dark-700/50">
+                    <span className="lg:hidden flex flex-wrap gap-1">
+                      {project.technologies.slice(0, 2).map((tech) => (
+                        <span key={tech} className="tech-badge text-[10px] px-2 py-0.5">
+                          {tech}
+                        </span>
+                      ))}
+                    </span>
+                    <span className="hidden lg:flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="tech-badge text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Featured badge */}
               {project.featured && (
-                <div className="absolute -top-2 -right-2">
-                  <span className={`px-3 py-1 text-xs font-medium bg-gradient-to-r ${project.color} text-white rounded-full shadow-lg`}>
+                <div className="absolute -top-1.5 -right-1.5 lg:-top-2 lg:-right-2">
+                  <span className={`px-2 py-0.5 lg:px-3 lg:py-1 text-[10px] lg:text-xs font-medium bg-gradient-to-r ${project.color} text-white rounded-full shadow-lg`}>
                     Featured
                   </span>
                 </div>

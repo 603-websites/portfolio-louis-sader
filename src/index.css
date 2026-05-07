@@ -11,6 +11,7 @@
 
   body {
     @apply bg-dark-950 text-dark-100 font-sans antialiased;
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -92,17 +93,19 @@
     text-wrap: balance;
   }
 
-  /* YouTube hero background: video covers regardless of aspect, scaled past edges */
+  /* YouTube hero background.
+     Mobile: video sized to its native 16:9 aspect at viewport width and
+     pinned to the top of the hero so the entire gameplay frame is visible.
+     Desktop: full-bleed background, iframe scaled to crop YouTube's edge UI. */
   .youtube-bg-wrap {
     overflow: hidden;
   }
   .youtube-bg-iframe {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: max(100vw, calc(100vh * 16 / 9));
-    height: max(56.25vw, 100vh);
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vw * 9 / 16);
     pointer-events: none;
   }
   .youtube-bg-iframe iframe {
@@ -110,15 +113,18 @@
     height: 100%;
     border: 0;
     pointer-events: none;
-    /* Scale up so YouTube's edge UI (title top-left, button corners,
-       watermark bottom-right) gets cropped beyond the visible viewport.
-       Lower scale on mobile so the gameplay isn't over-zoomed on small screens. */
-    transform: scale(1.2);
-    transform-origin: center center;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
+    .youtube-bg-iframe {
+      top: 50%;
+      left: 50%;
+      width: max(100vw, calc(100vh * 16 / 9));
+      height: max(56.25vw, 100vh);
+      transform: translate(-50%, -50%);
+    }
     .youtube-bg-iframe iframe {
       transform: scale(1.35);
+      transform-origin: center center;
     }
   }
 

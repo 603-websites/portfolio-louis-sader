@@ -42,8 +42,8 @@ const About = () => {
 
   return (
     <section id="about" className="py-12 sm:py-24 relative overflow-hidden">
-      {/* RWU campus background */}
-      <div className="absolute inset-0">
+      {/* RWU campus background, desktop only. Mobile gets pure dark theme. */}
+      <div className="absolute inset-0 hidden lg:block">
         <img
           src="/images/about/rwu-campus.webp"
           alt=""
@@ -53,20 +53,7 @@ const About = () => {
           loading="lazy"
         />
       </div>
-      {/* Radial dark glow over the content area for legibility. On mobile the
-          ellipse covers the full width so text stays readable on narrow screens. */}
-      <div
-        className="absolute inset-0 pointer-events-none lg:hidden"
-        style={{
-          background: `radial-gradient(
-            ellipse 100% 80% at center 50%,
-            rgba(0, 0, 0, 0.9) 0%,
-            rgba(0, 0, 0, 0.75) 50%,
-            rgba(0, 0, 0, 0.55) 80%,
-            rgba(0, 0, 0, 0.4) 100%
-          )`,
-        }}
-      />
+      {/* Desktop radial glow over the campus image for text legibility. */}
       <div
         className="absolute inset-0 pointer-events-none hidden lg:block"
         style={{
@@ -106,59 +93,58 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="space-y-5 text-dark-300 leading-relaxed">
+            <div className="space-y-3 sm:space-y-5 text-dark-300 text-sm sm:text-base leading-snug sm:leading-relaxed">
               <p>
-                I graduated from Roger Williams University with a B.S. in Computer Science, minors in
-                Mathematics and Data Science, and four years on the Cross Country and Track & Field
-                teams.
+                Roger Williams University, B.S. Computer Science. Minors in Mathematics and Data Science.
+                Four years on the Cross Country and Track & Field teams.
               </p>
               <p>
-                I work as a DevOps Software Developer building cloud and AI infrastructure with AWS,
-                Terraform, Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified.
+                DevOps Software Developer building cloud and AI infrastructure with AWS, Terraform,
+                Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified.
               </p>
               <p>
-                Outside full-time work, I run a freelance practice with my cousin Michael Sader and Logan
-                Carter under Oryx Technologies LLC. We build and maintain websites for local New England
-                businesses, design through hosting, SEO, and ongoing client support. Active clients
-                include The Spot Nashua, VixFix Pro, and Elite Car Detailing.
+                Outside full-time work, I co-run Oryx Technologies LLC with my cousin Michael Sader and
+                Logan Carter. We build and maintain websites for local New England businesses. Active
+                clients: The Spot Nashua, VixFix Pro, Elite Car Detailing.
               </p>
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-8">
               {[
                 { value: "AWS", label: "Cloud Practitioner" },
                 { value: "6", label: "Conference titles" },
                 { value: "8+", label: "Shipped projects" }
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-3 sm:p-4 glass rounded-lg">
-                  <div className="text-xl sm:text-2xl font-bold gradient-text">{stat.value}</div>
-                  <div className="text-dark-500 text-xs sm:text-sm mt-1">{stat.label}</div>
+                <div key={stat.label} className="text-center p-2 sm:p-4 glass rounded-lg">
+                  <div className="text-base sm:text-2xl font-bold gradient-text">{stat.value}</div>
+                  <div className="text-dark-500 text-[10px] sm:text-sm mt-0.5 sm:mt-1 leading-tight">{stat.label}</div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right - Highlights Grid (real logos, bigger) */}
+          {/* Right - Highlights Grid (real logos, bigger). 2-col even on
+              mobile so cards don't span the full screen width. */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            className="grid grid-cols-2 gap-3 sm:gap-4"
           >
             {highlights.map((item, index) => {
               const inner = (
-                <div className="group p-5 sm:p-6 glass rounded-xl card-hover h-full flex gap-4">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl ${item.logoBg} flex items-center justify-center shrink-0 overflow-hidden p-2 ring-1 ring-dark-700/40`}>
+                <div className="group p-3 sm:p-6 glass rounded-xl card-hover h-full flex flex-col sm:flex-row sm:gap-4 items-start gap-2">
+                  <div className={`w-12 h-12 sm:w-20 sm:h-20 rounded-xl ${item.logoBg} flex items-center justify-center shrink-0 overflow-hidden p-1.5 sm:p-2 ring-1 ring-dark-700/40`}>
                     <img src={item.logo} alt={item.title} className="w-full h-full object-contain" loading="lazy" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-white font-semibold mb-1">{item.title}</h3>
-                    <p className="text-dark-400 text-sm mb-1">{item.description}</p>
-                    <p className="text-dark-500 text-xs flex items-center gap-1">
+                    <h3 className="text-white font-semibold text-sm sm:text-base leading-tight mb-1">{item.title}</h3>
+                    <p className="text-dark-400 text-xs sm:text-sm mb-0.5 sm:mb-1 leading-snug">{item.description}</p>
+                    <p className="text-dark-500 text-[11px] sm:text-xs flex items-center gap-1">
                       {item.detail}
                       {item.href && (
-                        <ExternalLink size={12} className="text-primary-400/80 group-hover:text-primary-400 transition-colors" />
+                        <ExternalLink size={11} className="text-primary-400/80 group-hover:text-primary-400 transition-colors" />
                       )}
                     </p>
                   </div>

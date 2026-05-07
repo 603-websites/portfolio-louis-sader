@@ -28,23 +28,13 @@ const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
 const Hero = () => {
   return (
     <section id="home" className="min-h-[88vh] sm:min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20">
-      {/* Game-dev clip background (random gameplay segment, ~30s loop) */}
-      <YouTubeBackground />
+      {/* Game-dev clip background. Desktop only. Mobile shows the global
+          dark theme + orbs/particles instead. */}
+      <div className="hidden lg:block absolute inset-0">
+        <YouTubeBackground />
+      </div>
 
-      {/* Radial gradient: dark glow behind the hero text only. Mobile uses a
-          tighter ellipse so the glow doesn't wash over the whole screen. */}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none lg:hidden"
-        style={{
-          background: `radial-gradient(
-            ellipse 100% 65% at center 45%,
-            rgba(0, 0, 0, 0.78) 0%,
-            rgba(0, 0, 0, 0.55) 50%,
-            rgba(0, 0, 0, 0.3) 80%,
-            transparent 100%
-          )`,
-        }}
-      />
+      {/* Desktop-only: radial dark glow over the video, behind the hero text. */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none hidden lg:block"
         style={{
@@ -263,7 +253,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-[calc(50%+60px)] lg:bottom-[55px]"
+          className="hidden lg:block absolute lg:left-1/2 lg:-translate-x-[calc(50%+60px)] lg:bottom-[55px]"
         >
           <motion.a
             href="#about"

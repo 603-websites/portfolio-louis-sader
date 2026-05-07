@@ -269,14 +269,15 @@ const Experience = () => {
             ))}
           </div>
 
-          {/* Sidebar - Education & Certifications */}
-          <div className="space-y-6">
+          {/* Sidebar - Education & Certifications. Side-by-side on mobile,
+              stacked vertically on desktop (where it sits in the right column). */}
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-1 lg:gap-6 lg:space-y-0">
             {/* Education */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="glass rounded-xl p-6"
+              className="glass rounded-xl p-4 sm:p-6"
             >
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary-500 rounded-full" />
@@ -304,7 +305,7 @@ const Experience = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="glass rounded-xl p-6"
+              className="glass rounded-xl p-4 sm:p-6"
             >
               <h3 className="text-lg font-semibold text-white mb-5 flex items-center gap-3">
                 <img src="/images/logos/comptia.svg" alt="CompTIA" className="w-12 h-12 object-contain" />
