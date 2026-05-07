@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, ArrowUpRight } from 'lucide-react'
 
 const About = () => {
   const ref = useRef(null)
@@ -130,6 +130,24 @@ const About = () => {
                 </div>
               ))}
             </div>
+
+            {/* Strava follow CTA. Sits in the bio column so it lands above the
+                fold on desktop alongside the bio paragraphs. */}
+            <a
+              href="https://www.strava.com/athletes/41499279"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-4 sm:mt-6 flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-dark-900/60 border border-dark-700/60 hover:border-[#FC4C02]/60 transition-colors"
+            >
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white flex items-center justify-center shrink-0 p-1.5">
+                <img src="/images/logos/strava.svg" alt="Strava" className="w-full h-full object-contain" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-semibold text-sm sm:text-base leading-tight">Follow me on Strava</p>
+                <p className="text-dark-400 text-xs sm:text-sm leading-snug">Public training log, 4+ years of mileage</p>
+              </div>
+              <ArrowUpRight size={18} className="text-dark-500 group-hover:text-[#FC4C02] transition-colors shrink-0" />
+            </a>
           </motion.div>
 
           {/* Right - Highlights Grid (real logos, bigger). 2-col even on
