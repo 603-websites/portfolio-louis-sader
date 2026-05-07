@@ -1,42 +1,88 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { GraduationCap, Award, Trophy, Users } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 
 const About = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  // Real-logo highlight grid. No favicon-style placeholder icons.
   const highlights = [
     {
-      icon: GraduationCap,
+      logo: "/images/logos/rwu-2.webp",
       title: "B.S. Computer Science",
       description: "Roger Williams University, Dean's List",
-      detail: "Minors: Math & Data Science"
+      detail: "Minors: Math & Data Science",
+      logoBg: "bg-white",
     },
     {
-      icon: Award,
+      logo: "/images/logos/aws.svg",
       title: "AWS Certified",
-      description: "Cloud Practitioner (CLF-C02)",
-      detail: "Solutions Architect in progress"
+      description: "Solutions Architect, Associate (SAA-C03)",
+      detail: "Cloud Practitioner valid through 2028",
+      logoBg: "bg-dark-900",
     },
     {
-      icon: Trophy,
+      logo: "/images/logos/ncaa.svg",
       title: "NCAA Athlete",
       description: "Division III Cross Country & Track",
-      detail: "6 Conference Championships"
+      detail: "6 conference championships",
+      logoBg: "bg-white",
     },
     {
-      icon: Users,
-      title: "Community Leader",
-      description: "All-Community Service Team",
-      detail: "40+ volunteer hours"
-    }
+      logo: "/images/logos/ncaa.svg",
+      title: "All-Conference Service Team",
+      description: "CNE Postseason Award, 2025",
+      detail: "Read the announcement",
+      logoBg: "bg-white",
+      href: "https://cnesports.org/news/2025/4/30/mens-track-and-field-cne-reveals-2025-mens-and-womens-track-field-postseason-awards.aspx",
+    },
   ]
 
   return (
-    <section id="about" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 relative overflow-hidden">
+      {/* RWU campus background */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/about/rwu-campus.webp"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      {/* Radial dark glow over the content area for legibility. On mobile the
+          ellipse covers the full width so text stays readable on narrow screens. */}
+      <div
+        className="absolute inset-0 pointer-events-none lg:hidden"
+        style={{
+          background: `radial-gradient(
+            ellipse 100% 80% at center 50%,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.75) 50%,
+            rgba(0, 0, 0, 0.55) 80%,
+            rgba(0, 0, 0, 0.4) 100%
+          )`,
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none hidden lg:block"
+        style={{
+          background: `radial-gradient(
+            ellipse 1100px 700px at center 55%,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.65) 45%,
+            rgba(0, 0, 0, 0.4) 75%,
+            transparent 100%
+          )`,
+        }}
+      />
+      {/* Section edge fades into the global dark theme */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-950 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-950 to-transparent pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -48,7 +94,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="section-subheading mx-auto">
-            A passionate developer with a unique blend of technical expertise and athletic discipline.
+            Computer science grad, four-year NCAA athlete, full-stack developer.
           </p>
         </motion.div>
 
@@ -59,32 +105,26 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="space-y-6 text-dark-300 leading-relaxed">
+            <div className="space-y-5 text-dark-300 leading-relaxed">
               <p>
-                I'm a <span className="text-primary-400 font-medium">DevOps Software Developer</span> at
-                Solid State Scientific Corporation, based in New Hampshire. My journey in
-                tech started during my computer science studies at Roger Williams University, where I graduated
-                with a focus on both theoretical foundations and practical application development.
+                I graduated from Roger Williams University with a B.S. in Computer Science, minors in
+                Mathematics and Data Science, and four years on the Cross Country and Track & Field
+                teams.
               </p>
               <p>
-                At <span className="text-primary-400 font-medium">SSSC</span>, I support programs and internal R&D
-                in cloud computing, artificial intelligence, and emerging technologies. I also build and maintain
-                CI/CD pipelines, prepare technical documentation, and support design, test, and integration of
-                developed technologies.
-              </p>
-              <p>
-                As a former <span className="text-primary-400 font-medium">NCAA Division III athlete</span>,
-                I bring the same discipline, teamwork, and perseverance to my development work. I thrive in
-                environments that challenge me to grow and deliver results under pressure.
+                Outside full-time work, I run a freelance practice with my cousin Michael Sader and Logan
+                Carter under Oryx Technologies LLC. We build and maintain websites for local New England
+                businesses, design through hosting, SEO, and ongoing client support. Active clients
+                include The Spot Nashua, VixFix Pro, and Elite Car Detailing.
               </p>
             </div>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8">
               {[
-                { value: "1", label: "AWS Certification" },
-                { value: "6+", label: "Production Apps" },
-                { value: "3", label: "Tech Stacks" }
+                { value: "AWS", label: "Cloud Practitioner" },
+                { value: "6", label: "Conference titles" },
+                { value: "8+", label: "Shipped projects" }
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-3 sm:p-4 glass rounded-lg">
                   <div className="text-xl sm:text-2xl font-bold gradient-text">{stat.value}</div>
@@ -94,29 +134,58 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Right - Highlights Grid */}
+          {/* Right - Highlights Grid (real logos, bigger) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="group p-4 sm:p-6 glass rounded-xl card-hover"
-              >
-                <div className="w-12 h-12 rounded-lg bg-primary-500/10 flex items-center justify-center mb-4 group-hover:bg-primary-500/20 transition-colors">
-                  <item.icon className="text-primary-400" size={24} />
+            {highlights.map((item, index) => {
+              const inner = (
+                <div className="group p-5 sm:p-6 glass rounded-xl card-hover h-full flex gap-4">
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl ${item.logoBg} flex items-center justify-center shrink-0 overflow-hidden p-2 ring-1 ring-dark-700/40`}>
+                    <img src={item.logo} alt={item.title} className="w-full h-full object-contain" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white font-semibold mb-1">{item.title}</h3>
+                    <p className="text-dark-400 text-sm mb-1">{item.description}</p>
+                    <p className="text-dark-500 text-xs flex items-center gap-1">
+                      {item.detail}
+                      {item.href && (
+                        <ExternalLink size={12} className="text-primary-400/80 group-hover:text-primary-400 transition-colors" />
+                      )}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-white font-semibold mb-1">{item.title}</h3>
-                <p className="text-dark-400 text-sm mb-1">{item.description}</p>
-                <p className="text-dark-500 text-xs">{item.detail}</p>
-              </motion.div>
-            ))}
+              )
+              if (item.href) {
+                return (
+                  <motion.a
+                    key={item.title}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                    className="block"
+                  >
+                    {inner}
+                  </motion.a>
+                )
+              }
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                >
+                  {inner}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </div>

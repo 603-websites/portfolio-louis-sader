@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, Terminal, Code2, Database, Cloud, Github, Linkedin } from 'lucide-react'
+import { ChevronDown, Github, Linkedin } from 'lucide-react'
 import { useState } from 'react'
+import YouTubeBackground from './YouTubeBackground'
 
 const ImageWithLoader = ({ src, alt, className }) => {
   const [loaded, setLoaded] = useState(false)
@@ -21,12 +22,25 @@ const ImageWithLoader = ({ src, alt, className }) => {
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Gradient Orbs - smaller on mobile */}
-      <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow delay-1000" />
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      {/* Game-dev clip background (random gameplay segment, ~30s loop) */}
+      <YouTubeBackground />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      {/* Radial gradient: dark glow behind the hero text only.
+          Inspired by the elite-detailing About-page pattern (Louis's own work). */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: `radial-gradient(
+            ellipse 720px 520px at 28% 50%,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.55) 40%,
+            transparent 75%
+          )`,
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -34,16 +48,6 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/30 mb-6"
-            >
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-sm text-primary-400 font-medium">DevOps Software Developer at SSSC</span>
-            </motion.div>
-
             {/* Mobile inline profile pic + name */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -79,7 +83,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl sm:text-2xl text-dark-300 mb-6 font-medium"
+              className="text-xl sm:text-2xl text-dark-100 mb-3 font-medium"
             >
               DevOps Software Developer
             </motion.h2>
@@ -87,11 +91,10 @@ const Hero = () => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-dark-400 text-lg mb-8 max-w-xl leading-relaxed"
+              transition={{ delay: 0.45 }}
+              className="text-dark-200 text-base mb-6 max-w-xl"
             >
-              DevOps Software Developer at Solid State Scientific Corporation, building cloud infrastructure
-              and AI-driven solutions. AWS Certified with a passion for clean code and efficient systems.
+              Building cloud and AI infrastructure with AWS, Terraform, Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified, pursuing CompTIA Security+ next.
             </motion.p>
 
             <motion.div
@@ -107,7 +110,7 @@ const Hero = () => {
                 <Github size={20} />
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/louis-sader-a6a391287/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 relative z-10">
+              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2 relative z-10">
                 <Linkedin size={20} />
                 LinkedIn
               </a>
@@ -120,21 +123,22 @@ const Hero = () => {
               transition={{ delay: 0.7 }}
               className="hidden lg:flex items-center gap-6 mt-12"
             >
-              <span className="text-dark-500 text-sm">Tech Stack:</span>
+              <span className="text-white text-sm font-medium">Stack:</span>
               <div className="flex items-center gap-3 sm:gap-4">
                 {[
-                  { icon: Terminal, label: 'Python' },
-                  { icon: Code2, label: 'React' },
-                  { icon: Database, label: 'PostgreSQL' },
-                  { icon: Cloud, label: 'AWS' },
-                ].map(({ icon: Icon, label }) => (
+                  { src: '/images/logos/aws.svg',        label: 'AWS' },
+                  { src: '/images/logos/docker.svg',     label: 'Docker' },
+                  { src: '/images/logos/kubernetes.svg', label: 'Kubernetes' },
+                  { src: '/images/logos/terraform.svg',  label: 'Terraform' },
+                  { src: '/images/logos/comptia.svg',    label: 'CompTIA Security+' },
+                ].map(({ src, label }) => (
                   <motion.div
                     key={label}
                     className="group relative"
                     whileHover={{ y: -5 }}
                   >
                     <div className="p-3 rounded-lg bg-dark-800/50 border border-dark-700/50 group-hover:border-primary-500/50 transition-colors">
-                      <Icon size={20} className="text-dark-400 group-hover:text-primary-400 transition-colors" />
+                      <img src={src} alt={label} className="w-6 h-6 object-contain" />
                     </div>
                     <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-dark-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                       {label}
@@ -242,7 +246,7 @@ const Hero = () => {
             href="#about"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-dark-500 hover:text-primary-400 transition-colors scale-100 lg:scale-150"
+            className="flex flex-col items-center text-white hover:text-primary-400 transition-colors scale-100 lg:scale-150"
           >
             <span className="text-sm font-bold mb-2">Scroll to explore</span>
             <ChevronDown size={30} />

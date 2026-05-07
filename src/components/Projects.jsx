@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Github, ExternalLink, Server, Brain, Package, Zap, Cloud, Gamepad2 } from 'lucide-react'
+import { Github, ExternalLink, Server, Brain, Package, Zap, Cloud, Gamepad2, Briefcase, Mail, Smartphone } from 'lucide-react'
 
 const Projects = () => {
   const ref = useRef(null)
@@ -69,34 +69,65 @@ const Projects = () => {
       color: "from-purple-500 to-pink-500"
     },
     {
-      title: "Luxury Auto Detailing Platform",
-      description: "End-to-end SaaS platform for booking management with automated email confirmations and 99.9% uptime on Vercel deployment.",
-      icon: Zap,
+      title: "Oryx Technologies (Website Upgraders)",
+      description: "Rebuilding a client's static site (0% SEO score, no backend) into a full-stack platform with SMS notifications, first-page local search SEO, and a self-service admin and client dashboard for real-time analytics, menu, and promotion management — eliminating developer dependency. Same playbook applied across the active client roster.",
+      icon: Briefcase,
       highlights: [
-        "500+ test bookings processed",
-        "~2s email delivery time",
-        "98% deliverability rate",
-        "CI/CD pipeline with Vercel"
+        "Active clients: The Spot Nashua, VixFix Pro, Elite Car Detailing",
+        "Multi-tenant Next.js + Prisma + Postgres SaaS",
+        "Self-service tenant dashboard (menu, bookings, calendar, newsletter, contacts)",
+        "Cross-tenant SEO playbook + per-client local-search optimization"
       ],
-      technologies: ["React", "Supabase", "Vercel", "REST API", "Tailwind CSS"],
-      github: "https://github.com/louissader/elite-car-detailing-website",
+      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway", "Resend"],
+      github: null,
+      demo: "https://www.websiteupgraderpro.com",
       featured: false,
       color: "from-amber-500 to-orange-500"
     },
     {
-      title: "ESCAPE - Co-op Puzzle Platformer",
-      description: "2D co-op puzzle platformer built in Unity featuring dual-character mechanics, enemy AI, and level progression. Inspired by Fireboy & Watergirl with original puzzles and gameplay systems.",
+      title: "ESCAPE (Unity)",
+      description: "2D co-op puzzle platformer built in Unity. Dual-character mechanics, custom enemy AI, and level progression. Capstone-tier game project written in C#.",
       icon: Gamepad2,
       highlights: [
         "Dual-character co-op mechanics",
-        "Custom enemy AI system",
+        "Custom enemy AI",
         "Multi-level progression",
         "Object-oriented architecture"
       ],
-      technologies: ["C#", "Unity", "OOP", "Game Design"],
+      technologies: ["C#", "Unity", "OOP"],
       github: "https://github.com/louissader/ESCAPE",
       featured: false,
       color: "from-emerald-500 to-green-500"
+    },
+    {
+      title: "ESCAPE Mobile (iOS port)",
+      description: "Native iOS port of ESCAPE in Swift and SpriteKit. Same dual-character co-op puzzle mechanics, rebuilt for the App Store with touch controls.",
+      icon: Smartphone,
+      highlights: [
+        "Swift + SpriteKit",
+        "Touch-first co-op controls",
+        "Game state and level loading",
+        "Targeting App Store release"
+      ],
+      technologies: ["Swift", "SpriteKit", "iOS"],
+      github: "https://github.com/louissader/ESCAPE-Mobile",
+      featured: false,
+      color: "from-blue-500 to-indigo-500"
+    },
+    {
+      title: "Gmail Rejection Scanner",
+      description: "Python utility that scans a Gmail account for job-application rejection emails using the Gmail API. Built it to triage my own inbox during the senior-year job hunt.",
+      icon: Mail,
+      highlights: [
+        "Gmail API + OAuth",
+        "Pattern matching across rejection-language variants",
+        "CSV export for tracking",
+        "Personal tool, open-sourced"
+      ],
+      technologies: ["Python", "Gmail API", "OAuth"],
+      github: "https://github.com/louissader/gmail-rejection-scanner",
+      featured: false,
+      color: "from-rose-500 to-pink-500"
     }
   ]
 

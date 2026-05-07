@@ -5,7 +5,7 @@ import { Menu, X, Github, Linkedin, FileText } from 'lucide-react'
 const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Skills', href: '#skills' },
+  { name: 'NCAA', href: '#ncaa' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -33,62 +33,74 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
+        {/* Whole navbar level wrapped in a single pill: logo + nav + social + resume */}
+        <div className="flex items-center justify-between gap-6 px-4 sm:px-6 md:px-7 py-2.5 md:py-3 md:text-[110%] rounded-full bg-dark-900/65 border border-dark-700/60 backdrop-blur-md shadow-lg shadow-black/20">
+          {/* Logo (far left, inside the pill) */}
           <motion.a
-            href="#"
-            className="text-2xl font-bold gradient-text"
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault()
+              window.history.replaceState(null, '', window.location.pathname)
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+            className="text-2xl font-bold gradient-text shrink-0"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             LS
           </motion.a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-dark-300 hover:text-primary-400 transition-colors font-medium"
-                whileHover={{ y: -2 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
-          </div>
+          {/* Right cluster inside the pill */}
+          <div className="hidden md:flex items-center gap-5">
+            {/* Desktop Navigation tabs */}
+            <div className="flex items-center space-x-1">
+              {navLinks.map((link) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  className="px-3 py-1.5 rounded-full text-sm font-medium text-dark-300 hover:text-primary-400 hover:bg-dark-800/70 transition-colors"
+                  whileHover={{ y: -1 }}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </div>
 
-          {/* Social Links & Resume */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.a
-              href="https://github.com/louissader"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-dark-400 hover:text-primary-400 transition-colors"
-              whileHover={{ y: -2, scale: 1.1 }}
-            >
-              <Github size={20} />
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/louis-sader-a6a391287/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-dark-400 hover:text-primary-400 transition-colors"
-              whileHover={{ y: -2, scale: 1.1 }}
-            >
-              <Linkedin size={20} />
-            </motion.a>
-            <motion.a
-              href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary text-sm py-2 px-4 flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FileText size={16} />
-              Resume
-            </motion.a>
+            {/* Subtle divider */}
+            <div className="h-6 w-px bg-dark-700/60" />
+
+            {/* Social + Resume */}
+            <div className="flex items-center space-x-3">
+              <motion.a
+                href="https://github.com/louissader"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark-400 hover:text-primary-400 transition-colors"
+                whileHover={{ y: -2, scale: 1.1 }}
+              >
+                <Github size={20} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/louis-sader/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark-400 hover:text-primary-400 transition-colors"
+                whileHover={{ y: -2, scale: 1.1 }}
+              >
+                <Linkedin size={20} />
+              </motion.a>
+              <motion.a
+                href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-sm py-2 px-4 flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FileText size={16} />
+                Resume
+              </motion.a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -134,7 +146,7 @@ const Navbar = () => {
                     <Github size={20} />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/louis-sader-a6a391287/"
+                    href="https://www.linkedin.com/in/louis-sader/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-dark-400 hover:text-primary-400 transition-colors"

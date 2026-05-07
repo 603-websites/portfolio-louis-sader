@@ -15,39 +15,125 @@ const Experience = () => {
       period: "February 2026 - Present",
       type: "current",
       logo: "/images/logos/sssc.jpg",
-      description: [
-        "Performing DevOps Software Developer functions supporting programs and internal R&D in cloud computing, artificial intelligence, and emerging technologies.",
-        "Preparing technical documentation and supporting the design, test, and integration of developed technologies for SSSC and its customers.",
-        "Pursuing AWS Solutions Architect Associate and CompTIA Security+ certifications alongside security clearance."
-      ],
-      technologies: ["AWS", "DevOps", "Cloud Computing", "AI", "CI/CD", "Python"]
+      description: [],
+      technologies: []
     },
     {
-      title: "Full-Stack Software Developer",
-      company: "Rogo - SvelteKit Coaching Platform",
-      location: "Remote Startup",
+      title: "Co-Founder, Full-Stack Developer",
+      company: "Oryx Technologies LLC (Website Upgraders)",
+      location: "Nashua, NH",
+      period: "2025 - Present",
+      type: "current",
+      logo: "/images/logos/oryx.png",
+      description: [
+        "Rebuilding a static site (0% SEO score, no backend) into a full-stack platform with SMS notifications to boost customer retention, SEO optimization targeting first-page local search visibility, and a self-service admin and client dashboard for real-time analytics monitoring, menu/promotion management, eliminating developer dependency.",
+        "Active clients: The Spot Nashua (kava bar and live music venue), VixFix Pro (handyman and general contractor), Elite Car Detailing.",
+        "Stack: static HTML/CSS/JS client sites on Cloudflare Pages, Next.js plus Prisma SaaS dashboard on Railway, Resend email, Plausible analytics, GitHub Actions CI."
+      ],
+      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway"]
+    },
+    {
+      title: "Software Developer",
+      company: "Rogo",
+      location: "Remote",
       period: "October 2025 - Present",
       type: "current",
-      logo: null,
+      logo: "/images/logos/rogo.svg",
       description: [
-        "Optimized authentication flow, enabling 30% user base increase. Streamlined signup model, password reset functionality, and email verification system.",
-        "Built secure OAuth integration and real-time form validation system using SvelteKit, TypeScript, and Firebase, reducing authentication errors through proper state management."
+        "Rogo is a startup transforming how athletes connect with coaching, like Airbnb for finding local training. As a former collegiate runner, I know firsthand how valuable access to the right coach can be.",
+        "Streamlined the signup flow, password reset, and email verification system, contributing to a 30% increase in active users.",
+        "Built OAuth integration and real-time form validation with SvelteKit, TypeScript, and Firebase."
       ],
       technologies: ["SvelteKit", "TypeScript", "Firebase", "OAuth"]
     },
     {
-      title: "Founder, Full-Stack Web Developer",
-      company: "Luxury Auto Detailing Platform",
-      location: "Remote Startup",
-      period: "December 2025 - Present",
-      type: "current",
-      logo: null,
+      title: "IT Support Specialist",
+      company: "Beth Israel Lahey Health",
+      location: "Exeter, NH",
+      period: "Sep 2025 - Oct 2025 (Contract)",
+      type: "past",
+      logo: "/images/logos/bilh.png",
       description: [
-        "Launched end-to-end SaaS platform (React + Supabase) processing 500+ test bookings with 100% data integrity, validating market demand.",
-        "Built REST API (5 endpoints) with automated email confirmations (~2s delivery, 98% deliverability).",
-        "Deployed to Vercel with CI/CD pipeline achieving 99.9% uptime and <200ms response times."
+        "Resolved 50+ IT support tickets for doctors and staff across the hospital.",
+        "Diagnosed hardware, software, and network issues, cutting hospital downtime."
       ],
-      technologies: ["React", "Supabase", "Vercel", "REST API", "CI/CD"]
+      technologies: ["Helpdesk", "Networking", "Hardware troubleshooting"]
+    },
+    {
+      title: "IT Support Technician",
+      company: "Brigham and Women's Hospital (Mass General Brigham)",
+      location: "Boston, MA",
+      period: "2025",
+      type: "past",
+      logo: "/images/logos/mgb.jpg",
+      description: [
+        "Deployment-installation work on a hospital-wide refresh of approximately 8,000 devices: client systems, peripherals, and reused monitors.",
+        "Deinstallation of legacy systems with automated peer-to-peer data migration (averaging under 1 GB per machine), plus on-campus package logistics."
+      ],
+      technologies: ["Hardware deployment", "Data migration", "Imaging"]
+    },
+    {
+      title: "IT Support Specialist",
+      company: "Roger Williams University IT Department",
+      location: "Bristol, RI",
+      period: "2024 - 2025",
+      type: "past",
+      logo: "/images/logos/rwu-hawk.webp",
+      description: [
+        "Resolved 100+ IT support tickets with ~80% first-response resolution rate.",
+        "Hardware, software, and network troubleshooting in classrooms and labs across campus.",
+        "Reduced operational downtime by approximately 80% across the year."
+      ],
+      technologies: ["Helpdesk", "Networking", "Imaging", "AV"]
+    },
+    {
+      title: "Delivery Driver",
+      company: "DoorDash",
+      location: "Bristol, RI",
+      period: "2024 - 2025",
+      type: "past",
+      logo: "/images/logos/doordash.png",
+      description: [
+        "Completed over 1,000 deliveries with 100% on-time performance and a 4.93 / 5.00 customer rating."
+      ],
+      technologies: []
+    },
+    {
+      title: "Crew Member",
+      company: "Chipotle Mexican Grill",
+      location: "Nashua, NH",
+      period: "2022 - 2024",
+      type: "past",
+      logo: "/images/logos/chipotle.png",
+      description: [
+        "Cashier trainer, grill, line cook, prep, and dish stations. Worked across the entire line.",
+        "On track for a management promotion before leaving for college."
+      ],
+      technologies: []
+    },
+    {
+      title: "Crew Member",
+      company: "Panera Bread",
+      location: "Nashua, NH",
+      period: "2020 - 2021",
+      type: "past",
+      logo: "/images/logos/panera.jpg",
+      description: [
+        "Cashier, quality control, and food preparation across sandwiches, salads, and beverages."
+      ],
+      technologies: []
+    },
+    {
+      title: "Bagger, Dairy Associate",
+      company: "Market Basket",
+      location: "Nashua, NH",
+      period: "2020 - 2021",
+      type: "past",
+      logo: "/images/logos/marketbasket.png",
+      description: [
+        "Started as a bagger; promoted to the dairy department after three months."
+      ],
+      technologies: []
     }
   ]
 
@@ -62,22 +148,22 @@ const Experience = () => {
 
   const certifications = [
     {
-      name: "AWS Certified Cloud Practitioner",
-      code: "CLF-C02",
-      status: "Valid: January 2025-2028",
-      active: true
+      name: "CompTIA Security+",
+      code: "SY0-701",
+      status: "In progress",
+      active: false
     },
     {
       name: "AWS Solutions Architect - Associate",
       code: "SAA-C03",
-      status: "In Progress - Expected March 2026",
-      active: false
+      status: "Earned April 2026",
+      active: true
     },
     {
-      name: "CompTIA Security+",
-      code: "SY0-701",
-      status: "In Progress - Expected April 2026",
-      active: false
+      name: "AWS Certified Cloud Practitioner",
+      code: "CLF-C02",
+      status: "Valid: January 2025-2028",
+      active: true
     }
   ]
 
@@ -112,21 +198,22 @@ const Experience = () => {
               >
                 {/* Timeline Line */}
                 {index < experiences.length - 1 && (
-                  <div className="absolute left-6 top-16 w-0.5 h-full bg-gradient-to-b from-primary-500 to-transparent" />
+                  <div className="absolute left-[28px] top-[56px] sm:left-[38px] sm:top-[76px] w-0.5 h-full bg-gradient-to-b from-primary-500 to-transparent" />
                 )}
 
                 <div className="flex gap-6">
                   {/* Timeline Dot */}
-                  <div className={`relative z-10 w-12 h-12 rounded-full flex items-center justify-center shrink-0 overflow-hidden ${
+                  <div className={`relative z-10 w-14 h-14 sm:w-[76px] sm:h-[76px] rounded-full flex items-center justify-center shrink-0 overflow-hidden ${
                     exp.type === 'current'
                       ? 'bg-gradient-to-r from-primary-500 to-cyan-500'
                       : 'bg-dark-800 border border-dark-700'
                   }`}>
                     {exp.logo ? (
-                      <img src={exp.logo} alt={exp.company} className="w-10 h-10 object-contain rounded-full bg-white p-1" />
+                      <img src={exp.logo} alt={exp.company} className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full bg-white p-1.5 sm:p-2" />
                     ) : (
-                      <Briefcase size={20} className="text-white" />
+                      <Briefcase size={24} className="sm:hidden text-white" />
                     )}
+                    {!exp.logo && <Briefcase size={32} className="hidden sm:block text-white" />}
                   </div>
 
                   {/* Content */}
@@ -213,8 +300,9 @@ const Experience = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="glass rounded-xl p-6"
             >
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <img src="/images/logos/aws.svg" alt="AWS" className="w-6 h-6 object-contain" />
+              <h3 className="text-lg font-semibold text-white mb-5 flex items-center gap-3">
+                <img src="/images/logos/comptia.svg" alt="CompTIA" className="w-12 h-12 object-contain" />
+                <img src="/images/logos/aws.svg" alt="AWS" className="w-12 h-12 object-contain" />
                 Certifications
               </h3>
               <div className="space-y-4">

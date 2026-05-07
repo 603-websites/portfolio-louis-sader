@@ -18,7 +18,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/louissader', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/louis-sader-a6a391287/', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/louis-sader/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:louissader42@gmail.com', label: 'Email' },
   ]
 
