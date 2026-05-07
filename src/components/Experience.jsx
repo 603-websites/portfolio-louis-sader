@@ -36,8 +36,8 @@ const Experience = () => {
       title: "Software Developer",
       company: "Rogo",
       location: "Remote",
-      period: "October 2025 - Present",
-      type: "current",
+      period: "October 2025 - February 2026",
+      type: "past",
       logo: "/images/logos/rogo.svg",
       description: [
         "Rogo is a startup transforming how athletes connect with coaching, like Airbnb for finding local training. As a former collegiate runner, I know firsthand how valuable access to the right coach can be.",
