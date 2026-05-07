@@ -91,7 +91,7 @@ const NCAA = () => {
             {/* Mobile: tight one-paragraph version, no meet locations. */}
             <p className="sm:hidden text-dark-300 text-sm leading-snug mb-4">
               Four-year contributor to Cross Country and Track & Field. Steeplechase and long-distance.
-              Two daily practices alongside a full course load — consistency over intensity, daily reps.
+              Two daily practices alongside a full course load. Consistency over intensity, daily reps.
             </p>
             {/* Desktop: full narrative with meet locations. */}
             <p className="hidden sm:block text-dark-300 leading-relaxed mb-4">
@@ -239,6 +239,23 @@ const NCAA = () => {
               <p className="text-dark-500 text-[11px] mt-3 group-hover:text-primary-400 transition-colors">
                 Read the announcement →
               </p>
+            </a>
+
+            {/* Strava profile. Public training log, four years of mileage. */}
+            <a
+              href="https://www.strava.com/athletes/41499279"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-4 flex items-center gap-3 p-3 rounded-xl bg-dark-900/60 border border-dark-700/60 hover:border-[#FC4C02]/60 transition-colors"
+            >
+              <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center shrink-0 p-1.5">
+                <img src="/images/logos/strava.svg" alt="Strava" className="w-full h-full object-contain" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-semibold leading-tight">Follow on Strava</p>
+                <p className="text-dark-400 text-xs">Public training log, four years of mileage</p>
+              </div>
+              <ArrowUpRight size={16} className="text-dark-500 group-hover:text-[#FC4C02] transition-colors shrink-0" />
             </a>
           </motion.div>
         </div>

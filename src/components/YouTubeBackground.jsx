@@ -93,7 +93,7 @@ const YouTubeBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* iframe pops to full opacity in a quick 120ms transition the first time
-          PLAYING fires. After that it stays put — no more recurring fade-ins. */}
+          PLAYING fires. After that it stays put. No more recurring fade-ins. */}
       <div className={`youtube-bg-iframe transition-opacity duration-150 ${revealed ? 'opacity-100' : 'opacity-0'}`}>
         <div ref={containerRef} />
       </div>

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Gamepad2, Trophy } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Gamepad2, Trophy, Sparkles, ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import YouTubeBackground from './YouTubeBackground'
 import MiniGameClip from './MiniGameClip'
@@ -177,14 +177,32 @@ const Hero = () => {
                 href="https://github.com/louissader/ESCAPE"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-square rounded-xl overflow-hidden border border-primary-500/30 hover:border-primary-400/70 transition-colors"
+                className="group relative aspect-square rounded-xl overflow-visible border border-primary-500/30 hover:border-primary-400/70 transition-colors"
               >
-                <MiniGameClip />
-                <div className="absolute inset-x-0 bottom-0 px-2 py-1.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center gap-1.5 text-white text-[11px] font-medium">
-                  <Gamepad2 size={12} />
-                  ESCAPE (Unity)
+                {/* Floating "I built this" sticker, bobs gently to draw the eye */}
+                <motion.div
+                  animate={{ y: [0, -3, 0], rotate: [-3, 3, -3] }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -top-3 -left-2 z-20 px-2 py-1 bg-gradient-to-r from-primary-500 to-cyan-500 text-white text-[10px] font-bold rounded-md shadow-lg shadow-primary-500/40 flex items-center gap-1 whitespace-nowrap"
+                >
+                  <Sparkles size={10} />
+                  I built this
+                </motion.div>
+                <motion.div
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -top-1 right-2 z-20 text-primary-400 drop-shadow-[0_0_6px_rgba(14,165,233,0.6)]"
+                >
+                  <ArrowDown size={14} />
+                </motion.div>
+
+                <div className="relative w-full h-full rounded-xl overflow-hidden">
+                  <MiniGameClip />
+                  <div className="absolute inset-x-0 bottom-0 px-2 py-1.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center gap-1.5 text-white text-[11px] font-medium">
+                    <Gamepad2 size={12} />
+                    ESCAPE (Unity)
+                  </div>
                 </div>
-                <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 text-[9px] font-mono bg-black/60 backdrop-blur rounded text-primary-300 uppercase tracking-wider">Game</span>
               </a>
 
               <a
