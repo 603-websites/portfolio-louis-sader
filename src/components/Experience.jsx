@@ -86,55 +86,6 @@ const Experience = () => {
       ],
       technologies: ["Helpdesk", "Networking", "Imaging", "AV"]
     },
-    {
-      title: "Delivery Driver",
-      company: "DoorDash",
-      location: "New England based",
-      period: "2024 - 2025",
-      type: "past",
-      logo: "/images/logos/doordash.png",
-      description: [
-        "Completed over 1,000 deliveries with 100% on-time performance and a 4.93 / 5.00 customer rating."
-      ],
-      technologies: []
-    },
-    {
-      title: "Crew Member",
-      company: "Chipotle Mexican Grill",
-      location: "Salem, NH",
-      period: "2022 - 2024",
-      type: "past",
-      logo: "/images/logos/chipotle.png",
-      description: [
-        "Cashier trainer, grill, line cook, prep, and dish stations. Worked across the entire line.",
-        "On track for a management promotion before leaving for college."
-      ],
-      technologies: []
-    },
-    {
-      title: "Crew Member",
-      company: "Panera Bread",
-      location: "Salem, NH",
-      period: "2020 - 2021",
-      type: "past",
-      logo: "/images/logos/panera.jpg",
-      description: [
-        "Cashier, quality control, and food preparation across sandwiches, salads, and beverages."
-      ],
-      technologies: []
-    },
-    {
-      title: "Bagger, Dairy Associate",
-      company: "Market Basket",
-      location: "Londonderry, NH",
-      period: "2020 - 2021",
-      type: "past",
-      logo: "/images/logos/marketbasket.png",
-      description: [
-        "Started as a bagger; promoted to the dairy department after three months."
-      ],
-      technologies: []
-    }
   ]
 
   const education = {
