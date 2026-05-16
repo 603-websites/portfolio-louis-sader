@@ -109,7 +109,8 @@ const Experience = () => {
       name: "AWS Solutions Architect - Associate",
       code: "SAA-C03",
       status: "Earned April 2026",
-      active: true
+      active: true,
+      link: "https://www.credly.com/badges/c9da73e1-f681-4d0e-9466-bd2723ffac5f/linked_in?t=td93xm"
     },
     {
       name: "AWS Certified Cloud Practitioner",

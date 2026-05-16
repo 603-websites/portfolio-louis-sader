@@ -81,7 +81,7 @@ const About = () => {
           <h2 className="section-heading">
             About <span className="gradient-text">Me</span>
           </h2>
-          <p className="section-subheading mx-auto">
+          <p className="section-subheading mx-auto text-white sm:text-dark-400 text-base sm:text-lg">
             Computer science grad, four-year NCAA athlete, full-stack developer.
           </p>
         </motion.div>
@@ -93,14 +93,32 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="space-y-3 sm:space-y-5 text-dark-300 text-sm sm:text-base leading-snug sm:leading-relaxed">
+            <div className="space-y-3 sm:space-y-5 text-dark-300 text-base sm:text-base leading-snug sm:leading-relaxed">
               <p>
                 Roger Williams University, B.S. Computer Science. Minors in Mathematics and Data Science.
                 Four years on the Cross Country and Track & Field teams.
               </p>
               <p>
                 DevOps Software Developer building cloud and AI infrastructure with AWS, Terraform,
-                Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified.
+                Docker, Kubernetes, and CI/CD pipelines.{' '}
+                <a
+                  href="https://www.credly.com/badges/c9da73e1-f681-4d0e-9466-bd2723ffac5f/linked_in?t=td93xm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-400 hover:text-primary-300 underline-offset-2 hover:underline"
+                >
+                  AWS Solutions Architect Associate
+                </a>{' '}
+                and{' '}
+                <a
+                  href="https://www.credly.com/badges/797dbef6-87b8-49ff-a0b1-effacd95fdcf/public_url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-400 hover:text-primary-300 underline-offset-2 hover:underline"
+                >
+                  CompTIA Security+
+                </a>{' '}
+                certified.
               </p>
               <p>
                 Outside full-time work, I co-run Oryx Technologies LLC with my cousin Michael Sader and
@@ -109,8 +127,10 @@ const About = () => {
               </p>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-8">
+            {/* Quick Stats — hidden on mobile per UX request; the bio above
+                already conveys the same context (NCAA athlete, dev work,
+                AWS cert). Tablets and desktop still get the stat tiles. */}
+            <div className="hidden sm:grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-8">
               {[
                 { value: "AWS", label: "Cloud Practitioner" },
                 { value: "6", label: "Conference titles" },
