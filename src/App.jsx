@@ -48,14 +48,14 @@ function App() {
         <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
       <Navbar />
-      {/* Section order. Mobile reorders Hero -> NCAA -> Experience -> About
-          -> Projects -> Contact so the athletic story sits up top on small
-          screens. Desktop keeps the original Hero -> About -> Experience ->
-          NCAA -> Projects -> Contact via lg:order overrides. */}
+      {/* Section order. Mobile: Hero -> Experience -> NCAA -> About ->
+          Projects -> Contact so the professional story lands right after
+          the intro. Desktop keeps the original Hero -> About -> Experience
+          -> NCAA -> Projects -> Contact via lg:order overrides. */}
       <main className="flex flex-col">
         <div className="order-1 lg:order-1"><Hero /></div>
-        <div className="order-2 lg:order-4"><NCAA /></div>
-        <div className="order-3 lg:order-3"><Experience /></div>
+        <div className="order-2 lg:order-3"><Experience /></div>
+        <div className="order-3 lg:order-4"><NCAA /></div>
         <div className="order-4 lg:order-2"><About /></div>
         <div className="order-5 lg:order-5"><Projects /></div>
         <div className="order-6 lg:order-6"><Contact /></div>

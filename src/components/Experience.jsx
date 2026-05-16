@@ -101,8 +101,9 @@ const Experience = () => {
     {
       name: "CompTIA Security+",
       code: "SY0-701",
-      status: "In progress",
-      active: false
+      status: "Earned May 2026",
+      active: true,
+      link: "https://www.credly.com/badges/797dbef6-87b8-49ff-a0b1-effacd95fdcf/public_url"
     },
     {
       name: "AWS Solutions Architect - Associate",
@@ -131,7 +132,7 @@ const Experience = () => {
           <h2 className="section-heading">
             Professional <span className="gradient-text">Experience</span>
           </h2>
-          <p className="section-subheading mx-auto">
+          <p className="section-subheading mx-auto hidden sm:block">
             Building real-world applications and delivering results in production environments.
           </p>
         </motion.div>
@@ -279,7 +280,18 @@ const Experience = () => {
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <p className={`font-medium text-xs sm:text-base leading-snug ${cert.active ? 'text-primary-400' : 'text-dark-300'}`}>
-                          {cert.name}
+                          {cert.link ? (
+                            <a
+                              href={cert.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline underline-offset-2"
+                            >
+                              {cert.name}
+                            </a>
+                          ) : (
+                            cert.name
+                          )}
                         </p>
                         <p className="text-[10px] sm:text-xs text-dark-500 mt-1">{cert.code}</p>
                       </div>
@@ -287,7 +299,22 @@ const Experience = () => {
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0 mt-1" />
                       )}
                     </div>
-                    <p className="text-[10px] sm:text-xs text-dark-400 mt-1.5 sm:mt-2">{cert.status}</p>
+                    <p className="text-[10px] sm:text-xs text-dark-400 mt-1.5 sm:mt-2">
+                      {cert.status}
+                      {cert.link && (
+                        <>
+                          {' · '}
+                          <a
+                            href={cert.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary-400 hover:text-primary-300 hover:underline underline-offset-2"
+                          >
+                            View badge
+                          </a>
+                        </>
+                      )}
+                    </p>
                   </div>
                 ))}
               </div>

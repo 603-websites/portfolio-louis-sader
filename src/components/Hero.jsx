@@ -131,7 +131,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-base sm:text-lg lg:text-2xl text-dark-100 mb-2 sm:mb-3 font-medium"
+              className="text-2xl sm:text-lg lg:text-2xl text-dark-100 mb-2 sm:mb-3 font-medium text-center sm:text-left"
             >
               DevOps Software Developer
             </motion.h2>
@@ -142,7 +142,16 @@ const Hero = () => {
               transition={{ delay: 0.45 }}
               className="text-dark-200 text-sm lg:text-base mb-4 sm:mb-6 max-w-xl leading-relaxed"
             >
-              Building cloud and AI infrastructure with AWS, Terraform, Docker, and CI/CD pipelines. AWS Solutions Architect Associate certified, pursuing CompTIA Security+ next.
+              Building cloud and AI infrastructure with AWS, Terraform, Docker, Kubernetes, and CI/CD pipelines. AWS Solutions Architect Associate certified.{' '}
+              <a
+                href="https://www.credly.com/badges/797dbef6-87b8-49ff-a0b1-effacd95fdcf/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-400 hover:text-primary-300 underline-offset-2 hover:underline"
+              >
+                CompTIA Security+
+              </a>{' '}
+              certified.
             </motion.p>
 
             <motion.div
