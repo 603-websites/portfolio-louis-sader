@@ -163,11 +163,11 @@ const Hero = () => {
               <a href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
                 Resume
               </a>
-              <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2.5 sm:gap-2 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
+              <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary-mobile-filled flex items-center gap-2.5 sm:gap-2 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
                 <Github className="w-[22px] h-[22px] sm:w-[18px] sm:h-[18px]" />
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center gap-2.5 sm:gap-2 relative z-10 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
+              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary-mobile-filled flex items-center gap-2.5 sm:gap-2 relative z-10 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
                 <Linkedin className="w-[22px] h-[22px] sm:w-[18px] sm:h-[18px]" />
                 LinkedIn
               </a>

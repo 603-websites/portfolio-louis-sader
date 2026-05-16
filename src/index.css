@@ -74,6 +74,19 @@
            active:scale-95;
   }
 
+  /* Mobile-filled variant for the Hero secondary CTAs. Renders the same
+     gradient as btn-primary on phones, reverts to the outlined
+     btn-secondary look on sm and up so the desktop visual hierarchy
+     (one filled CTA + two outlined) is preserved. */
+  .btn-secondary-mobile-filled {
+    @apply px-6 py-3 font-semibold rounded-lg transition-all duration-300 active:scale-95
+           bg-gradient-to-r from-primary-500 to-cyan-500 text-white border border-transparent
+           hover:shadow-lg hover:shadow-primary-500/25 hover:scale-105
+           sm:bg-none sm:from-transparent sm:to-transparent sm:text-primary-400
+           sm:border-primary-500/50 sm:hover:bg-primary-500/10 sm:hover:border-primary-400
+           sm:hover:shadow-none sm:hover:scale-100;
+  }
+
   .section-heading {
     @apply text-3xl md:text-4xl font-bold mb-4;
   }
