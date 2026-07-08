@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://louissader.dev/sitemap.xml
+Sitemap: https://louissader.vercel.app/sitemap.xml
