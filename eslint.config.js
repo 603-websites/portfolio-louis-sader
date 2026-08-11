@@ -1,13 +1,15 @@
 import js from '@eslint/js'
 import globals from 'globals'
+import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'dist-server']),
   {
     files: ['**/*.{js,jsx}'],
+    plugins: { react },
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
@@ -23,6 +25,9 @@ export default defineConfig([
       },
     },
     rules: {
+      // Count JSX-only references (e.g. <motion.div>) as usage so imported
+      // identifiers used only in markup aren't flagged as unused.
+      'react/jsx-uses-vars': 'error',
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
