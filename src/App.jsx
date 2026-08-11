@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import NCAA from './components/NCAA'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Accessibility from './components/Accessibility'
 import Footer from './components/Footer'
 import NotFound from './components/NotFound'
 import ParticleBackground from './components/ParticleBackground'
@@ -65,6 +66,7 @@ function App({ pathname } = {}) {
         <div className="order-4 lg:order-2"><About /></div>
         <div className="order-5 lg:order-5"><Projects /></div>
         <div className="order-6 lg:order-6"><Contact /></div>
+        <div className="order-7 lg:order-7"><Accessibility /></div>
       </main>
       <Footer />
     </div>
