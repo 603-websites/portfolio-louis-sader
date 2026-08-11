@@ -48,5 +48,20 @@ Stack: Vite 7 + React 19 SPA, Tailwind, framer-motion. Client-rendered (`#root` 
 - [ ] Adversarial self-review of the diff (correctness, no clearance leak, no em-dashes, roster correct).
 - [ ] Push branch, open PR with Vercel preview link. No merge without your OK.
 
-## Review (filled in after build)
-- _pending_
+## Review (2026-08-11)
+
+Shipped on `feat/portfolio-overhaul` (3 commits on top of main):
+1. `83e6f37` content/SEO truth fixes (Phase 0a)
+2. `9ce0ead` prerender + real 404s (Phase 1)
+3. `c490db7` reduced-motion + mobile YouTube fix (Phases 2-3)
+
+Verified in headless Chrome, both motion modes:
+- Baked HTML carries real content (#root ~9.7k chars); roster shows Santella, no Elite; no "Website Upgrader" strings.
+- Reduced-motion: video paused, carousels stopped, particle loop off. Normal: video playing, carousel advancing. Zero console errors in either.
+- Build green; vendor chunks split (react/motion/icons).
+
+Deferred / follow-ups:
+- **0b domain flip** — blocked: `louissader.dev` has Cloudflare NS but no A record. Needs Vercel login → attach domain → verify 200, then flip canonical/og/robots/sitemap to `.dev` together.
+- **Resume PDFs** — de-indexed now, but the files still say certs are "in progress." Regenerate them (they're earned) — user-owned task.
+- **Pre-existing lint** — 16 errors on main (unused `motion` imports, `chrome` undef, setState-in-effect) in untouched files. Not fixed here to keep the diff focused; worth a separate cleanup.
+- **Vercel build** — first deploy runs puppeteer prerender; confirm the preview builds green (Chromium downloads via `.puppeteerrc.cjs` project cache).
