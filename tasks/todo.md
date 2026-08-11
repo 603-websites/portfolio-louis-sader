@@ -64,4 +64,4 @@ Deferred / follow-ups:
 - **0b domain flip** — blocked: `louissader.dev` has Cloudflare NS but no A record. Needs Vercel login → attach domain → verify 200, then flip canonical/og/robots/sitemap to `.dev` together.
 - **Resume PDFs** — de-indexed now, but the files still say certs are "in progress." Regenerate them (they're earned) — user-owned task.
 - **Pre-existing lint** — 16 errors on main (unused `motion` imports, `chrome` undef, setState-in-effect) in untouched files. Not fixed here to keep the diff focused; worth a separate cleanup.
-- **Vercel build** — first deploy runs puppeteer prerender; confirm the preview builds green (Chromium downloads via `.puppeteerrc.cjs` project cache).
+- **Vercel build** — GREEN. First two attempts used a headless browser and failed (Vercel's build image can't launch Chromium — missing libnss3). Pivoted to a browserless `react-dom/server` SSG (`src/entry-server.jsx` + `scripts/prerender.mjs`), which builds green on Vercel. Preview is behind Vercel SSO — needs your login to view in a browser (ties into the domain-attach task).
