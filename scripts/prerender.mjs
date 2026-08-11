@@ -12,14 +12,44 @@
 // hydration mismatch; the baked markup exists purely so bots read real text.
 
 import { preview } from 'vite'
-import puppeteer from 'puppeteer'
-import { writeFileSync } from 'node:fs'
+import puppeteer from 'puppeteer-core'
+import { writeFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '..', 'dist')
 const PORT = 4183
+
+// Vercel's build image has no system Chrome and is missing shared libs
+// (libnss3 etc.), so bundled Chromium can't launch there. @sparticuz/chromium
+// ships a Linux/serverless-ready Chromium; locally we point puppeteer-core at a
+// normal Chrome install instead.
+const onVercel = Boolean(process.env.VERCEL || process.env.CI)
+
+async function launchBrowser() {
+  if (onVercel) {
+    const { default: chromium } = await import('@sparticuz/chromium')
+    return puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    })
+  }
+  const localChrome =
+    process.env.PUPPETEER_EXECUTABLE_PATH ||
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+  if (!existsSync(localChrome)) {
+    throw new Error(
+      `No local Chrome at ${localChrome}. Set PUPPETEER_EXECUTABLE_PATH to a Chrome/Chromium binary.`
+    )
+  }
+  return puppeteer.launch({
+    executablePath: localChrome,
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  })
+}
 
 // Routes to bake. `out` is the file written under dist/.
 const ROUTES = [
@@ -47,12 +77,9 @@ async function main() {
     logLevel: 'warn',
   })
   const origin = `http://localhost:${PORT}`
-  console.log(`prerender: serving dist/ at ${origin}`)
+  console.log(`prerender: serving dist/ at ${origin} (${onVercel ? 'sparticuz chromium' : 'local chrome'})`)
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  })
+  const browser = await launchBrowser()
 
   try {
     for (const route of ROUTES) {

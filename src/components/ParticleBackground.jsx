@@ -76,6 +76,10 @@ const ParticleBackground = () => {
     const handleResize = () => {
       resizeCanvas()
       createParticles()
+      // Animated mode's rAF loop repaints on its own; in reduced-motion mode we
+      // must repaint the single static frame ourselves, or resize leaves the
+      // freshly-cleared canvas blank.
+      if (reduceMotion) drawParticles()
     }
 
     window.addEventListener('resize', handleResize)
