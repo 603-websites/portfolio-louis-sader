@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 const VIDEO_ID = 'jY7CTSlAO1w'
 
@@ -33,8 +34,11 @@ const YouTubeBackground = () => {
   // which read as the video "getting brighter every couple seconds." Now it
   // snaps to bright and stays.
   const [revealed, setRevealed] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
+    // Reduced-motion visitors get the static dark underlay, not the motion clip.
+    if (reduceMotion) return
     let cancelled = false
     const segment = pickSegment()
 
@@ -88,7 +92,7 @@ const YouTubeBackground = () => {
         try { playerRef.current.destroy() } catch (_) { /* noop */ }
       }
     }
-  }, [])
+  }, [reduceMotion])
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">

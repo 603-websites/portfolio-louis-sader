@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Gamepad2, Trophy, Sparkles, ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import YouTubeBackground from './YouTubeBackground'
@@ -15,10 +15,12 @@ const HERO_NCAA_PHOTOS = [
 
 const MiniNCAACarousel = () => {
   const [idx, setIdx] = useState(0)
+  const reduceMotion = useReducedMotion()
   useEffect(() => {
+    if (reduceMotion) return
     const id = setInterval(() => setIdx((i) => (i + 1) % HERO_NCAA_PHOTOS.length), 2000)
     return () => clearInterval(id)
-  }, [])
+  }, [reduceMotion])
   const photo = HERO_NCAA_PHOTOS[idx]
   return (
     <div className="relative w-full h-full overflow-hidden bg-dark-950">
@@ -62,13 +64,30 @@ const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
   )
 }
 
+// Desktop-only mount gate. The YouTube background is CSS-hidden on mobile, but
+// CSS alone still mounts the component and loads the heavy YouTube IFrame API on
+// phones where it never shows. Gating the mount keeps that off mobile entirely.
+const useIsDesktop = () => {
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const onChange = () => setIsDesktop(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return isDesktop
+}
+
 const Hero = () => {
+  const isDesktop = useIsDesktop()
   return (
     <section id="home" className="lg:min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24 lg:pt-20 pb-8 lg:pb-0">
       {/* Game-dev clip background. Desktop only. Mobile shows the global
           dark theme + orbs/particles instead. */}
       <div className="hidden lg:block absolute inset-0">
-        <YouTubeBackground />
+        {isDesktop && <YouTubeBackground />}
       </div>
 
       {/* Desktop-only: radial dark glow over the video, behind the hero text. */}

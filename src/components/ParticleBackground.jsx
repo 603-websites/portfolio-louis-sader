@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 const ParticleBackground = () => {
   const canvasRef = useRef(null)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -61,7 +63,10 @@ const ParticleBackground = () => {
         })
       })
 
-      animationFrameId = requestAnimationFrame(drawParticles)
+      // Reduced-motion visitors get a single static frame, no animation loop.
+      if (!reduceMotion) {
+        animationFrameId = requestAnimationFrame(drawParticles)
+      }
     }
 
     resizeCanvas()
@@ -79,7 +84,7 @@ const ParticleBackground = () => {
       cancelAnimationFrame(animationFrameId)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [reduceMotion])
 
   return (
     <canvas

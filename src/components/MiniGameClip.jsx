@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 /**
  * Inline ESCAPE gameplay clip. Uses a local mp4 so there's no YouTube
@@ -7,24 +8,26 @@ import { useEffect, useRef } from 'react'
  */
 const MiniGameClip = () => {
   const videoRef = useRef(null)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     v.muted = true
+    // Honor prefers-reduced-motion: leave the clip paused on its first frame.
+    if (reduceMotion) return
     const tryPlay = () => {
       const p = v.play()
       if (p && typeof p.catch === 'function') p.catch(() => {})
     }
     tryPlay()
-  }, [])
+  }, [reduceMotion])
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-dark-950">
       <video
         ref={videoRef}
         src="/videos/escape-clip.mp4"
-        autoPlay
         loop
         muted
         playsInline
