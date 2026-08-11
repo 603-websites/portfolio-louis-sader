@@ -127,7 +127,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Quick Stats — hidden on mobile per UX request; the bio above
+            {/* Quick Stats - hidden on mobile per UX request; the bio above
                 already conveys the same context (NCAA athlete, dev work,
                 AWS cert). Tablets and desktop still get the stat tiles. */}
             <div className="hidden sm:grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-8">
