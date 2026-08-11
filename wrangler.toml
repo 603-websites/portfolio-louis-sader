@@ -1,0 +1,5 @@
+# Cloudflare Pages project config. Pure static output (no Pages Functions), so
+# only the project name and build output dir are needed. Build command
+# (npm run build) is set in the Pages dashboard / Git integration.
+name = "portfolio-louis-sader"
+pages_build_output_dir = "dist"
