@@ -27,3 +27,4 @@ dist-ssr
 
 # Puppeteer Chromium (project-local, see .puppeteerrc.cjs)
 .cache
+dist-server

@@ -1,93 +1,46 @@
-// Post-build prerender for the single-route React SPA.
+// Post-build static prerender for the single-route React SPA.
 //
 // Vite ships an empty <div id="root"></div>, so crawlers and link-preview bots
-// see no content. This script serves the built dist/ with Vite's preview server,
-// renders it with headless Chrome, and bakes the resulting DOM back into the
-// HTML files that Vercel deploys:
+// see no content, and the old catch-all rewrite made every unknown path return
+// 200 with the homepage (soft 404). This script renders the app to a static
+// HTML string with react-dom/server (no headless browser -- Vercel's build
+// image can't launch Chromium) and bakes it into the deployed HTML:
 //
 //   /            -> dist/index.html   (real home content in the markup)
 //   any 404 path -> dist/404.html     (styled NotFound view Vercel serves as 404)
 //
-// The client bundle still loads and re-renders via createRoot(), so there is no
-// hydration mismatch; the baked markup exists purely so bots read real text.
+// The client bundle still loads and re-renders via createRoot(), so the markup
+// exists purely so bots read real text.
 
-import { preview } from 'vite'
-import puppeteer from 'puppeteer-core'
-import { writeFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { pathToFileURL } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '..', 'dist')
-const PORT = 4183
+const serverEntry = resolve(__dirname, '..', 'dist-server', 'entry-server.js')
 
-// Vercel's build image has no system Chrome and is missing shared libs
-// (libnss3 etc.), so bundled Chromium can't launch there. @sparticuz/chromium
-// ships a Linux/serverless-ready Chromium; locally we point puppeteer-core at a
-// normal Chrome install instead.
-const onVercel = Boolean(process.env.VERCEL || process.env.CI)
-
-async function launchBrowser() {
-  if (onVercel) {
-    const { default: chromium } = await import('@sparticuz/chromium')
-    return puppeteer.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath(),
-      headless: true,
-    })
-  }
-  const localChrome =
-    process.env.PUPPETEER_EXECUTABLE_PATH ||
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-  if (!existsSync(localChrome)) {
-    throw new Error(
-      `No local Chrome at ${localChrome}. Set PUPPETEER_EXECUTABLE_PATH to a Chrome/Chromium binary.`
-    )
-  }
-  return puppeteer.launch({
-    executablePath: localChrome,
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  })
-}
-
-// Routes to bake. `out` is the file written under dist/.
 const ROUTES = [
-  { path: '/', out: 'index.html' },
-  { path: '/__prerender_404__', out: '404.html' },
+  { pathname: '/', out: 'index.html' },
+  { pathname: '/__prerender_404__', out: '404.html' },
 ]
 
-async function capture(browser, origin, route) {
-  const page = await browser.newPage()
-  await page.setViewport({ width: 1280, height: 900 })
-  await page.goto(origin + route.path, { waitUntil: 'networkidle0', timeout: 60000 })
-  // Wait for React to populate #root, then a short settle for framer-motion.
-  await page.waitForSelector('#root > *', { timeout: 30000 })
-  await new Promise((r) => setTimeout(r, 400))
-  const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)
-  await page.close()
-  writeFileSync(resolve(distDir, route.out), html, 'utf8')
-  console.log(`  prerendered ${route.path} -> dist/${route.out} (${html.length} bytes)`)
-}
+const ROOT_RE = /<div id="root"><\/div>/
 
 async function main() {
-  const server = await preview({
-    preview: { port: PORT, strictPort: true },
-    // Silence the preview server's own request logging.
-    logLevel: 'warn',
-  })
-  const origin = `http://localhost:${PORT}`
-  console.log(`prerender: serving dist/ at ${origin} (${onVercel ? 'sparticuz chromium' : 'local chrome'})`)
+  const { render } = await import(pathToFileURL(serverEntry).href)
+  const template = readFileSync(resolve(distDir, 'index.html'), 'utf8')
 
-  const browser = await launchBrowser()
+  if (!ROOT_RE.test(template)) {
+    throw new Error('prerender: could not find empty <div id="root"></div> in dist/index.html')
+  }
 
-  try {
-    for (const route of ROUTES) {
-      await capture(browser, origin, route)
-    }
-  } finally {
-    await browser.close()
-    await new Promise((r) => server.httpServer.close(r))
+  for (const route of ROUTES) {
+    const appHtml = render(route.pathname)
+    const html = template.replace(ROOT_RE, `<div id="root">${appHtml}</div>`)
+    writeFileSync(resolve(distDir, route.out), html, 'utf8')
+    console.log(`  prerendered ${route.pathname} -> dist/${route.out} (${html.length} bytes)`)
   }
   console.log('prerender: done')
 }
