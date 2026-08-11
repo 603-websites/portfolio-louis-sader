@@ -69,18 +69,18 @@ const Projects = () => {
       color: "from-purple-500 to-pink-500"
     },
     {
-      title: "Oryx Technologies (Website Upgraders)",
+      title: "Oryx Technologies",
       description: "Rebuilding a client's static site (0% SEO score, no backend) into a full-stack platform with SMS notifications, first-page local search SEO, and a self-service admin and client dashboard for real-time analytics, menu, and promotion management. Eliminates developer dependency, with the same playbook applied across the active client roster.",
       icon: Briefcase,
       highlights: [
-        "Active clients: The Spot Nashua, VixFix Pro, Elite Car Detailing",
+        "Active clients: The Spot Nashua, VixFix Pro, Santella Designs",
         "Multi-tenant Next.js + Prisma + Postgres SaaS",
         "Self-service tenant dashboard (menu, bookings, calendar, newsletter, contacts)",
         "Cross-tenant SEO playbook + per-client local-search optimization"
       ],
       technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway", "Resend"],
       github: null,
-      demo: "https://www.websiteupgraderpro.com",
+      demo: "https://oryxtechnologiesllc.com",
       featured: false,
       color: "from-amber-500 to-orange-500"
     },

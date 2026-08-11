@@ -123,7 +123,7 @@ const About = () => {
               <p>
                 Outside full-time work, I co-run Oryx Technologies LLC with my cousin Michael Sader and
                 Logan Carter. We build and maintain websites for local New England businesses. Active
-                clients: The Spot Nashua, VixFix Pro, Elite Car Detailing.
+                clients: The Spot Nashua, VixFix Pro, Santella Designs.
               </p>
             </div>
 
