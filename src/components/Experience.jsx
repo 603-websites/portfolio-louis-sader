@@ -20,14 +20,14 @@ const Experience = () => {
     },
     {
       title: "Co-Founder, Full-Stack Developer",
-      company: "Oryx Technologies LLC (Website Upgraders)",
+      company: "Oryx Technologies LLC",
       location: "New England based",
       period: "2025 - Present",
       type: "current",
       logo: "/images/logos/oryx.png",
       description: [
         "Rebuilding a static site (0% SEO score, no backend) into a full-stack platform with SMS notifications to boost customer retention, SEO optimization targeting first-page local search visibility, and a self-service admin and client dashboard for real-time analytics monitoring, menu/promotion management, eliminating developer dependency.",
-        "Active clients: The Spot Nashua (kava bar and live music venue), VixFix Pro (handyman and general contractor), Elite Car Detailing.",
+        "Active clients: The Spot Nashua (kava bar and live music venue), VixFix Pro (handyman and general contractor), Santella Designs.",
         "Stack: static HTML/CSS/JS client sites on Cloudflare Pages, Next.js plus Prisma SaaS dashboard on Railway, Resend email, Plausible analytics, GitHub Actions CI."
       ],
       technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway"]

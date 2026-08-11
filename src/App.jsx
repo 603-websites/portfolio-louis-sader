@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 import NotFound from './components/NotFound'
 import ParticleBackground from './components/ParticleBackground'
 
-function App() {
+function App({ pathname } = {}) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -21,7 +21,9 @@ function App() {
     }
   }, [])
 
-  const path = window.location.pathname
+  // `pathname` is passed during static prerender (no window); the browser reads
+  // the live location.
+  const path = pathname ?? (typeof window !== 'undefined' ? window.location.pathname : '/')
   const isHome = path === '/' || path === '/index.html'
 
   if (!isHome && !path.startsWith('/documents/') && !path.startsWith('/images/')) {

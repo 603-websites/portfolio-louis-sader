@@ -1,0 +1,23 @@
+# Louis Sader
+
+> DevOps Software Developer building cloud and AI infrastructure. AWS Solutions Architect Associate and CompTIA Security+ certified. Former NCAA distance runner.
+
+## About
+Louis Sader is a DevOps Software Developer based in New England. He builds cloud and AI infrastructure with AWS, Terraform, Docker, Kubernetes, and CI/CD pipelines. He holds a B.S. in Computer Science from Roger Williams University (2025), with minors in Mathematics and Data Science.
+
+## Current work
+- DevOps Software Developer at Solid State Scientific Corporation (Nashua, NH), since February 2026.
+- Co-Founder and Full-Stack Developer at Oryx Technologies LLC, a New England web studio. Active clients: The Spot Nashua, VixFix Pro, Santella Designs.
+
+## Certifications (earned)
+- CompTIA Security+ (SY0-701), earned May 2026.
+- AWS Certified Solutions Architect, Associate (SAA-C03), earned April 2026.
+- AWS Certified Cloud Practitioner (CLF-C02), valid 2025 to 2028.
+
+## Skills
+DevOps, AWS, cloud infrastructure, Terraform, Docker, Kubernetes, CI/CD, Python, TypeScript, React, Next.js, Prisma, PostgreSQL.
+
+## Links
+- Website: https://louissader.vercel.app
+- GitHub: https://github.com/louissader
+- LinkedIn: https://www.linkedin.com/in/louis-sader/

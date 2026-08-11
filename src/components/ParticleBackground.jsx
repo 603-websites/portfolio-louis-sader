@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 const ParticleBackground = () => {
   const canvasRef = useRef(null)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -61,7 +63,10 @@ const ParticleBackground = () => {
         })
       })
 
-      animationFrameId = requestAnimationFrame(drawParticles)
+      // Reduced-motion visitors get a single static frame, no animation loop.
+      if (!reduceMotion) {
+        animationFrameId = requestAnimationFrame(drawParticles)
+      }
     }
 
     resizeCanvas()
@@ -71,6 +76,10 @@ const ParticleBackground = () => {
     const handleResize = () => {
       resizeCanvas()
       createParticles()
+      // Animated mode's rAF loop repaints on its own; in reduced-motion mode we
+      // must repaint the single static frame ourselves, or resize leaves the
+      // freshly-cleared canvas blank.
+      if (reduceMotion) drawParticles()
     }
 
     window.addEventListener('resize', handleResize)
@@ -79,7 +88,7 @@ const ParticleBackground = () => {
       cancelAnimationFrame(animationFrameId)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [reduceMotion])
 
   return (
     <canvas

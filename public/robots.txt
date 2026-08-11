@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /documents/
+
 Sitemap: https://louissader.vercel.app/sitemap.xml

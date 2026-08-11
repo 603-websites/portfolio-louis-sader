@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react'
 
@@ -36,15 +36,17 @@ const NCAA = () => {
   ]
 
   const [activeIdx, setActiveIdx] = useState(0)
+  const reduceMotion = useReducedMotion()
 
-  // Auto-advance: faster rotation per Louis's request (~2s)
+  // Auto-advance: faster rotation per Louis's request (~2s).
+  // Paused for reduced-motion visitors; the prev/next controls still work.
   useEffect(() => {
-    if (!isInView) return
+    if (!isInView || reduceMotion) return
     const id = setInterval(() => {
       setActiveIdx((i) => (i + 1) % photos.length)
     }, 2000)
     return () => clearInterval(id)
-  }, [isInView, photos.length])
+  }, [isInView, reduceMotion, photos.length])
 
   const next = () => setActiveIdx((i) => (i + 1) % photos.length)
   const prev = () => setActiveIdx((i) => (i - 1 + photos.length) % photos.length)
