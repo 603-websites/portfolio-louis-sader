@@ -14,6 +14,10 @@ function App({ pathname } = {}) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    // One-time mount flag that drives the entrance fade (opacity-0 -> 100). This
+    // is the intended "just mounted" transition, not derived state, so the
+    // set-state-in-effect guard doesn't apply here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoaded(true)
     // Always land on the cover/Hero on a fresh visit, even if a stale hash is in the URL.
     if (!window.location.hash || window.location.hash === '#home') {

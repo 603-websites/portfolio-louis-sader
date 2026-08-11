@@ -78,7 +78,7 @@ const YouTubeBackground = () => {
             if (event.data === 1) setRevealed(true)
             // If anything pauses it (network blip, tab visibility), just resume
             if (event.data === 2) {
-              try { event.target.playVideo() } catch (_) { /* noop */ }
+              try { event.target.playVideo() } catch { /* noop */ }
             }
           },
         },
@@ -89,7 +89,7 @@ const YouTubeBackground = () => {
       cancelled = true
       if (intervalRef.current) clearInterval(intervalRef.current)
       if (playerRef.current && playerRef.current.destroy) {
-        try { playerRef.current.destroy() } catch (_) { /* noop */ }
+        try { playerRef.current.destroy() } catch { /* noop */ }
       }
     }
   }, [reduceMotion])
