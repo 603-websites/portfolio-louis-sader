@@ -42,33 +42,8 @@ const About = () => {
 
   return (
     <section id="about" className="py-12 sm:py-24 relative overflow-hidden">
-      {/* RWU campus background, desktop only. Mobile gets pure dark theme. */}
-      <div className="absolute inset-0 hidden lg:block">
-        <img
-          src="/images/about/rwu-campus.webp"
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover"
-          style={{ objectPosition: 'center 30%' }}
-          loading="lazy"
-        />
-      </div>
-      {/* Desktop radial glow over the campus image for text legibility. */}
-      <div
-        className="absolute inset-0 pointer-events-none hidden lg:block"
-        style={{
-          background: `radial-gradient(
-            ellipse 1100px 700px at center 55%,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.65) 45%,
-            rgba(0, 0, 0, 0.4) 75%,
-            transparent 100%
-          )`,
-        }}
-      />
-      {/* Section edge fades into the global dark theme */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-dark-950 to-transparent pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-dark-950 to-transparent pointer-events-none" />
+      {/* No section background: the global Oryx-style ember field runs
+          uninterrupted behind every section, matching the Oryx landing page. */}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
