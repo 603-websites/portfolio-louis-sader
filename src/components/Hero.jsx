@@ -256,11 +256,11 @@ const Hero = () => {
               <span className="text-white text-sm font-medium">Stack:</span>
               <div className="flex items-center gap-3 sm:gap-4">
                 {[
-                  { src: '/images/logos/aws.svg',        label: 'AWS' },
-                  { src: '/images/logos/docker.svg',     label: 'Docker' },
-                  { src: '/images/logos/kubernetes.svg', label: 'Kubernetes' },
-                  { src: '/images/logos/terraform.svg',  label: 'Terraform' },
-                  { src: '/images/logos/comptia.svg',    label: 'CompTIA Security+' },
+                  { src: '/images/logos/aws.svg?v=2',        label: 'AWS' },
+                  { src: '/images/logos/docker.svg?v=2',     label: 'Docker' },
+                  { src: '/images/logos/kubernetes.svg?v=2', label: 'Kubernetes' },
+                  { src: '/images/logos/terraform.svg?v=2',  label: 'Terraform' },
+                  { src: '/images/logos/comptia.svg?v=2',    label: 'CompTIA Security+' },
                 ].map(({ src, label }) => (
                   <motion.div
                     key={label}
