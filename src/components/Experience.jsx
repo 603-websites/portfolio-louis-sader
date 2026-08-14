@@ -26,7 +26,7 @@ const Experience = () => {
       type: "current",
       logo: "/images/logos/oryx.png",
       description: [
-        "Rebuilding a static site (0% SEO score, no backend) into a full-stack platform with SMS notifications to boost customer retention, SEO optimization targeting first-page local search visibility, and a self-service admin and client dashboard for real-time analytics monitoring, menu/promotion management, eliminating developer dependency.",
+        "Rebuilt a client's static site (0% SEO score, no backend) into a full-stack platform: SMS notifications for customer retention, local-search SEO targeting first-page visibility, and a self-service dashboard for analytics, menus, and promotions.",
         "Active clients: The Spot Nashua (kava bar and live music venue), VixFix Pro (handyman and general contractor), Santella Designs.",
         "Stack: static HTML/CSS/JS client sites on Cloudflare Pages, Next.js plus Prisma SaaS dashboard on Railway, Resend email, Plausible analytics, GitHub Actions CI."
       ],
@@ -92,7 +92,7 @@ const Experience = () => {
     degree: "Bachelor of Science in Computer Science",
     school: "Roger Williams University",
     location: "Bristol, RI",
-    period: "Graduated May 2025",
+    period: "Four-year NCAA student-athlete",
     honors: "Dean's List | ABET Accredited",
     minors: "Mathematics, Data Science"
   }
@@ -158,7 +158,7 @@ const Experience = () => {
                   {/* Timeline Dot */}
                   <div className={`relative z-10 w-14 h-14 sm:w-[76px] sm:h-[76px] rounded-full flex items-center justify-center shrink-0 overflow-hidden ${
                     exp.type === 'current'
-                      ? 'bg-gradient-to-r from-primary-500 to-cyan-500'
+                      ? 'bg-gradient-to-r from-primary-600 to-primary-400'
                       : 'bg-dark-800 border border-dark-700'
                   }`}>
                     {exp.logo ? (

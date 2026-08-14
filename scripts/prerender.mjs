@@ -38,7 +38,15 @@ async function main() {
 
   for (const route of ROUTES) {
     const appHtml = render(route.pathname)
-    const html = template.replace(ROOT_RE, `<div id="root">${appHtml}</div>`)
+    let html = template.replace(ROOT_RE, `<div id="root">${appHtml}</div>`)
+    if (route.out === '404.html') {
+      // The 404 page must not claim to be the homepage: swap the title, drop
+      // the canonical (it pointed at /), and keep it out of the index.
+      html = html
+        .replace(/<title>[^<]*<\/title>/, '<title>Page Not Found | Louis Sader</title>')
+        .replace(/[ \t]*<link rel="canonical"[^>]*\/>\n/, '')
+        .replace('</title>', '</title>\n    <meta name="robots" content="noindex" />')
+    }
     writeFileSync(resolve(distDir, route.out), html, 'utf8')
     console.log(`  prerendered ${route.pathname} -> dist/${route.out} (${html.length} bytes)`)
   }

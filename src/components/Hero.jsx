@@ -161,7 +161,7 @@ const Hero = () => {
               transition={{ delay: 0.45 }}
               className="text-dark-200 text-sm lg:text-base mb-4 sm:mb-6 max-w-xl leading-relaxed"
             >
-              Building cloud and AI infrastructure with AWS, Terraform, Docker, Kubernetes, and CI/CD pipelines. AWS Solutions Architect Associate certified.{' '}
+              Building cloud and AI infrastructure with AWS, Terraform, Docker, Kubernetes, and CI/CD pipelines. AWS Solutions Architect Associate and{' '}
               <a
                 href="https://www.credly.com/badges/797dbef6-87b8-49ff-a0b1-effacd95fdcf/public_url"
                 target="_blank"
@@ -182,11 +182,11 @@ const Hero = () => {
               <a href="/documents/DevOps Software Developer - Louis Sader - Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
                 Resume
               </a>
-              <a href="https://github.com/louissader" target="_blank" rel="noopener noreferrer" className="btn-secondary-mobile-filled flex items-center gap-2.5 sm:gap-2 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
+              <a href="https://github.com/louissader" target="_blank" rel="me noopener noreferrer" className="btn-secondary-mobile-filled flex items-center gap-2.5 sm:gap-2 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
                 <Github className="w-[22px] h-[22px] sm:w-[18px] sm:h-[18px]" />
                 GitHub
               </a>
-              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="noopener noreferrer" className="btn-secondary-mobile-filled flex items-center gap-2.5 sm:gap-2 relative z-10 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
+              <a href="https://www.linkedin.com/in/louis-sader/" target="_blank" rel="me noopener noreferrer" className="btn-secondary-mobile-filled flex items-center gap-2.5 sm:gap-2 relative z-10 text-base sm:text-base px-5 sm:px-6 py-2.5 sm:py-3">
                 <Linkedin className="w-[22px] h-[22px] sm:w-[18px] sm:h-[18px]" />
                 LinkedIn
               </a>
@@ -211,7 +211,7 @@ const Hero = () => {
                 <motion.div
                   animate={{ y: [0, -3, 0], rotate: [-3, 3, -3] }}
                   transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-3 -left-2 z-20 px-2 py-1 bg-[#0a1f44] border border-[#1e3a8a] text-white text-[11px] font-bold rounded-md shadow-lg shadow-black/50 flex items-center gap-1 whitespace-nowrap"
+                  className="absolute -top-3 -left-2 z-20 px-2 py-1 bg-[#002244] border border-[#2b4f74] text-white text-[11px] font-bold rounded-md shadow-lg shadow-black/50 flex items-center gap-1 whitespace-nowrap"
                 >
                   <Sparkles size={10} />
                   I built this
@@ -219,7 +219,7 @@ const Hero = () => {
                 <motion.div
                   animate={{ y: [0, 3, 0] }}
                   transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-1 right-2 z-20 text-primary-400 drop-shadow-[0_0_6px_rgba(14,165,233,0.6)]"
+                  className="absolute -top-1 right-2 z-20 text-primary-400 drop-shadow-[0_0_6px_rgba(122,165,204,0.6)]"
                 >
                   <ArrowDown size={14} />
                 </motion.div>
@@ -289,7 +289,7 @@ const Hero = () => {
             <div className="relative flex flex-col gap-6">
               {/* Profile Image */}
               <div className="relative w-[70%] mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 rounded-2xl blur-xl" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-primary-300/20 rounded-2xl blur-xl" />
                 <div className="relative glass rounded-2xl overflow-hidden p-2">
                   <ImageWithLoader
                     src="/images/profile/louis-sader.jpeg"
@@ -311,7 +311,7 @@ const Hero = () => {
 
               {/* Code Window */}
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-cyan-500/10 rounded-2xl blur-xl" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-primary-300/10 rounded-2xl blur-xl" />
                 <div className="relative glass rounded-2xl overflow-hidden">
                   {/* Window Header */}
                   <div className="flex items-center gap-2 px-4 py-3 bg-dark-900/80 border-b border-dark-700/50">
@@ -332,20 +332,20 @@ const Hero = () => {
                         <span className="text-primary-400">=</span>{' '}
                         <span className="text-dark-300">{'{'}</span>
                         {'\n'}
-                        {'  '}<span className="text-cyan-400">role</span>:{' '}
+                        {'  '}<span className="text-primary-300">role</span>:{' '}
                         <span className="text-green-400">"DevOps Developer"</span>,
                         {'\n'}
-                        {'  '}<span className="text-cyan-400">skills</span>:{' '}
+                        {'  '}<span className="text-primary-300">skills</span>:{' '}
                         <span className="text-dark-300">[</span>
                         <span className="text-green-400">"Python"</span>,{' '}
                         <span className="text-green-400">"React"</span>,{' '}
                         <span className="text-green-400">"FastAPI"</span>
                         <span className="text-dark-300">]</span>,
                         {'\n'}
-                        {'  '}<span className="text-cyan-400">passion</span>:{' '}
+                        {'  '}<span className="text-primary-300">passion</span>:{' '}
                         <span className="text-green-400">"Building scalable apps"</span>,
                         {'\n'}
-                        {'  '}<span className="text-cyan-400">status</span>:{' '}
+                        {'  '}<span className="text-primary-300">status</span>:{' '}
                         <span className="text-green-400">"Building at SSSC"</span>
                         {'\n'}
                         <span className="text-dark-300">{'};'}</span>
@@ -360,7 +360,7 @@ const Hero = () => {
                   transition={{ duration: 4, repeat: Infinity }}
                   className="absolute -top-4 -right-4 px-4 py-2 glass rounded-lg"
                 >
-                  <span className="text-cyan-400 font-mono text-sm">RWU '25</span>
+                  <span className="text-primary-300 font-mono text-sm">RWU Alum</span>
                 </motion.div>
               </div>
             </div>

@@ -21,7 +21,7 @@ const Projects = () => {
       technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "DevOps"],
       github: "https://github.com/louissader/homelab-infrastructure-monitor",
       featured: true,
-      color: "from-primary-500 to-blue-500"
+      color: "from-primary-600 to-primary-400"
     },
     {
       title: "AWS Serverless URL Shortener",
@@ -36,7 +36,7 @@ const Projects = () => {
       technologies: ["Python", "AWS Lambda", "DynamoDB", "CDK", "API Gateway"],
       github: "https://github.com/louissader/aws-url-shortener",
       featured: true,
-      color: "from-orange-500 to-red-500"
+      color: "from-primary-500 to-primary-300"
     },
     {
       title: "Strava Race Time Predictor",
@@ -51,7 +51,7 @@ const Projects = () => {
       technologies: ["Python", "React", "Flask", "AWS Bedrock", "Socket.IO", "scikit-learn"],
       github: "https://github.com/louissader/strava-race-predictor",
       featured: true,
-      color: "from-cyan-500 to-teal-500"
+      color: "from-primary-400 to-silver"
     },
     {
       title: "Product Management System",
@@ -66,7 +66,7 @@ const Projects = () => {
       technologies: ["Python", "Flask", "FastAPI", "PostgreSQL", "Docker"],
       github: "https://github.com/louissader/product-management-api",
       featured: true,
-      color: "from-purple-500 to-pink-500"
+      color: "from-primary-800 to-primary-600"
     },
     {
       title: "Oryx Technologies",
@@ -82,7 +82,7 @@ const Projects = () => {
       github: null,
       demo: "https://oryxtechnologiesllc.com",
       featured: false,
-      color: "from-amber-500 to-orange-500"
+      color: "from-silver-dark to-silver-light"
     },
     {
       title: "ESCAPE (Unity)",
@@ -97,7 +97,7 @@ const Projects = () => {
       technologies: ["C#", "Unity", "OOP"],
       github: "https://github.com/louissader/ESCAPE",
       featured: false,
-      color: "from-emerald-500 to-green-500"
+      color: "from-primary-700 to-primary-400"
     },
     {
       title: "ESCAPE Mobile (iOS port)",
@@ -112,7 +112,7 @@ const Projects = () => {
       technologies: ["Swift", "SpriteKit", "iOS"],
       github: "https://github.com/louissader/ESCAPE-Mobile",
       featured: false,
-      color: "from-blue-500 to-indigo-500"
+      color: "from-primary-700 to-primary-500"
     },
     {
       title: "Gmail Rejection Scanner",
@@ -127,7 +127,7 @@ const Projects = () => {
       technologies: ["Python", "Gmail API", "OAuth"],
       github: "https://github.com/louissader/gmail-rejection-scanner",
       featured: false,
-      color: "from-rose-500 to-pink-500"
+      color: "from-silver to-primary-400"
     }
   ]
 

@@ -63,7 +63,7 @@ const Contact = () => {
           {/* Big email card (spans 3 columns on desktop) */}
           <a
             href="mailto:louissader42@gmail.com"
-            className="lg:col-span-3 group relative overflow-hidden rounded-2xl p-8 sm:p-10 bg-gradient-to-br from-primary-500/15 via-cyan-500/10 to-dark-900/60 border border-primary-500/30 hover:border-primary-400/60 transition-all"
+            className="lg:col-span-3 group relative overflow-hidden rounded-2xl p-8 sm:p-10 bg-gradient-to-br from-primary-500/15 via-primary-400/10 to-dark-900/60 border border-primary-500/30 hover:border-primary-400/60 transition-all"
           >
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary-500/20 rounded-full blur-3xl group-hover:bg-primary-500/30 transition-colors" />
             <div className="relative flex items-start justify-between gap-4">

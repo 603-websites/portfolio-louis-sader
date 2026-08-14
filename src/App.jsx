@@ -51,8 +51,8 @@ function App({ pathname } = {}) {
       {/* Bigger, brighter ambient orbs so the background reads as a real layer */}
       <div className="fixed inset-0 -z-10 pointer-events-none">
         <div className="absolute top-1/4 left-1/5 w-96 h-96 lg:w-[28rem] lg:h-[28rem] bg-primary-500/25 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/5 right-1/5 w-96 h-96 lg:w-[28rem] lg:h-[28rem] bg-cyan-500/25 rounded-full blur-3xl animate-pulse-slow delay-1000" />
-        <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/5 right-1/5 w-96 h-96 lg:w-[28rem] lg:h-[28rem] bg-primary-400/20 rounded-full blur-3xl animate-pulse-slow delay-1000" />
+        <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-silver/10 rounded-full blur-3xl" />
       </div>
       <Navbar />
       {/* Section order. Mobile: Hero -> Experience -> NCAA -> About ->

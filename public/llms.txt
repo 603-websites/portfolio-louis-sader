@@ -3,7 +3,7 @@
 > DevOps Software Developer building cloud and AI infrastructure. AWS Solutions Architect Associate and CompTIA Security+ certified. Former NCAA distance runner.
 
 ## About
-Louis Sader is a DevOps Software Developer based in New England. He builds cloud and AI infrastructure with AWS, Terraform, Docker, Kubernetes, and CI/CD pipelines. He holds a B.S. in Computer Science from Roger Williams University (2025), with minors in Mathematics and Data Science.
+Louis Sader is a DevOps Software Developer based in New England. He builds cloud and AI infrastructure with AWS, Terraform, Docker, Kubernetes, and CI/CD pipelines. He holds a B.S. in Computer Science from Roger Williams University, with minors in Mathematics and Data Science.
 
 ## Current work
 - DevOps Software Developer at Solid State Scientific Corporation (Nashua, NH), since February 2026.
@@ -18,6 +18,6 @@ Louis Sader is a DevOps Software Developer based in New England. He builds cloud
 DevOps, AWS, cloud infrastructure, Terraform, Docker, Kubernetes, CI/CD, Python, TypeScript, React, Next.js, Prisma, PostgreSQL.
 
 ## Links
-- Website: https://louissader.dev
+- Website: https://louissader.com
 - GitHub: https://github.com/louissader
 - LinkedIn: https://www.linkedin.com/in/louis-sader/

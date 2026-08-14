@@ -225,7 +225,7 @@ const NCAA = () => {
               href="https://cnesports.org/news/2025/4/30/mens-track-and-field-cne-reveals-2025-mens-and-womens-track-field-postseason-awards.aspx"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block mt-6 p-5 rounded-xl bg-gradient-to-br from-primary-500/15 via-cyan-500/10 to-dark-900/60 border border-primary-500/30 hover:border-primary-400/60 transition-colors"
+              className="group block mt-6 p-5 rounded-xl bg-gradient-to-br from-primary-500/15 via-primary-400/10 to-dark-900/60 border border-primary-500/30 hover:border-primary-400/60 transition-colors"
             >
               <div className="flex items-start gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0 p-1.5">
