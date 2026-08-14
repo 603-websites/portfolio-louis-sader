@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'framer-motion'
 
 // Curl-noise particle flow field, ported from the Oryx Technologies landing
-// page (HeroParticles.tsx) and recolored to the site's navy/silver palette:
+// page (HeroParticles.tsx) and in the original Oryx gold/silver palette:
 // short particle streaks drift along a value-noise curl field, with a swirl +
 // soft bloom that follows the cursor on hover-capable devices. The canvas is
 // fixed to the viewport so the field runs behind every section, and stays
@@ -10,14 +10,15 @@ import { useReducedMotion } from 'framer-motion'
 // show through. Reduced motion: the field is skipped entirely and the static
 // orbs in App.jsx carry the background.
 
-/* steel blue weighted double so the field reads navy, silver as accent */
+/* gold weighted double so the field reads warm, silver as accent —
+ * identical to the Oryx landing page palette */
 const PALETTE = [
-  [122, 165, 204],
-  [122, 165, 204],
-  [163, 191, 217],
-  [77, 127, 173],
-  [176, 183, 188],
-  [214, 218, 221],
+  [212, 162, 86],
+  [212, 162, 86],
+  [232, 200, 150],
+  [184, 134, 60],
+  [196, 196, 205],
+  [220, 220, 228],
 ]
 
 const FREQ = 0.0016
@@ -201,9 +202,9 @@ const ParticleBackground = () => {
         if (bloom.a > 0.01) {
           const rad = 20
           const g = ctx.createRadialGradient(bloom.x, bloom.y, 0, bloom.x, bloom.y, rad)
-          g.addColorStop(0, `rgba(214,218,221,${0.16 * bloom.a})`)
-          g.addColorStop(0.4, `rgba(122,165,204,${0.07 * bloom.a})`)
-          g.addColorStop(1, 'rgba(122,165,204,0)')
+          g.addColorStop(0, `rgba(232,200,150,${0.16 * bloom.a})`)
+          g.addColorStop(0.4, `rgba(212,162,86,${0.07 * bloom.a})`)
+          g.addColorStop(1, 'rgba(212,162,86,0)')
           ctx.fillStyle = g
           ctx.beginPath()
           ctx.arc(bloom.x, bloom.y, rad, 0, Math.PI * 2)
