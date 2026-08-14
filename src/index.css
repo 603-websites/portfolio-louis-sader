@@ -37,7 +37,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-400 via-primary-500 to-cyan-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-300 via-primary-400 to-silver-light bg-clip-text text-transparent;
   }
 
   .gradient-border {
@@ -47,7 +47,7 @@
   .gradient-border::before {
     content: '';
     @apply absolute inset-0 rounded-lg p-[1px];
-    background: linear-gradient(135deg, #0ea5e9, #06b6d4, #0ea5e9);
+    background: linear-gradient(135deg, #4d7fad, #b0b7bc, #4d7fad);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -63,7 +63,7 @@
   }
 
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-cyan-500 text-white font-semibold rounded-lg
+    @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-400 text-white font-semibold rounded-lg
            transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25 hover:scale-105
            active:scale-95;
   }
@@ -80,7 +80,7 @@
      (one filled CTA + two outlined) is preserved. */
   .btn-secondary-mobile-filled {
     @apply px-6 py-3 font-semibold rounded-lg transition-all duration-300 active:scale-95
-           bg-gradient-to-r from-primary-500 to-cyan-500 text-white border border-transparent
+           bg-gradient-to-r from-primary-600 to-primary-400 text-white border border-transparent
            hover:shadow-lg hover:shadow-primary-500/25 hover:scale-105
            sm:bg-none sm:from-transparent sm:to-transparent sm:text-primary-400
            sm:border-primary-500/50 sm:hover:bg-primary-500/10 sm:hover:border-primary-400

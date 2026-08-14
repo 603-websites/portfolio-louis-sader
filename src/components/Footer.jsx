@@ -11,7 +11,7 @@ const Footer = () => {
   const footerLinks = [
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
+    { name: 'NCAA', href: '#ncaa' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
     { name: 'Accessibility', href: '#accessibility' },
@@ -29,7 +29,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
-            <a href="#" className="text-2xl font-bold gradient-text inline-block mb-2">
+            <a href="#home" className="text-2xl font-bold gradient-text inline-block mb-2">
               LS
             </a>
             <p className="text-dark-500 text-sm">
@@ -57,7 +57,7 @@ const Footer = () => {
                 key={link.label}
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                rel={link.href.startsWith('http') ? 'me noopener noreferrer' : undefined}
                 className="w-10 h-10 rounded-lg bg-dark-800/50 border border-dark-700/50 flex items-center justify-center
                          text-dark-400 hover:text-primary-400 hover:border-primary-500/50 transition-all"
                 whileHover={{ y: -3 }}

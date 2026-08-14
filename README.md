@@ -1,4 +1,4 @@
-# louissader.dev - Portfolio Website
+# louissader.com - Portfolio Website
 
 <div align="center">
 
@@ -9,7 +9,7 @@
 
 **Professional portfolio website showcasing full-stack development projects and skills**
 
-[Live Site](https://louissader.dev) • [Projects](#featured-projects) • [Tech Stack](#tech-stack)
+[Live Site](https://louissader.com) • [Projects](#featured-projects) • [Tech Stack](#tech-stack)
 
 </div>
 
@@ -59,8 +59,8 @@ Personal portfolio website built with React and Tailwind CSS. Features responsiv
 
 ```bash
 # Clone repository
-git clone https://github.com/louissader/louissader.dev.git
-cd louissader.dev
+git clone https://github.com/louissader/louissader.com.git
+cd louissader.com
 
 # Install dependencies
 npm install
@@ -77,7 +77,7 @@ npm run build
 ## Project Structure
 
 ```
-louissader.dev/
+louissader.com/
 ├── src/
 │   ├── components/       # Reusable UI components
 │   │   ├── Navbar.jsx
@@ -111,7 +111,7 @@ vercel --prod
 
 **Louis Sader** - Full-Stack Developer
 
-- Website: [louissader.dev](https://louissader.dev)
+- Website: [louissader.com](https://louissader.com)
 - LinkedIn: [linkedin.com/in/louissader](https://linkedin.com/in/louissader)
 - GitHub: [github.com/louissader](https://github.com/louissader)
 - Email: louissader42@gmail.com
