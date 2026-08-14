@@ -17,7 +17,7 @@ const About = () => {
       logoBg: "bg-white",
     },
     {
-      logo: "/images/logos/aws.svg",
+      logo: "/images/logos/aws.svg?v=2",
       title: "AWS Certified",
       description: "Solutions Architect, Associate (SAA-C03)",
       detail: "Cloud Practitioner valid through 2028",

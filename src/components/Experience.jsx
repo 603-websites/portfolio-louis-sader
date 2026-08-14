@@ -264,8 +264,8 @@ const Experience = () => {
               className="glass rounded-xl p-3 sm:p-6 min-w-0"
             >
               <h3 className="text-sm sm:text-lg font-semibold text-white mb-3 sm:mb-5 flex items-center gap-2 sm:gap-3 flex-wrap">
-                <img src="/images/logos/comptia.svg" alt="CompTIA" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />
-                <img src="/images/logos/aws.svg" alt="AWS" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />
+                <img src="/images/logos/comptia.svg?v=2" alt="CompTIA" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />
+                <img src="/images/logos/aws.svg?v=2" alt="AWS" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />
                 Certifications
               </h3>
               <div className="space-y-2 sm:space-y-4">

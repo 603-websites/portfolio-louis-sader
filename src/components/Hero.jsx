@@ -1,7 +1,6 @@
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Gamepad2, Trophy, Sparkles, ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import YouTubeBackground from './YouTubeBackground'
 import MiniGameClip from './MiniGameClip'
 
 const HERO_NCAA_PHOTOS = [
@@ -64,45 +63,11 @@ const ImageWithLoader = ({ src, webpSrc, alt, className, eager = false }) => {
   )
 }
 
-// Desktop-only mount gate. The YouTube background is CSS-hidden on mobile, but
-// CSS alone still mounts the component and loads the heavy YouTube IFrame API on
-// phones where it never shows. Gating the mount keeps that off mobile entirely.
-const useIsDesktop = () => {
-  const [isDesktop, setIsDesktop] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
-  )
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)')
-    const onChange = () => setIsDesktop(mq.matches)
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [])
-  return isDesktop
-}
-
 const Hero = () => {
-  const isDesktop = useIsDesktop()
   return (
     <section id="home" className="lg:min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24 lg:pt-20 pb-8 lg:pb-0">
-      {/* Game-dev clip background. Desktop only. Mobile shows the global
-          dark theme + orbs/particles instead. */}
-      <div className="hidden lg:block absolute inset-0">
-        {isDesktop && <YouTubeBackground />}
-      </div>
-
-      {/* Desktop-only: radial dark glow over the video, behind the hero text. */}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none hidden lg:block"
-        style={{
-          background: `radial-gradient(
-            ellipse 720px 520px at 28% 50%,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.55) 40%,
-            transparent 75%
-          )`,
-        }}
-      />
-
+      {/* No hero-specific background: the global ember field shows through,
+          matching the rest of the page. */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
@@ -256,11 +221,11 @@ const Hero = () => {
               <span className="text-white text-sm font-medium">Stack:</span>
               <div className="flex items-center gap-3 sm:gap-4">
                 {[
-                  { src: '/images/logos/aws.svg',        label: 'AWS' },
-                  { src: '/images/logos/docker.svg',     label: 'Docker' },
-                  { src: '/images/logos/kubernetes.svg', label: 'Kubernetes' },
-                  { src: '/images/logos/terraform.svg',  label: 'Terraform' },
-                  { src: '/images/logos/comptia.svg',    label: 'CompTIA Security+' },
+                  { src: '/images/logos/aws.svg?v=2',        label: 'AWS' },
+                  { src: '/images/logos/docker.svg?v=2',     label: 'Docker' },
+                  { src: '/images/logos/kubernetes.svg?v=2', label: 'Kubernetes' },
+                  { src: '/images/logos/terraform.svg?v=2',  label: 'Terraform' },
+                  { src: '/images/logos/comptia.svg?v=2',    label: 'CompTIA Security+' },
                 ].map(({ src, label }) => (
                   <motion.div
                     key={label}

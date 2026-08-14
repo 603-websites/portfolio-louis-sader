@@ -106,55 +106,6 @@
     text-wrap: balance;
   }
 
-  /* YouTube hero background.
-     Mobile: video sized to its native 16:9 aspect at viewport width and
-     pinned to the top of the hero so the entire gameplay frame is visible.
-     Desktop: full-bleed background, iframe scaled to crop YouTube's edge UI. */
-  .youtube-bg-wrap {
-    overflow: hidden;
-  }
-  .youtube-bg-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: calc(100vw * 9 / 16);
-    pointer-events: none;
-  }
-  .youtube-bg-iframe iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    pointer-events: none;
-  }
-  @media (min-width: 1024px) {
-    .youtube-bg-iframe {
-      top: 50%;
-      left: 50%;
-      width: max(100vw, calc(100vh * 16 / 9));
-      height: max(56.25vw, 100vh);
-      transform: translate(-50%, -50%);
-    }
-    .youtube-bg-iframe iframe {
-      transform: scale(1.35);
-      transform-origin: center center;
-    }
-  }
-
-  .animate-in {
-    animation: animateIn 0.5s ease-out forwards;
-  }
-
-  @keyframes animateIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 }
 
 /* Reduced-motion fallback. framer-motion is gated in JS via MotionConfig and
