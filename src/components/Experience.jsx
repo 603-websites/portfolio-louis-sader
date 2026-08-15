@@ -224,16 +224,16 @@ const Experience = () => {
             ))}
           </div>
 
-          {/* Sidebar - Education & Certifications. Side-by-side on mobile,
-              stacked on desktop. Compact paddings + small headers on mobile
-              so the column titles don't get clipped at narrow widths. */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1 lg:gap-6 lg:space-y-0">
+          {/* Sidebar - Education & Certifications. Stacked full-width on
+              phones (side-by-side was too cramped at 400px), two columns on
+              tablets, single sidebar column on desktop. */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-6 lg:space-y-0">
             {/* Education */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="glass rounded-xl p-3 sm:p-6 min-w-0"
+              className="glass rounded-xl p-5 sm:p-6 min-w-0"
             >
               <h3 className="text-sm sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary-500 rounded-full shrink-0" />
@@ -261,7 +261,7 @@ const Experience = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="glass rounded-xl p-3 sm:p-6 min-w-0"
+              className="glass rounded-xl p-5 sm:p-6 min-w-0"
             >
               <h3 className="text-sm sm:text-lg font-semibold text-white mb-3 sm:mb-5 flex items-center gap-2 sm:gap-3 flex-wrap">
                 <img src="/images/logos/comptia.svg?v=2" alt="CompTIA" className="w-7 h-7 sm:w-12 sm:h-12 object-contain shrink-0" />

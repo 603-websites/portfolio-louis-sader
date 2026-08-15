@@ -1,17 +1,78 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Github, ExternalLink, Server, Brain, Package, Zap, Cloud, Gamepad2, Briefcase, Mail, Smartphone } from 'lucide-react'
+import { Github, ExternalLink } from 'lucide-react'
+
+// Apple logo glyph for the App Store status pill (official-shape path,
+// self-hosted inline since the CSP blocks external images).
+const AppleLogo = ({ className }) => (
+  <svg viewBox="0 0 814 1000" className={className} fill="currentColor" aria-hidden="true">
+    <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z" />
+  </svg>
+)
+
+const CardFooter = ({ project }) => (
+  <div className="mt-auto pt-4 space-y-3">
+    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+      {project.technologies.map((tech) => (
+        <span key={tech} className="tech-badge text-[11px] sm:text-xs">
+          {tech}
+        </span>
+      ))}
+    </div>
+    <div className="flex gap-2">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-dark-800/80 border border-dark-700/60 text-dark-200 text-sm font-medium hover:bg-primary-600 hover:border-primary-500 hover:text-white transition-colors"
+        >
+          <Github size={18} />
+          View on GitHub
+        </a>
+      )}
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-dark-800/80 border border-dark-700/60 text-dark-200 text-sm font-medium hover:bg-primary-600 hover:border-primary-500 hover:text-white transition-colors"
+        >
+          <ExternalLink size={18} />
+          {project.github ? 'Live site' : 'Visit oryxtechnologiesllc.com'}
+        </a>
+      )}
+    </div>
+  </div>
+)
 
 const Projects = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  // Descriptions kept in sync with the GitHub repo descriptions.
   const projects = [
     {
+      title: "ESCAPE: Cave Duo",
+      appIcon: "/images/projects/escape-cave-duo.png",
+      appStore: "In review",
+      subtitle: "iOS game · Swift + SpriteKit",
+      description: "Native iOS co-op puzzle platformer, ported from my Unity original in Swift and SpriteKit. Two characters, one cave: dual-character puzzle mechanics rebuilt for touch, with full level progression, enemies, and power-ups. Submitted to the App Store and currently in review.",
+      highlights: [
+        "Full SpriteKit rebuild of the Unity game",
+        "Touch-first dual-character co-op controls",
+        "8 levels with enemies, coins, and power-ups",
+        "Own support + privacy site shipped for review"
+      ],
+      technologies: ["Swift", "SpriteKit", "iOS", "Xcode"],
+      github: "https://github.com/louissader/ESCAPE-Mobile",
+      featured: true,
+      hero: true
+    },
+    {
       title: "HomeLab Infrastructure Monitor",
-      description: "Production-ready monitoring system providing real-time infrastructure insights with <1s data lag and <200ms API response times. Enables proactive system management and performance optimization.",
-      icon: Server,
+      description: "Production-ready infrastructure monitoring system with real-time metrics, <1s data lag, and <200ms API response times. FastAPI backend, Python collection agent, Docker deployment.",
       highlights: [
         "15 REST endpoints with async ORM",
         "60% Docker image size reduction",
@@ -20,13 +81,11 @@ const Projects = () => {
       ],
       technologies: ["Python", "FastAPI", "PostgreSQL", "Docker", "DevOps"],
       github: "https://github.com/louissader/homelab-infrastructure-monitor",
-      featured: true,
-      color: "from-primary-600 to-primary-400"
+      featured: true
     },
     {
       title: "AWS Serverless URL Shortener",
-      description: "Deployed serverless application on AWS achieving sub-10ms query latency and ~1,000 requests per second with secure, least-privilege IAM controls.",
-      icon: Cloud,
+      description: "Production-ready AWS serverless URL shortener with Lambda, DynamoDB, and API Gateway. Sub-10ms query latency at ~1,000 requests per second with least-privilege IAM controls.",
       highlights: [
         "Sub-10ms query latency",
         "~1,000 requests per second",
@@ -35,59 +94,38 @@ const Projects = () => {
       ],
       technologies: ["Python", "AWS Lambda", "DynamoDB", "CDK", "API Gateway"],
       github: "https://github.com/louissader/aws-url-shortener",
-      featured: true,
-      color: "from-primary-500 to-primary-300"
+      featured: true
     },
     {
       title: "Strava Race Time Predictor",
-      description: "Full-stack ML app with LLM integration and real-time WebSocket streaming. Achieves <5% prediction error across 1,000+ runs, transforming race planning from 2+ hours to 30 seconds.",
-      icon: Brain,
+      description: "Full-stack ML app with LLM integration and real-time WebSocket streaming. Under 5% prediction error across 1,000+ runs, with AI-generated training plans and GPS heatmaps.",
       highlights: [
         "LLM-powered AI training plans (AWS Bedrock)",
         "Real-time streaming via Socket.IO",
-        "15+ engineered features from Strava API",
+        "15+ engineered features from the Strava API",
         "GPS heatmaps & timeline visualizations"
       ],
       technologies: ["Python", "React", "Flask", "AWS Bedrock", "Socket.IO", "scikit-learn"],
       github: "https://github.com/louissader/strava-race-predictor",
-      featured: true,
-      color: "from-primary-400 to-silver"
-    },
-    {
-      title: "Product Management System",
-      description: "Dual Flask + FastAPI implementations with comprehensive API functionality. Features API key authentication, rate limiting, and auto-generated documentation.",
-      icon: Package,
-      highlights: [
-        "7 REST endpoints with full CRUD",
-        "85% test coverage",
-        "70% faster developer onboarding",
-        "CSV/JSON export capabilities"
-      ],
-      technologies: ["Python", "Flask", "FastAPI", "PostgreSQL", "Docker"],
-      github: "https://github.com/louissader/product-management-api",
-      featured: true,
-      color: "from-primary-800 to-primary-600"
+      featured: true
     },
     {
       title: "Oryx Technologies",
-      description: "Rebuilding a client's static site (0% SEO score, no backend) into a full-stack platform with SMS notifications, first-page local search SEO, and a self-service admin and client dashboard for real-time analytics, menu, and promotion management. Eliminates developer dependency, with the same playbook applied across the active client roster.",
-      icon: Briefcase,
+      description: "Co-founded web agency for local New England businesses. Rebuilt a client's static site (0% SEO score, no backend) into a full-stack platform: SMS notifications, first-page local SEO, and a self-service multi-tenant dashboard.",
       highlights: [
         "Active clients: The Spot Nashua, VixFix Pro, Santella Designs",
         "Multi-tenant Next.js + Prisma + Postgres SaaS",
-        "Self-service tenant dashboard (menu, bookings, calendar, newsletter, contacts)",
-        "Cross-tenant SEO playbook + per-client local-search optimization"
+        "Self-service tenant dashboard (menu, bookings, newsletter)",
+        "Cross-tenant SEO playbook + local-search optimization"
       ],
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway", "Resend"],
+      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway"],
       github: null,
       demo: "https://oryxtechnologiesllc.com",
-      featured: false,
-      color: "from-silver-dark to-silver-light"
+      featured: false
     },
     {
       title: "ESCAPE (Unity)",
-      description: "2D co-op puzzle platformer built in Unity. Dual-character mechanics, custom enemy AI, and level progression. Capstone-tier game project written in C#.",
-      icon: Gamepad2,
+      description: "Co-op 2D puzzle platformer built in Unity and C#. Fireboy & Watergirl-inspired dual-character mechanics with custom enemy AI and level progression. The original the iOS port grew from.",
       highlights: [
         "Dual-character co-op mechanics",
         "Custom enemy AI",
@@ -96,28 +134,24 @@ const Projects = () => {
       ],
       technologies: ["C#", "Unity", "OOP"],
       github: "https://github.com/louissader/ESCAPE",
-      featured: false,
-      color: "from-primary-700 to-primary-400"
+      featured: false
     },
     {
-      title: "ESCAPE Mobile (iOS port)",
-      description: "Native iOS port of ESCAPE in Swift and SpriteKit. Same dual-character co-op puzzle mechanics, rebuilt for the App Store with touch controls.",
-      icon: Smartphone,
+      title: "Product Management System",
+      description: "Dual Flask + FastAPI product management system with API key auth, rate limiting, auto-generated docs, and 85% test coverage. PostgreSQL and Docker underneath.",
       highlights: [
-        "Swift + SpriteKit",
-        "Touch-first co-op controls",
-        "Game state and level loading",
-        "Targeting App Store release"
+        "7 REST endpoints with full CRUD",
+        "85% test coverage",
+        "70% faster developer onboarding",
+        "CSV/JSON export capabilities"
       ],
-      technologies: ["Swift", "SpriteKit", "iOS"],
-      github: "https://github.com/louissader/ESCAPE-Mobile",
-      featured: false,
-      color: "from-primary-700 to-primary-500"
+      technologies: ["Python", "Flask", "FastAPI", "PostgreSQL", "Docker"],
+      github: "https://github.com/louissader/product-management-api",
+      featured: false
     },
     {
       title: "Gmail Rejection Scanner",
-      description: "Python utility that scans a Gmail account for job-application rejection emails using the Gmail API. Built it to triage my own inbox during the senior-year job hunt.",
-      icon: Mail,
+      description: "Python utility that scans a Gmail inbox for job-application rejection emails through the Gmail API. Built to triage my own senior-year job hunt, then open-sourced.",
       highlights: [
         "Gmail API + OAuth",
         "Pattern matching across rejection-language variants",
@@ -126,10 +160,12 @@ const Projects = () => {
       ],
       technologies: ["Python", "Gmail API", "OAuth"],
       github: "https://github.com/louissader/gmail-rejection-scanner",
-      featured: false,
-      color: "from-silver to-primary-400"
+      featured: false
     }
   ]
+
+  const hero = projects.find((p) => p.hero)
+  const rest = projects.filter((p) => !p.hero)
 
   return (
     <section id="projects" className="py-12 sm:py-24 relative bg-dark-900/30">
@@ -149,107 +185,91 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Mobile: 2-col compact tile grid (4 visible at a time, fast scroll).
-            Desktop: 2-col full cards with descriptions and highlights. */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8">
-          {projects.map((project, index) => (
+        {/* Hero card: the iOS game currently in App Store review. */}
+        {hero && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="mb-6 sm:mb-8"
+          >
+            <div className="glass rounded-2xl p-5 sm:p-8 card-hover border border-primary-500/20">
+              <div className="flex flex-col sm:flex-row gap-5 sm:gap-8">
+                <div className="shrink-0 flex sm:flex-col items-center gap-4">
+                  <img
+                    src={hero.appIcon}
+                    alt="ESCAPE: Cave Duo app icon"
+                    className="w-24 h-24 sm:w-36 sm:h-36 rounded-[22%] ring-1 ring-dark-700/60 shadow-xl shadow-black/40"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark-800/80 border border-dark-700/60 text-dark-200 text-xs font-medium whitespace-nowrap">
+                    <AppleLogo className="w-3.5 h-3.5" />
+                    App Store · {hero.appStore}
+                  </span>
+                </div>
+                <div className="flex-1 min-w-0 flex flex-col">
+                  <h3 className="text-xl sm:text-3xl font-bold text-white leading-tight">
+                    {hero.title}
+                  </h3>
+                  <p className="text-primary-300 text-sm sm:text-base font-medium mt-1 mb-3">
+                    {hero.subtitle}
+                  </p>
+                  <p className="text-dark-300 text-sm sm:text-base leading-relaxed mb-4">
+                    {hero.description}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                    {hero.highlights.map((h) => (
+                      <div key={h} className="flex items-center gap-2 text-xs sm:text-sm text-dark-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary-400 shrink-0" />
+                        {h}
+                      </div>
+                    ))}
+                  </div>
+                  <CardFooter project={hero} />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Remaining projects: single column on mobile with full descriptions,
+            two columns on desktop. No icon headers; content leads. */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          {rest.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
               className="group relative"
             >
-              <div className="glass rounded-xl lg:rounded-2xl overflow-hidden card-hover h-full flex flex-col">
-                {/* Header with gradient */}
-                <div className={`relative p-3 lg:p-6 bg-gradient-to-r ${project.color} bg-opacity-10`}>
-                  <div className="absolute inset-0 bg-gradient-to-r opacity-10" style={{
-                    backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`
-                  }} />
-                  <div className="relative flex items-start justify-between gap-2">
-                    <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-lg lg:rounded-xl bg-gradient-to-r ${project.color} flex items-center justify-center shadow-lg shrink-0`}>
-                      <project.icon className="text-white w-5 h-5 lg:w-7 lg:h-7" />
-                    </div>
-                    {/* Action buttons: compact on mobile, full text on desktop */}
-                    <div className="flex gap-1.5 lg:gap-2">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="View on GitHub"
-                          className="flex items-center gap-1.5 lg:gap-2 p-2 lg:px-3 lg:py-1.5 rounded-md lg:rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors text-xs lg:text-sm"
-                        >
-                          <Github size={16} className="lg:w-[18px] lg:h-[18px]" />
-                          <span className="hidden lg:inline">View on GitHub</span>
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Open demo"
-                          className="p-2 rounded-md lg:rounded-lg bg-dark-900/50 text-dark-400 hover:text-white hover:bg-dark-800 transition-colors"
-                        >
-                          <ExternalLink size={16} className="lg:w-5 lg:h-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-3 lg:p-6 flex-1 flex flex-col">
-                  <h3 className="text-sm lg:text-xl font-semibold text-white mb-1 lg:mb-3 group-hover:text-primary-400 transition-colors leading-tight">
+              <div className="glass rounded-2xl p-5 sm:p-6 card-hover h-full flex flex-col">
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <h3 className="text-base sm:text-xl font-semibold text-white group-hover:text-primary-400 transition-colors leading-tight">
                     {project.title}
                   </h3>
-                  {/* Description: hidden on mobile, shown on desktop */}
-                  <p className="hidden lg:block text-dark-400 text-sm mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Highlights: hidden on mobile */}
-                  <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6 flex-1">
-                    {project.highlights.map((highlight) => (
-                      <div
-                        key={highlight}
-                        className="flex items-center gap-2 text-xs text-dark-300"
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${project.color}`} />
-                        {highlight}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Technologies: 2 first techs on mobile, all on desktop */}
-                  <div className="flex flex-wrap gap-1 lg:gap-2 mt-auto lg:pt-4 lg:border-t lg:border-dark-700/50">
-                    <span className="lg:hidden flex flex-wrap gap-1">
-                      {project.technologies.slice(0, 2).map((tech) => (
-                        <span key={tech} className="tech-badge text-[10px] px-2 py-0.5">
-                          {tech}
-                        </span>
-                      ))}
+                  {project.featured && (
+                    <span className="px-2.5 py-0.5 text-[10px] sm:text-xs font-medium bg-primary-600/80 text-white rounded-full shrink-0">
+                      Featured
                     </span>
-                    <span className="hidden lg:flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="tech-badge text-xs">
-                          {tech}
-                        </span>
-                      ))}
-                    </span>
-                  </div>
+                  )}
                 </div>
+                <p className="text-dark-400 text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                  {project.highlights.map((highlight) => (
+                    <div
+                      key={highlight}
+                      className="flex items-center gap-2 text-xs text-dark-300"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary-400 shrink-0" />
+                      {highlight}
+                    </div>
+                  ))}
+                </div>
+                <CardFooter project={project} />
               </div>
-
-              {/* Featured badge */}
-              {project.featured && (
-                <div className="absolute -top-1.5 -right-1.5 lg:-top-2 lg:-right-2">
-                  <span className={`px-2 py-0.5 lg:px-3 lg:py-1 text-[10px] lg:text-xs font-medium bg-gradient-to-r ${project.color} text-white rounded-full shadow-lg`}>
-                    Featured
-                  </span>
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
