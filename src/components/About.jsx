@@ -143,12 +143,12 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-3 sm:gap-4"
+            className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4"
           >
             {highlights.map((item, index) => {
               const inner = (
-                <div className="group p-3 sm:p-6 glass rounded-xl card-hover h-full flex flex-col sm:flex-row sm:gap-4 items-start gap-2">
-                  <div className={`w-12 h-12 sm:w-20 sm:h-20 rounded-xl ${item.logoBg} flex items-center justify-center shrink-0 overflow-hidden p-1.5 sm:p-2 ring-1 ring-dark-700/40`}>
+                <div className="group p-4 sm:p-6 glass rounded-xl card-hover h-full flex flex-row gap-3 sm:gap-4 items-start">
+                  <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-xl ${item.logoBg} flex items-center justify-center shrink-0 overflow-hidden p-1.5 sm:p-2 ring-1 ring-dark-700/40`}>
                     <img src={item.logo} alt={item.title} className="w-full h-full object-contain" loading="lazy" />
                   </div>
                   <div className="flex-1 min-w-0">

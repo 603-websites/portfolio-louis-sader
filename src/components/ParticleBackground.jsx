@@ -72,7 +72,11 @@ const ParticleBackground = () => {
         canvas.width = Math.max(1, Math.floor(W * dpr))
         canvas.height = Math.max(1, Math.floor(H * dpr))
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-        const count = Math.min(MAX_PARTICLES, Math.floor((W * H) / 1500))
+        // Phones get a denser, brighter field: fewer total pixels means the
+        // ember effect reads as empty at desktop tuning.
+        const small = W < 768
+        const count = Math.min(MAX_PARTICLES, Math.floor((W * H) / (small ? 900 : 1500)))
+        canvas.dataset.targetOpacity = small ? '0.85' : '0.62'
         particles = []
         for (let i = 0; i < count; i++) particles.push(spawn())
         ctx.clearRect(0, 0, W, H)
@@ -212,7 +216,7 @@ const ParticleBackground = () => {
         }
       }
       raf = requestAnimationFrame(loop)
-      canvas.style.opacity = '0.62'
+      canvas.style.opacity = canvas.dataset.targetOpacity || '0.62'
 
       cleanupLoop = () => {
         window.removeEventListener('resize', resize)
