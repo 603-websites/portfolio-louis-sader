@@ -40,7 +40,7 @@ const CardFooter = ({ project }) => (
           className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg bg-dark-800/80 border border-dark-700/60 text-dark-200 text-sm font-medium hover:bg-primary-600 hover:border-primary-500 hover:text-white transition-colors"
         >
           <ExternalLink size={18} />
-          {project.github ? 'Live site' : 'Visit oryxtechnologiesllc.com'}
+          {project.demoLabel || 'Live site'}
         </a>
       )}
     </div>
@@ -121,6 +121,23 @@ const Projects = () => {
       technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Cloudflare", "Railway"],
       github: null,
       demo: "https://oryxtechnologiesllc.com",
+      demoLabel: "Visit oryxtechnologiesllc.com",
+      featured: false
+    },
+    {
+      title: "VixFix Contracting and Home Improvement",
+      logo: "/images/projects/vixfix-logo.png",
+      description: "Oryx client build for Justin Vickery, who runs a painting, drywall, water damage, flooring, and carpentry business in Concord, NH and serves southern New Hampshire. Mobile-first static site on Cloudflare Pages: free estimate form on every page, sticky call button on mobile, structured data, security headers, and an accessibility statement. Privacy-friendly analytics on every page, with lead conversions tracked. Ongoing engagement since April 2026.",
+      highlights: [
+        "32 page static build on Cloudflare Pages",
+        "16 service and town guide pages across southern NH",
+        "Google Business Profile launched: 5.0 stars, 6 reviews",
+        "Silently dropped form submissions found, fixed, retested live"
+      ],
+      technologies: ["HTML", "CSS", "JavaScript", "Cloudflare Pages", "Umami", "Local SEO"],
+      github: null,
+      demo: "https://vixfixpro.com",
+      demoLabel: "Visit vixfixpro.com",
       featured: false
     },
     {
@@ -245,9 +262,19 @@ const Projects = () => {
             >
               <div className="glass rounded-2xl p-5 sm:p-6 card-hover h-full flex flex-col">
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <h3 className="text-base sm:text-xl font-semibold text-white group-hover:text-primary-400 transition-colors leading-tight">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-start gap-3 min-w-0">
+                    {project.logo && (
+                      <img
+                        src={project.logo}
+                        alt={`${project.title} logo`}
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl ring-1 ring-dark-700/60 shadow-lg shadow-black/40 shrink-0"
+                        loading="lazy"
+                      />
+                    )}
+                    <h3 className="text-base sm:text-xl font-semibold text-white group-hover:text-primary-400 transition-colors leading-tight">
+                      {project.title}
+                    </h3>
+                  </div>
                   {project.featured && (
                     <span className="px-2.5 py-0.5 text-[10px] sm:text-xs font-medium bg-primary-600/80 text-white rounded-full shrink-0">
                       Featured
